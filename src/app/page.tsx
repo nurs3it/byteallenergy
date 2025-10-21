@@ -18,22 +18,25 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video */}
-        <div className="absolute inset-0 w-full h-full">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/video/oil.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          
-          {/* Gradient background for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
-        </div>
+            {/* Background Video */}
+            <div className="absolute inset-0 w-full h-full">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                <source src="/video/oil.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              
+              {/* Fallback background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-energy-900 via-energy-800 to-oil-900" />
+              
+              {/* Gradient background for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
+            </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
