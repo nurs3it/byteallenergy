@@ -10,10 +10,48 @@ import { content, companyData } from '@/lib/data/company'
 import { services } from '@/lib/data/services'
 import { testimonials } from '@/lib/data/testimonials'
 import Link from 'next/link'
+import { useEffect, useRef } from 'react'
 
 export default function HomePage() {
   const featuredServices = services.filter(service => service.featured)
   const featuredTestimonials = testimonials.filter(testimonial => testimonial.featured)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (video) {
+      // Check if video URL is accessible
+      const checkVideoUrl = async () => {
+        try {
+          const response = await fetch('https://ik.imagekit.io/nurseiit/MORE17%20(2).mp4?updatedAt=1761024101874', {
+            method: 'HEAD',
+            mode: 'no-cors'
+          })
+          console.log('Video URL is accessible')
+        } catch (error) {
+          console.log('Video URL is not accessible:', error)
+        }
+      }
+      
+      checkVideoUrl()
+      
+      // Force play the video
+      const playVideo = async () => {
+        try {
+          await video.play()
+          console.log('Video playing successfully')
+        } catch (error) {
+          console.log('Video autoplay failed:', error)
+          // Try to play on user interaction
+          document.addEventListener('click', () => {
+            video.play().catch(console.log)
+          }, { once: true })
+        }
+      }
+      
+      playVideo()
+    }
+  }, [])
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -21,18 +59,28 @@ export default function HomePage() {
             {/* Background Video */}
             <div className="absolute inset-0 w-full h-full">
               <video
+                ref={videoRef}
                 autoPlay
                 loop
                 muted
                 playsInline
                 className="w-full h-full object-cover"
+                preload="auto"
+                crossOrigin="anonymous"
+                onError={(e) => {
+                  console.log('Video failed to load:', e);
+                  // Hide video and show fallback
+                  e.currentTarget.style.display = 'none';
+                }}
+                onLoadStart={() => console.log('Video loading started')}
+                onCanPlay={() => console.log('Video can play')}
+                onLoadedData={() => console.log('Video data loaded')}
+                onLoadedMetadata={() => console.log('Video metadata loaded')}
               >
-                <source src="/video/oil.mp4" type="video/mp4" />
+                <source src="https://ik.imagekit.io/nurseiit/MORE17%20(2).mp4?updatedAt=1761024101874" type="video/mp4" />
+                <source src="https://ik.imagekit.io/nurseiit/MORE17%20(2).mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              
-              {/* Fallback background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-energy-900 via-energy-800 to-oil-900" />
               
               {/* Gradient background for text readability */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
