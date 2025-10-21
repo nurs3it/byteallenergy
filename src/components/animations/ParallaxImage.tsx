@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 interface ParallaxImageProps {
   children: React.ReactNode
@@ -17,6 +17,39 @@ export function ParallaxImage({
   direction = 'up'
 }: ParallaxImageProps) {
   const ref = useRef(null)
+  const [isMobile, setIsMobile] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  
+  useEffect(() => {
+    // Check for mobile device
+    const checkMobile = () => {
+      const isMobileDevice = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      setIsMobile(isMobileDevice)
+    }
+    
+    // Check for reduced motion preference
+    const checkReducedMotion = () => {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      setPrefersReducedMotion(prefersReduced)
+    }
+    
+    checkMobile()
+    checkReducedMotion()
+    
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Disable parallax on mobile and for users who prefer reduced motion
+  if (isMobile || prefersReducedMotion) {
+    return (
+      <div className={className}>
+        {children}
+      </div>
+    )
+  }
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]

@@ -56,13 +56,13 @@ export function Footer() {
                 href={companyData.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-energy-600 transition-colors"
+                className="text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center justify-center"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
                 href={`mailto:${companyData.email}`}
-                className="text-muted-foreground hover:text-energy-600 transition-colors"
+                className="text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center justify-center"
               >
                 <Mail className="w-5 h-5" />
               </a>
@@ -83,7 +83,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-energy-600 transition-colors text-sm"
+                    className="text-muted-foreground hover:text-energy-600 transition-colors text-sm touch-target flex items-center"
                   >
                     {link.name}
                   </Link>
@@ -106,7 +106,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-energy-600 transition-colors text-sm"
+                    className="text-muted-foreground hover:text-energy-600 transition-colors text-sm touch-target flex items-center"
                   >
                     {link.name}
                   </Link>
@@ -136,7 +136,7 @@ export function Footer() {
                 <Mail className="w-4 h-4 text-energy-600 flex-shrink-0" />
                 <a
                   href={`mailto:${companyData.email}`}
-                  className="text-sm text-muted-foreground hover:text-energy-600 transition-colors"
+                  className="text-sm text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center"
                 >
                   {companyData.email}
                 </a>
@@ -147,7 +147,7 @@ export function Footer() {
                   href={companyData.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-energy-600 transition-colors"
+                  className="text-sm text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center"
                 >
                   {companyData.website}
                 </a>
@@ -173,7 +173,7 @@ export function Footer() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-sm text-muted-foreground hover:text-energy-600 transition-colors"
+                  className="text-sm text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center"
                 >
                   {link.name}
                 </Link>

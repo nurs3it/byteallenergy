@@ -24,6 +24,8 @@ const navigation = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
 
@@ -31,8 +33,29 @@ export function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
     }
+    
+    // Detect mobile device
+    const checkMobile = () => {
+      const isMobileDevice = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      setIsMobile(isMobileDevice)
+    }
+    
+    // Check for reduced motion preference
+    const checkReducedMotion = () => {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      setPrefersReducedMotion(prefersReduced)
+    }
+    
+    checkMobile()
+    checkReducedMotion()
+    
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('resize', checkMobile)
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', checkMobile)
+    }
   }, [])
 
   const toggleTheme = () => {
@@ -50,13 +73,13 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className={`flex items-center justify-between ${isMobile ? 'h-14' : 'h-16'}`}>
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2 min-h-[44px] min-w-[44px]">
             <div className="w-8 h-8 bg-gradient-to-br from-energy-500 to-energy-700 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">BE</span>
             </div>
-            <span className="font-bold text-xl bg-gradient-to-r from-energy-600 to-energy-800 bg-clip-text text-transparent">
+            <span className={`font-bold bg-gradient-to-r from-energy-600 to-energy-800 bg-clip-text text-transparent ${isMobile ? 'text-lg' : 'text-xl'}`}>
               ByteAll Energy
             </span>
           </Link>
@@ -85,13 +108,13 @@ export function Header() {
           </nav>
 
           {/* Controls */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             {/* Theme Toggle */}
             <Button
               variant="ghost"
               size="sm"
               onClick={toggleTheme}
-              className="flex items-center space-x-1"
+              className="flex items-center space-x-1 min-h-[44px] min-w-[44px] p-2"
             >
               {theme === 'dark' ? (
                 <Sun className="w-4 h-4" />
@@ -104,7 +127,7 @@ export function Header() {
             <Button
               variant="ghost"
               size="sm"
-              className="lg:hidden"
+              className="lg:hidden min-h-[44px] min-w-[44px] p-2"
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -120,18 +143,19 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            transition={prefersReducedMotion ? { duration: 0.1 } : { duration: 0.3, ease: "easeInOut" }}
             className="lg:hidden bg-background/95 backdrop-blur-md border-b border-border"
           >
-            <div className="container mx-auto px-4 py-4">
-              <nav className="flex flex-col space-y-4">
+            <div className="container mx-auto px-4 py-6">
+              <nav className="flex flex-col space-y-2">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`text-sm font-medium transition-colors hover:text-energy-600 ${
+                    className={`text-base font-medium transition-colors hover:text-energy-600 min-h-[44px] flex items-center px-2 py-3 rounded-lg hover:bg-muted/50 ${
                       pathname === item.href 
-                  ? 'text-energy-600' 
+                  ? 'text-energy-600 bg-energy-50 dark:bg-energy-950' 
                   : 'text-foreground'
                     }`}
                   >

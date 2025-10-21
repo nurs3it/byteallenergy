@@ -10,16 +10,47 @@ import { content, companyData } from '@/lib/data/company'
 import { services } from '@/lib/data/services'
 import { testimonials } from '@/lib/data/testimonials'
 import Link from 'next/link'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function HomePage() {
   const featuredServices = services.filter(service => service.featured)
   const featuredTestimonials = testimonials.filter(testimonial => testimonial.featured)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+  const [videoLoaded, setVideoLoaded] = useState(false)
+
+  useEffect(() => {
+    // Detect mobile device
+    const checkMobile = () => {
+      const isMobileDevice = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      setIsMobile(isMobileDevice)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const video = videoRef.current
     if (video) {
+      // Use intersection observer for lazy loading
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !videoLoaded) {
+              setVideoLoaded(true)
+              // Load video only when visible
+              video.load()
+            }
+          })
+        },
+        { threshold: 0.1 }
+      )
+      
+      observer.observe(video)
+      
       // Check if video URL is accessible
       const checkVideoUrl = async () => {
         try {
@@ -33,25 +64,29 @@ export default function HomePage() {
         }
       }
       
-      checkVideoUrl()
-      
-      // Force play the video
-      const playVideo = async () => {
-        try {
-          await video.play()
-          console.log('Video playing successfully')
-        } catch (error) {
-          console.log('Video autoplay failed:', error)
-          // Try to play on user interaction
-          document.addEventListener('click', () => {
-            video.play().catch(console.log)
-          }, { once: true })
+      if (videoLoaded) {
+        checkVideoUrl()
+        
+        // Force play the video
+        const playVideo = async () => {
+          try {
+            await video.play()
+            console.log('Video playing successfully')
+          } catch (error) {
+            console.log('Video autoplay failed:', error)
+            // Try to play on user interaction
+            document.addEventListener('click', () => {
+              video.play().catch(console.log)
+            }, { once: true })
+          }
         }
+        
+        playVideo()
       }
       
-      playVideo()
+      return () => observer.disconnect()
     }
-  }, [])
+  }, [videoLoaded])
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -65,8 +100,9 @@ export default function HomePage() {
                 muted
                 playsInline
                 className="w-full h-full object-cover"
-                preload="auto"
+                preload={isMobile ? "none" : "metadata"}
                 crossOrigin="anonymous"
+                poster={isMobile ? "/video-poster.jpg" : undefined}
                 onError={(e) => {
                   console.log('Video failed to load:', e);
                   // Hide video and show fallback
@@ -77,8 +113,14 @@ export default function HomePage() {
                 onLoadedData={() => console.log('Video data loaded')}
                 onLoadedMetadata={() => console.log('Video metadata loaded')}
               >
-                <source src="https://ik.imagekit.io/nurseiit/MORE17%20(2).mp4?updatedAt=1761024101874" type="video/mp4" />
-                <source src="https://ik.imagekit.io/nurseiit/MORE17%20(2).mp4" type="video/mp4" />
+                {isMobile ? (
+                  <source src="https://ik.imagekit.io/nurseiit/MORE17%20(2).mp4?updatedAt=1761024101874&tr=w-480,h-270,q-70" type="video/mp4" />
+                ) : (
+                  <>
+                    <source src="https://ik.imagekit.io/nurseiit/MORE17%20(2).mp4?updatedAt=1761024101874" type="video/mp4" />
+                    <source src="https://ik.imagekit.io/nurseiit/MORE17%20(2).mp4" type="video/mp4" />
+                  </>
+                )}
                 Your browser does not support the video tag.
               </video>
               
@@ -114,11 +156,11 @@ export default function HomePage() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="flex flex-col sm:flex-row gap-4"
                 >
-                  <Button size="lg" className="energy-gradient text-white hover:opacity-90 transition-opacity">
+                  <Button size="lg" className="energy-gradient text-white hover:opacity-90 transition-opacity touch-target">
                     {content.hero.cta}
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
-                  <Button size="lg" variant="outline" className="group">
+                  <Button size="lg" variant="outline" className="group touch-target">
                     <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                     {content.hero.learnMore}
                   </Button>
@@ -291,11 +333,11 @@ export default function HomePage() {
                 Let&apos;s discuss how our digital solutions can optimize your energy operations and drive better results.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="energy-gradient text-white hover:opacity-90">
+                <Button size="lg" className="energy-gradient text-white hover:opacity-90 touch-target">
                   Get Started Today
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" className="touch-target">
                   Schedule a Consultation
                 </Button>
               </div>

@@ -231,19 +231,19 @@ export default function AboutPage() {
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-energy-200 dark:bg-energy-800"></div>
+              {/* Timeline line - hidden on mobile */}
+              <div className="hidden sm:block absolute left-8 top-0 bottom-0 w-0.5 bg-energy-200 dark:bg-energy-800"></div>
               
               {timeline.map((item, index) => (
                 <AnimatedSection key={index} delay={index * 0.1}>
-                  <div className="relative flex items-start space-x-8 mb-12">
+                  <div className="relative flex flex-col sm:flex-row sm:items-start space-y-4 sm:space-y-0 sm:space-x-8 mb-12">
                     {/* Timeline dot */}
-                    <div className="flex-shrink-0 w-16 h-16 bg-energy-600 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">
+                    <div className="flex-shrink-0 w-16 h-16 bg-energy-600 rounded-full flex items-center justify-center text-white font-bold text-sm z-10 mx-auto sm:mx-0">
                       {item.year}
                     </div>
                     
                     {/* Content */}
-                    <div className="flex-1 space-y-2">
+                    <div className="flex-1 space-y-2 text-center sm:text-left">
                       <h3 className="text-xl font-semibold">{item.title}</h3>
                       <p className="text-muted-foreground">{item.description}</p>
                     </div>
@@ -325,10 +325,10 @@ export default function AboutPage() {
                 Join the growing number of energy companies that trust ByteAll Energy for their digital transformation needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-3 bg-energy-600 text-white rounded-lg hover:bg-energy-700 transition-colors">
+                <button className="px-8 py-3 bg-energy-600 text-white rounded-lg hover:bg-energy-700 transition-colors touch-target">
                   Get in Touch
                 </button>
-                <button className="px-8 py-3 border border-energy-600 text-energy-600 rounded-lg hover:bg-energy-50 dark:hover:bg-energy-950 transition-colors">
+                <button className="px-8 py-3 border border-energy-600 text-energy-600 rounded-lg hover:bg-energy-50 dark:hover:bg-energy-950 transition-colors touch-target">
                   View Our Services
                 </button>
               </div>

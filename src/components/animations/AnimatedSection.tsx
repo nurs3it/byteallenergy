@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 interface AnimatedSectionProps {
   children: React.ReactNode
@@ -21,12 +21,38 @@ export function AnimatedSection({
 }: AnimatedSectionProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
+  useEffect(() => {
+    // Check for reduced motion preference
+    const checkReducedMotion = () => {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      setPrefersReducedMotion(prefersReduced)
+    }
+    
+    // Check for mobile device
+    const checkMobile = () => {
+      const isMobileDevice = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      setIsMobile(isMobileDevice)
+    }
+    
+    checkReducedMotion()
+    checkMobile()
+    
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Reduce animation intensity on mobile and for users who prefer reduced motion
+  const shouldReduceMotion = prefersReducedMotion || isMobile
+  
   const directionVariants = {
-    up: { y: 50, opacity: 0 },
-    down: { y: -50, opacity: 0 },
-    left: { x: 50, opacity: 0 },
-    right: { x: -50, opacity: 0 }
+    up: { y: shouldReduceMotion ? 20 : 50, opacity: 0 },
+    down: { y: shouldReduceMotion ? -20 : -50, opacity: 0 },
+    left: { x: shouldReduceMotion ? 20 : 50, opacity: 0 },
+    right: { x: shouldReduceMotion ? -20 : -50, opacity: 0 }
   }
 
   const animateVariants = {
@@ -36,8 +62,8 @@ export function AnimatedSection({
       y: 0, 
       opacity: 1,
       transition: {
-        duration,
-        delay,
+        duration: shouldReduceMotion ? 0.2 : duration,
+        delay: shouldReduceMotion ? 0 : delay,
         ease: "easeOut" as const
       }
     }

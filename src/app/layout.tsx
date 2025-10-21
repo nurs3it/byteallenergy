@@ -24,6 +24,12 @@ export const metadata: Metadata = {
     default: "ByteAll Energy - Digital Oilfield Solutions",
     template: "%s | ByteAll Energy"
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
   description: "Leading digital oilfield solutions provider specializing in integrated production modeling, real-time field data monitoring, and advanced energy software. Transforming oil & gas operations through cutting-edge technology since 2017.",
   keywords: [
     "digital oilfield",

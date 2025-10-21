@@ -81,7 +81,7 @@ export default function ServicesPage() {
                       </motion.li>
                     ))}
                   </ul>
-                  <Button size="lg" className="energy-gradient text-white">
+                  <Button size="lg" className="energy-gradient text-white touch-target">
                     Learn More About This Service
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
@@ -219,11 +219,11 @@ export default function ServicesPage() {
                 Let&apos;s discuss how our services can transform your energy operations and drive better results.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="energy-gradient text-white hover:opacity-90">
+                <Button size="lg" className="energy-gradient text-white hover:opacity-90 touch-target">
                   Schedule a Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" className="touch-target">
                   Download Our Brochure
                 </Button>
               </div>
