@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Globe, Sun, Moon } from 'lucide-react'
+import { Menu, X, Sun, Moon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { content } from '@/lib/data/company'
 import { useTheme } from 'next-themes'
@@ -16,8 +16,6 @@ const navigation = [
   { name: content.nav.team, href: '/team' },
   { name: content.nav.clients, href: '/clients' },
   { name: content.nav.workflow, href: '/workflow' },
-  { name: content.nav.training, href: '/training' },
-  { name: content.nav.news, href: '/news' },
   { name: content.nav.contact, href: '/contact' },
 ]
 

@@ -17,8 +17,6 @@ export function Footer() {
     ],
     services: [
       { name: content.nav.services, href: '/services' },
-      { name: content.nav.training, href: '/training' },
-      { name: content.nav.news, href: '/news' },
       { name: content.nav.contact, href: '/contact' },
     ],
     legal: [
