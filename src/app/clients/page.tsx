@@ -37,15 +37,15 @@ export default function ClientsPage() {
   return (
     <div className="min-h-screen pt-8">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
+      <section className="py-20 bg-linear-to-br from-energy-950 via-energy-900 to-oil-900 text-white">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-6 max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold gradient-text">
+              <h1 className="text-4xl md:text-6xl font-bold text-white">
                 Our Clients
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground">
-                Trusted by leading energy companies worldwide
+              <p className="text-xl md:text-2xl text-energy-100/90">
+                Trusted by national, international, and independent operators across Central Asia and Europe
               </p>
             </div>
           </AnimatedSection>
@@ -61,7 +61,7 @@ export default function ClientsPage() {
                 Our Impact
               </h2>
               <p className="text-xl text-muted-foreground">
-                Numbers that speak to our success and reach
+                Outcomes that demonstrate the scale and depth of our partnerships
               </p>
             </div>
           </AnimatedSection>
@@ -103,7 +103,7 @@ export default function ClientsPage() {
                 <Card className="card-hover h-full">
                   <CardHeader className="pb-4">
                     <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-gradient-to-br from-energy-500 to-energy-700 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                      <div className="w-16 h-16 bg-linear-to-br from-energy-500 to-energy-700 rounded-lg flex items-center justify-center text-white font-bold text-lg">
                         {client.name.split(' ').map(word => word[0]).join('').slice(0, 2)}
                       </div>
                       <div>
@@ -260,7 +260,7 @@ export default function ClientsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
+      <section className="py-20 bg-linear-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-8">

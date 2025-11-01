@@ -1,13 +1,11 @@
 "use client"
 
-import { motion } from 'framer-motion'
-import { CheckCircle, Award, Users, Globe, Target, Lightbulb, Shield, Zap } from 'lucide-react'
+import { CheckCircle, Award, Users, Globe, Target, Lightbulb, Shield } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
 import { StatCounter } from '@/components/animations/StatCounter'
 import { ParallaxImage } from '@/components/animations/ParallaxImage'
 import { content, companyData } from '@/lib/data/company'
-import Image from 'next/image'
 
 export default function AboutPage() {
 
@@ -20,32 +18,24 @@ export default function AboutPage() {
 
   const values = [
     {
+      icon: Users,
+      title: "Client Partnerships",
+      description: "Client-first partnerships that are measured by the impact they unlock for your assets."
+    },
+    {
       icon: Target,
-      title: "Innovation",
-      titleRu: "Инновации",
-      description: "We continuously push the boundaries of what's possible in digital oilfield technology.",
-      descriptionRu: "Мы постоянно расширяем границы возможного в технологиях цифровых нефтяных месторождений."
+      title: "Engineering Innovation",
+      description: "Innovation rooted in petroleum engineering expertise and tuned to real operational needs."
     },
     {
       icon: Shield,
-      title: "Reliability",
-      titleRu: "Надежность",
-      description: "Our solutions are built to withstand the demanding conditions of oil & gas operations.",
-      descriptionRu: "Наши решения созданы для работы в сложных условиях нефтегазовых операций."
-    },
-    {
-      icon: Users,
-      title: "Collaboration",
-      titleRu: "Сотрудничество",
-      description: "We work closely with our clients to understand their unique challenges and goals.",
-      descriptionRu: "Мы тесно сотрудничаем с клиентами, чтобы понять их уникальные задачи и цели."
+      title: "Transparency & Trust",
+      description: "Transparent collaboration, continuous improvement, and ownership of every deliverable."
     },
     {
       icon: Lightbulb,
-      title: "Excellence",
-      titleRu: "Совершенство",
-      description: "We strive for excellence in every project, delivering solutions that exceed expectations.",
-      descriptionRu: "Мы стремимся к совершенству в каждом проекте, предоставляя решения, превосходящие ожидания."
+      title: "Integrated Teams",
+      description: "Domain experts and software engineers working as one team from concept to deployment."
     }
   ]
 
@@ -90,14 +80,14 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen pt-8">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
+      <section className="py-20 bg-linear-to-br from-energy-950 via-energy-900 to-oil-900 text-white">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-6 max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold gradient-text">
+              <h1 className="text-4xl md:text-6xl font-bold text-white">
                 {content.about.title}
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground">
+              <p className="text-xl md:text-2xl text-energy-100/90">
                 {content.about.subtitle}
               </p>
             </div>
@@ -117,6 +107,26 @@ export default function AboutPage() {
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   {content.about.description}
                 </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    { label: "Mission", text: content.about.mission },
+                    { label: "Vision", text: content.about.vision }
+                  ].map(({ label, text }) => (
+                    <Card key={label} className="h-full">
+                      <CardContent className="p-5 space-y-2">
+                        <div className="flex items-center space-x-2">
+                          <Award className="w-5 h-5 text-energy-600" />
+                          <h3 className="text-sm font-semibold uppercase tracking-wide text-energy-600">
+                            {label}
+                          </h3>
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {text}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Since our founding in 2017, we have been at the forefront of digital transformation in the oil & gas industry. 
                   Our journey began with a simple yet powerful vision: to bridge the gap between traditional engineering practices 
@@ -124,7 +134,7 @@ export default function AboutPage() {
                 </p>
                 <div className="flex flex-wrap gap-4">
                   {companyData.services.slice(0, 4).map((service, index) => (
-                    <div key={index} className="flex items-center space-x-2 bg-energy-50 dark:bg-energy-950 px-3 py-2 rounded-full">
+                    <div key={index} className="flex items-center space-x-2 light:bg-energy-50 dark:bg-black px-3 py-2 rounded-full">
                       <CheckCircle className="w-4 h-4 text-energy-600" />
                       <span className="text-sm font-medium">{service}</span>
                     </div>
@@ -136,7 +146,7 @@ export default function AboutPage() {
             <AnimatedSection direction="right">
               <div className="relative">
                 <ParallaxImage speed={0.3}>
-                  <div className="w-full h-96 bg-gradient-to-br from-energy-500/20 to-oil-500/20 rounded-2xl border border-energy-200/50 dark:border-energy-800/50 flex items-center justify-center">
+                <div className="w-full h-96 bg-linear-to-br from-energy-500/20 to-oil-500/20 rounded-2xl border border-energy-200/50 dark:border-energy-800/50 flex items-center justify-center">
                     <div className="text-center space-y-4">
                       <div className="w-20 h-20 bg-energy-600 rounded-full flex items-center justify-center mx-auto">
                         <Award className="w-10 h-10 text-white" />
@@ -238,7 +248,7 @@ export default function AboutPage() {
                 <AnimatedSection key={index} delay={index * 0.1}>
                   <div className="relative flex flex-col sm:flex-row sm:items-start space-y-4 sm:space-y-0 sm:space-x-8 mb-12">
                     {/* Timeline dot */}
-                    <div className="flex-shrink-0 w-16 h-16 bg-energy-600 rounded-full flex items-center justify-center text-white font-bold text-sm z-10 mx-auto sm:mx-0">
+                    <div className="shrink-0 w-16 h-16 bg-energy-600 rounded-full flex items-center justify-center text-white font-bold text-sm z-10 mx-auto sm:mx-0">
                       {item.year}
                     </div>
                     
@@ -314,7 +324,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
+      <section className="py-20 bg-linear-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-8">

@@ -42,7 +42,7 @@ export default function ServicePage({ params }: ServicePageProps) {
   return (
     <div className="min-h-screen pt-8">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
+      <section className="py-20 bg-linear-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="max-w-4xl mx-auto text-center space-y-6">
@@ -94,7 +94,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         className="flex items-start space-x-3"
                       >
-                        <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 shrink-0" />
                         <span className="text-muted-foreground">{feature}</span>
                       </motion.li>
                     ))}
@@ -109,25 +109,25 @@ export default function ServicePage({ params }: ServicePageProps) {
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
                       <Award className="w-5 h-5 text-energy-600" />
-                      <span>Why Choose This Service?</span>
+                      <span>Why Partner With ByteAll?</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex items-center space-x-3">
                       <Star className="w-5 h-5 text-yellow-500" />
-                      <span className="text-sm">Industry-leading expertise</span>
+                      <span className="text-sm">Hybrid teams of petroleum engineers and software specialists</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Clock className="w-5 h-5 text-energy-600" />
-                      <span className="text-sm">Proven track record</span>
+                      <span className="text-sm">Accelerated delivery with measurable field impact</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Users2 className="w-5 h-5 text-energy-600" />
-                      <span className="text-sm">Expert team support</span>
+                      <span className="text-sm">Embedded enablement, training, and change management</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Award className="w-5 h-5 text-energy-600" />
-                      <span className="text-sm">Customized solutions</span>
+                      <span className="text-sm">Solutions tuned to your workflows, systems, and stakeholders</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -175,23 +175,23 @@ export default function ServicePage({ params }: ServicePageProps) {
             {[
               {
                 step: "01",
-                title: "Assessment",
-                description: "Comprehensive analysis of your current systems and requirements"
+                title: "Discovery & Diagnostics",
+                description: "Jointly assess business drivers, data landscape, and user workflows"
               },
               {
                 step: "02",
-                title: "Planning",
-                description: "Detailed project plan with timelines and deliverables"
+                title: "Blueprint & Architecture",
+                description: "Design technical architecture, delivery roadmap, and change plan"
               },
               {
                 step: "03",
-                title: "Development",
-                description: "Custom solution development and testing"
+                title: "Build & Deploy",
+                description: "Configure, integrate, and rollout models, platforms, or training"
               },
               {
                 step: "04",
-                title: "Deployment",
-                description: "Implementation and integration with your systems"
+                title: "Optimise & Support",
+                description: "Provide hypercare, coaching, and continuous optimisation"
               }
             ].map((step, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>

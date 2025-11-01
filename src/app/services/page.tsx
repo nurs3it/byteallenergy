@@ -29,14 +29,14 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen pt-8">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
+      <section className="py-20 bg-linear-to-br from-energy-950 via-energy-900 to-oil-900 text-white">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-6 max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold gradient-text">
+              <h1 className="text-4xl md:text-6xl font-bold text-white">
                 {content.services.title}
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground">
+              <p className="text-xl md:text-2xl text-energy-100/90">
                 {content.services.subtitle}
               </p>
             </div>
@@ -76,13 +76,13 @@ export default function ServicesPage() {
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         className="flex items-start space-x-3"
                       >
-                        <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 shrink-0" />
                         <span className="text-muted-foreground">{feature}</span>
                       </motion.li>
                     ))}
                   </ul>
                   <Button size="lg" className="energy-gradient text-white touch-target">
-                    Learn More About This Service
+                    Talk to Our Team
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </div>
@@ -90,7 +90,7 @@ export default function ServicesPage() {
 
               <AnimatedSection direction="right">
                 <div className="relative">
-                  <div className="w-full h-96 bg-gradient-to-br from-energy-500/20 to-oil-500/20 rounded-2xl border border-energy-200/50 dark:border-energy-800/50 flex items-center justify-center">
+                <div className="w-full h-96 bg-linear-to-br from-energy-500/20 to-oil-500/20 rounded-2xl border border-energy-200/50 dark:border-energy-800/50 flex items-center justify-center">
                     <div className="text-center space-y-4">
                       <div className="w-24 h-24 bg-energy-600 rounded-full flex items-center justify-center mx-auto">
                         <Network className="w-12 h-12 text-white" />
@@ -114,8 +114,8 @@ export default function ServicesPage() {
               <h2 className="text-3xl md:text-4xl font-bold gradient-text">
                 All Our Services
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Comprehensive digital solutions tailored to your energy operations
+              <p className="text-xl text-foreground/80 max-w-3xl mx-auto">
+                Integrated modelling, IAM & DOF services, training, and software engineering tailored to upstream operations
               </p>
             </div>
           </AnimatedSection>
@@ -174,23 +174,23 @@ export default function ServicesPage() {
             {[
               {
                 step: "01",
-                title: "Discovery & Analysis",
-                description: "We analyze your current operations and identify optimization opportunities."
+                title: "Discovery & Diagnostics",
+                description: "We benchmark your current workflows, technology landscape, and asset challenges to define clear outcomes."
               },
               {
                 step: "02", 
-                title: "Solution Design",
-                description: "Custom digital solutions designed specifically for your needs."
+                title: "Solution Blueprint",
+                description: "Our experts design an integrated roadmap across modelling, IAM, software, and training to deliver impact fast."
               },
               {
                 step: "03",
-                title: "Implementation",
-                description: "Expert implementation with minimal disruption to your operations."
+                title: "Implementation & Enablement",
+                description: "We deploy digital twins, automation, and training programmes while ensuring your teams are enabled at every step."
               },
               {
                 step: "04",
-                title: "Optimization",
-                description: "Continuous monitoring and optimization for maximum efficiency."
+                title: "Optimisation & Support",
+                description: "Continuous optimisation, managed services, and technical support keep your assets delivering sustained value."
               }
             ].map((step, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
@@ -208,14 +208,14 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
+      <section className="py-20 bg-linear-to-br from-energy-900 via-oil-900 to-black text-white">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-white">
                 Ready to Get Started?
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-xl text-energy-100/90 max-w-2xl mx-auto">
                 Let&apos;s discuss how our services can transform your energy operations and drive better results.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -223,7 +223,11 @@ export default function ServicesPage() {
                   Schedule a Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                <Button size="lg" variant="outline" className="touch-target">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="touch-target border-energy-100 text-energy-100 hover:bg-energy-100/10"
+                >
                   Download Our Brochure
                 </Button>
               </div>

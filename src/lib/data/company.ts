@@ -27,17 +27,26 @@ export const companyData = {
   linkedin: "https://www.linkedin.com/company/byteallenergy/",
   logo: "https://media.licdn.com/dms/image/v2/D4E0BAQGTXqiVF5VUDg/company-logo_200_200/B4EZbtDcCZHcAI-/0/1747733827821/byteallenergy_logo",
   description: {
-    short: "ByteAll Energy is a company specializing in digitalization of oil and gas assets and development of software solutions for production modeling.",
-    long: "ByteAll Energy is an engineering and technical company providing solutions in the field of digital oilfield and integrated production system modeling. The company combines expertise in software development, engineering, and oil & gas analytics, helping clients optimize production, processes, and real-time decision making."
+    short: "ByteAll Energy delivers innovative IAM & DOF services, integrated production modelling, and software engineering for upstream energy assets.",
+    long: "ByteAll Energy empowers the petroleum industry with intelligent digital solutions. We combine integrated production system modelling, IAM & Digital Oilfield deployment, process engineering, and full-stack software development to optimise production, streamline collaboration, and drive smarter decision making across the entire asset lifecycle."
   },
   services: [
-    "Integrated Production System Modelling",
-    "Digital Oilfield Solutions",
-    "Real-time Field Data Monitoring & Optimization",
-    "PVT Characterization and Reservoir Simulation",
-    "Software Development for Oil & Gas",
-    "Data Integration and Visualization",
-    "Engineering Consulting"
+    "Integrated production modelling and network optimisation",
+    "PVT characterisation, transformation, and reservoir modelling",
+    "Well and reservoir modelling with nodal analysis and multiple-rate calculations",
+    "Production performance monitoring and optimisation",
+    "Digital oilfield (DOF) deployment and IAM support",
+    "Real-time surveillance and production allocation workflows",
+    "Machine learning and AI-driven production analytics",
+    "Surface facility management and debottlenecking",
+    "Advanced well diagnostics and optimisation programmes",
+    "Asset-specific technical service agreements and support",
+    "Process engineering, energy efficiency, and automation",
+    "Professional training: IPM, IFM, DOF, and process engineering courses",
+    "Custom software development and engineering for oil & gas",
+    "Process automation, visualisation, and data analytics",
+    "Workflow development, web applications, and database management",
+    "End-to-end delivery: design, development, implementation, and support"
   ],
   team: {
     estimatedSize: "11-50",
@@ -45,6 +54,10 @@ export const companyData = {
       {
         name: "Amir Bekmukhanov",
         role: "Founder / CEO"
+      },
+      {
+        name: "Gaziz Kyrgyzbay",
+        role: "Petroleum Engineer / DOF Specialist"
       }
     ]
   }
@@ -63,34 +76,42 @@ export const content = {
     contact: "Contact"
   },
   hero: {
-    title: "Digital Oilfield Solutions",
-    subtitle: "Transforming Energy Operations Through Advanced Technology",
-    description: "We combine engineering expertise with cutting-edge software to optimize oil & gas production systems and enable real-time decision making.",
+    title: "Innovative Solutions Tailored for the Oil & Gas Industry",
+    subtitle: "Integrated production modelling, IAM & DOF services, and intelligent software that elevate upstream performance.",
+    description: "We help operators build tuned digital twins, streamline production forecasting, and deploy automation workflows that unlock measurable field impact.",
     cta: "Explore Our Solutions",
-    learnMore: "Learn More"
+    learnMore: "Discover How We Work"
   },
   services: {
     title: "Our Services",
-    subtitle: "Comprehensive digital solutions for the energy industry",
+    subtitle: "Comprehensive IAM, production, and software services for modern energy operations",
     integratedModelling: {
       title: "Integrated Production Modelling",
-      description: "Our experts combine domain expertise and advanced technology to build and improve your integrated asset model. We use established integrated methodologies, customized workflows, and industry-standard software suites.",
+      description: "We build and enhance complex digital twins that span the full hydrocarbon value chain, combining proven methodologies, tailored workflows, and industry-standard software suites.",
       features: [
-        "Apply proven methodologies of integrated approach",
-        "Customized workflows to replicate business processes",
-        "Industry-wide used Software Suites",
-        "Developing, adopting and applying Integrated modeling to your business requirements"
+        "Apply proven integrated production methodologies tuned to each asset",
+        "Design customised workflows that reflect real operational processes",
+        "Leverage industry-standard software suites for robust modelling",
+        "Develop, adopt, and sustain integrated models aligned with business goals"
       ]
     }
   },
   about: {
     title: "About ByteAll Energy",
-    subtitle: "Engineering Excellence in Digital Oilfield Solutions",
-    description: "Since 2017, we've been at the forefront of digital transformation in the oil & gas industry, combining software development expertise with deep engineering knowledge.",
+    subtitle: "Digital Oilfield, IAM, and production modelling specialists",
+    description: "Since 2017 we have helped operators across Central Asia and Europe strengthen production forecasting, automate surveillance, and modernise digital oilfield operations with bespoke engineering and software teams.",
     founded: "Founded",
     teamSize: "Team Size",
     offices: "Offices",
-    countries: "Countries"
+    countries: "Countries",
+    mission: "To empower the petroleum industry with innovative digital solutions and expertise, driving efficiency, optimising performance, and shaping the future of energy.",
+    vision: "To be a global leader in digital oilfield technologies, fostering a smarter, more efficient, and sustainable energy sector.",
+    values: [
+      "Client-first partnerships and measurable impact",
+      "Innovation rooted in petroleum engineering excellence",
+      "Transparency, trust, and continuous improvement",
+      "Collaboration between domain experts and software teams"
+    ]
   },
   contact: {
     title: "Get In Touch",

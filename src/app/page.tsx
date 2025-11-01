@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Play, CheckCircle, Star } from 'lucide-react'
+import { ArrowRight, Play, CheckCircle, Star, Award } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
@@ -54,7 +54,7 @@ export default function HomePage() {
       // Check if video URL is accessible
       const checkVideoUrl = async () => {
         try {
-          const response = await fetch('https://ik.imagekit.io/nurseiit/MORE17%20(2).mp4?updatedAt=1761024101874', {
+          await fetch('https://ik.imagekit.io/nurseiit/MORE17%20(2).mp4?updatedAt=1761024101874', {
             method: 'HEAD',
             mode: 'no-cors'
           })
@@ -90,7 +90,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden text-white">
             {/* Background Video */}
             <div className="absolute inset-0 w-full h-full">
               <video
@@ -125,7 +125,7 @@ export default function HomePage() {
               </video>
               
               {/* Gradient background for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/40 to-transparent" />
             </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -139,13 +139,13 @@ export default function HomePage() {
                   transition={{ duration: 0.8 }}
                   className="space-y-4"
                 >
-                  <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                    <span className="gradient-text">{content.hero.title}</span>
+                  <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white">
+                    {content.hero.title}
                   </h1>
-                  <p className="text-xl md:text-2xl text-muted-foreground font-medium">
+                  <p className="text-xl md:text-2xl text-energy-100/90 font-medium">
                     {content.hero.subtitle}
                   </p>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-lg text-energy-100/80 leading-relaxed">
                     {content.hero.description}
                   </p>
                 </motion.div>
@@ -160,7 +160,11 @@ export default function HomePage() {
                     {content.hero.cta}
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
-                  <Button size="lg" variant="outline" className="group touch-target">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="group touch-target border-white text-white hover:bg-white/10"
+                  >
                     <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                     {content.hero.learnMore}
                   </Button>
@@ -180,10 +184,10 @@ export default function HomePage() {
                     { label: content.about.countries, value: 3, suffix: '' },
                   ].map((stat, index) => (
                     <div key={index} className="text-center">
-                      <div className="text-2xl md:text-3xl font-bold gradient-text">
+                      <div className="text-2xl md:text-3xl font-bold text-white">
                         <StatCounter end={stat.value} suffix={stat.suffix} />
                       </div>
-                      <div className="text-sm text-muted-foreground mt-1">
+                      <div className="text-sm text-white/70 mt-1">
                         {stat.label}
                       </div>
                     </div>
@@ -250,9 +254,29 @@ export default function HomePage() {
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   {content.about.description}
                 </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    { label: "Mission", text: content.about.mission },
+                    { label: "Vision", text: content.about.vision }
+                  ].map(({ label, text }) => (
+                    <Card key={label} className="h-full">
+                      <CardContent className="p-5 space-y-2">
+                        <div className="flex items-center space-x-2">
+                          <Award className="w-5 h-5 text-energy-600" />
+                          <span className="text-xs font-semibold uppercase tracking-wide text-energy-600">
+                            {label}
+                          </span>
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {text}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
                 <div className="flex flex-wrap gap-4">
                   {companyData.services.slice(0, 4).map((service, index) => (
-                    <div key={index} className="flex items-center space-x-2 bg-energy-50 dark:bg-energy-950 px-3 py-2 rounded-full">
+                    <div key={index} className="flex items-center space-x-2 light:bg-energy-50 dark:bg-black px-3 py-2 rounded-full">
                       <CheckCircle className="w-4 h-4 text-energy-600" />
                       <span className="text-sm font-medium">{service}</span>
                     </div>
@@ -263,7 +287,7 @@ export default function HomePage() {
 
             <AnimatedSection direction="right">
               <div className="relative">
-                <div className="w-full h-96 bg-gradient-to-br from-energy-500/20 to-oil-500/20 rounded-2xl border border-energy-200/50 dark:border-energy-800/50 flex items-center justify-center">
+                <div className="w-full h-96 bg-linear-to-br from-energy-500/20 to-oil-500/20 rounded-2xl border border-energy-200/50 dark:border-energy-800/50 flex items-center justify-center">
                   <div className="text-center space-y-4">
                     <div className="w-20 h-20 bg-energy-600 rounded-full flex items-center justify-center mx-auto">
                       <CheckCircle className="w-10 h-10 text-white" />

@@ -17,14 +17,14 @@ export function HeroSection({
   subtitle = "Expert professionals dedicated to transforming energy operations"
 }: HeroSectionProps) {
   return (
-    <section className="py-20 bg-linear-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
+    <section className="py-20 bg-linear-to-br from-energy-950 via-energy-900 to-oil-900 text-white">
       <div className="container mx-auto px-4">
         <AnimatedSection>
           <div className="text-center space-y-6 max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold gradient-text">
+            <h1 className="text-4xl md:text-6xl font-bold text-white">
               {title}
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground">
+            <p className="text-xl md:text-2xl text-energy-100/90">
               {subtitle}
             </p>
           </div>

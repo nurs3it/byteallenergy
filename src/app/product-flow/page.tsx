@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { ArrowRight, CheckCircle, Search, Palette, Code, TestTube, Rocket, Users, GitBranch, Shield, Zap, Target } from 'lucide-react'
+import { ArrowRight, CheckCircle, Search, Palette, Code, TestTube, Rocket, Users, GitBranch, Shield, Zap, Target, BarChart3 } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
@@ -13,111 +13,111 @@ export default function ProductFlowPage() {
   const developmentStages = [
     {
       stage: "01",
-      title: "Discovery & Research",
-      titleRu: "Исследование и анализ",
-      description: "We begin by understanding your business needs, user requirements, and technical constraints through comprehensive research.",
-      descriptionRu: "Мы начинаем с понимания ваших бизнес-потребностей, требований пользователей и технических ограничений через комплексное исследование.",
+      title: "Data & Workflow Discovery",
+      titleRu: "Data & Workflow Discovery",
+      description: "We benchmark your existing production workflows, data sources, and decision cycles to shape the ProdCast backlog and value story.",
+      descriptionRu: "We benchmark your existing production workflows, data sources, and decision cycles to shape the ProdCast backlog and value story.",
       icon: Search,
       duration: "2-3 weeks",
       activities: [
-        "Stakeholder interviews and user research",
-        "Market analysis and competitive research",
-        "Technical feasibility assessment",
-        "Requirements gathering and documentation",
-        "User persona development",
-        "Feature prioritization and roadmap planning"
+        "Stakeholder workshops and use case mapping",
+        "Data inventory, quality checks, and governance review",
+        "Forecasting and reporting pain-point analysis",
+        "Requirements gathering and prioritised backlog",
+        "Value hypothesis, KPIs, and adoption plan",
+        "Roadmap alignment with existing initiatives"
       ],
-      deliverables: ["Research Report", "User Personas", "Feature Roadmap", "Technical Assessment"]
+      deliverables: ["Discovery Report", "Data Catalogue", "ProdCast Roadmap", "Success Metrics"]
     },
     {
       stage: "02",
-      title: "Design & Prototyping",
-      titleRu: "Дизайн и прототипирование",
-      description: "Our design team creates intuitive user interfaces and experiences that align with your brand and user needs.",
-      descriptionRu: "Наша команда дизайнеров создает интуитивные пользовательские интерфейсы и опыт, соответствующие вашему бренду и потребностям пользователей.",
+      title: "Experience & Forecast Design",
+      titleRu: "Experience & Forecast Design",
+      description: "We prototype forecasting dashboards, simulation flows, and collaboration experiences tailored to your teams.",
+      descriptionRu: "We prototype forecasting dashboards, simulation flows, and collaboration experiences tailored to your teams.",
       icon: Palette,
       duration: "3-4 weeks",
       activities: [
-        "User experience (UX) design and wireframing",
-        "User interface (UI) design and visual design",
-        "Interactive prototyping and user testing",
-        "Design system creation and component library",
-        "Accessibility and responsive design",
-        "Design review and iteration cycles"
+        "User journey mapping and UX wireframes",
+        "Dashboard and scenario design systems",
+        "Interactive prototypes for planner and operator views",
+        "Forecast visualisation and alerting concepts",
+        "Feedback loops with engineers and leadership",
+        "Design playbook for future enhancements"
       ],
-      deliverables: ["Wireframes", "UI Designs", "Interactive Prototypes", "Design System"]
+      deliverables: ["UX/UI Designs", "Interactive Prototype", "Design System", "Comms Pack"]
     },
     {
       stage: "03",
-      title: "Development & Implementation",
-      titleRu: "Разработка и реализация",
-      description: "Our development team builds robust, scalable solutions using modern technologies and best practices.",
-      descriptionRu: "Наша команда разработчиков создает надежные, масштабируемые решения, используя современные технологии и лучшие практики.",
+      title: "Build & Integration",
+      titleRu: "Build & Integration",
+      description: "We deliver data pipelines, forecasting engines, and collaboration features while configuring models with your engineers.",
+      descriptionRu: "We deliver data pipelines, forecasting engines, and collaboration features while configuring models with your engineers.",
       icon: Code,
       duration: "8-12 weeks",
       activities: [
-        "Frontend and backend development",
-        "Database design and implementation",
-        "API development and integration",
-        "Third-party service integration",
-        "Code review and quality assurance",
-        "Version control and collaboration"
+        "Data ingestion, cleansing, and historian integration",
+        "Forecast engine development and calibration",
+        "Scenario simulation and comparison tooling",
+        "Collaboration, comments, and alerting features",
+        "Automated testing, CI/CD, and quality gates",
+        "Knowledge transfer with engineering counterparts"
       ],
-      deliverables: ["Working Application", "API Documentation", "Code Repository", "Technical Documentation"]
+      deliverables: ["Configured ProdCast", "API & Data Contracts", "Operations Playbook", "Technical Documentation"]
     },
     {
       stage: "04",
-      title: "Testing & Quality Assurance",
-      titleRu: "Тестирование и обеспечение качества",
-      description: "Comprehensive testing ensures your product is reliable, secure, and performs optimally across all scenarios.",
-      descriptionRu: "Комплексное тестирование обеспечивает надежность, безопасность и оптимальную производительность вашего продукта во всех сценариях.",
+      title: "Validation & Hardening",
+      titleRu: "Validation & Hardening",
+      description: "We validate forecasts, run shadow exercises, and harden the platform for operational reliability and security.",
+      descriptionRu: "We validate forecasts, run shadow exercises, and harden the platform for operational reliability and security.",
       icon: TestTube,
       duration: "2-3 weeks",
       activities: [
-        "Unit testing and integration testing",
-        "User acceptance testing (UAT)",
-        "Performance testing and optimization",
-        "Security testing and vulnerability assessment",
-        "Cross-browser and device testing",
-        "Load testing and scalability testing"
+        "Unit, integration, and user acceptance testing",
+        "Parallel run and validation against legacy forecasts",
+        "Performance, load, and reliability testing",
+        "Security assessments and compliance reviews",
+        "Access and permissions hardening",
+        "Feedback incorporation and final tuning"
       ],
-      deliverables: ["Test Results", "Performance Report", "Security Assessment", "Bug Reports"]
+      deliverables: ["Validation Report", "Performance Benchmarks", "Security Assessment", "Release Checklist"]
     },
     {
       stage: "05",
-      title: "Deployment & Launch",
-      titleRu: "Развертывание и запуск",
-      description: "We deploy your product with minimal downtime and provide comprehensive launch support.",
-      descriptionRu: "Мы развертываем ваш продукт с минимальным временем простоя и предоставляем комплексную поддержку запуска.",
+      title: "Go-Live & Enablement",
+      titleRu: "Go-Live & Enablement",
+      description: "We launch ProdCast, onboard planners and engineers, and provide hypercare until the new cadence is established.",
+      descriptionRu: "We launch ProdCast, onboard planners and engineers, and provide hypercare until the new cadence is established.",
       icon: Rocket,
       duration: "1-2 weeks",
       activities: [
-        "Production environment setup",
-        "Database migration and data backup",
-        "Application deployment and configuration",
-        "Domain setup and SSL certificate installation",
-        "Monitoring and logging setup",
-        "Launch support and go-live assistance"
+        "Production environment readiness",
+        "Cutover planning and execution",
+        "Training labs, playbooks, and communications",
+        "Hypercare support and KPI tracking",
+        "User feedback loops and enhancement backlog",
+        "Executive reporting and adoption dashboard"
       ],
-      deliverables: ["Deployed Application", "Deployment Guide", "Monitoring Setup", "Launch Support"]
+      deliverables: ["Go-Live Checklist", "Training Materials", "Hypercare Dashboard", "Adoption Report"]
     },
     {
       stage: "06",
-      title: "Maintenance & Support",
-      titleRu: "Обслуживание и поддержка",
-      description: "Ongoing support and maintenance ensure your product continues to perform optimally and evolves with your needs.",
-      descriptionRu: "Постоянная поддержка и обслуживание обеспечивают оптимальную производительность вашего продукта и его развитие в соответствии с вашими потребностями.",
+      title: "Managed Services & Evolution",
+      titleRu: "Managed Services & Evolution",
+      description: "ByteAll Energy manages ProdCast, delivers enhancements, and keeps analytics aligned with evolving asset priorities.",
+      descriptionRu: "ByteAll Energy manages ProdCast, delivers enhancements, and keeps analytics aligned with evolving asset priorities.",
       icon: Shield,
       duration: "Ongoing",
       activities: [
-        "24/7 monitoring and incident response",
-        "Regular security updates and patches",
-        "Performance monitoring and optimization",
-        "Feature enhancements and updates",
-        "User support and training",
-        "Backup and disaster recovery"
+        "24/7 monitoring, incident response, and SLA reporting",
+        "Model recalibration and analytics enhancements",
+        "User support, refresher training, and new feature rollouts",
+        "Security updates, compliance, and audit support",
+        "Performance reviews and value storytelling",
+        "Roadmap alignment with business priorities"
       ],
-      deliverables: ["Support Services", "Maintenance Reports", "Feature Updates", "Performance Analytics"]
+      deliverables: ["Managed Service Reports", "Enhancement Releases", "Training Cadence", "Value Scorecards"]
     }
   ]
 
@@ -165,16 +165,63 @@ export default function ProductFlowPage() {
   return (
     <div className="min-h-screen pt-8">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
+      <section className="py-20 bg-linear-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-6 max-w-4xl mx-auto">
               <h1 className="text-4xl md:text-6xl font-bold gradient-text">
-                Product Development Flow
+                ProdCast Delivery Flow
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground">
-                How we build exceptional software products for the energy industry
+                How ByteAll Energy designs, builds, and sustains the ProdCast production forecasting platform
               </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ProdCast Overview */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <AnimatedSection>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+                  ProdCast – Your Edge in Production Optimisation
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  ProdCast combines integrated production modelling, IAM data streams, and AI-enabled analytics to deliver fast, reliable production forecasts for multidisciplinary teams.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "Automates data collection, cleansing, and analytics so planners focus on decisions rather than preparation",
+                    "Integrates real-time field data with machine learning workflows to generate precise, context-aware forecasts",
+                    "Enables parallel simulations and scenario comparisons to evaluate the optimal production strategy",
+                    "Delivers intuitive dashboards, alerting, and collaboration tools that align engineering, operations, and leadership"
+                  ].map((feature, index) => (
+                    <li key={index} className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 shrink-0" />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <AnimatedSection direction="right">
+                <Card className="card-hover h-full">
+                  <CardContent className="p-8 space-y-6">
+                    <div className="w-20 h-20 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center">
+                      <BarChart3 className="w-10 h-10 text-energy-600" />
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Within weeks, ProdCast provides trusted forecasts, streamlined collaboration, and tangible uplift in production optimisation initiatives, all backed by ByteAll Energy&apos;s managed services.
+                    </p>
+                    <Button variant="outline" size="lg" className="touch-target">
+                      See ProdCast in Action
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              </AnimatedSection>
             </div>
           </AnimatedSection>
         </div>
@@ -220,7 +267,7 @@ export default function ProductFlowPage() {
                         <ul className="space-y-2">
                           {stage.activities.map((activity, activityIndex) => (
                             <li key={activityIndex} className="flex items-start space-x-3">
-                              <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 flex-shrink-0" />
+                              <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 shrink-0" />
                               <span className="text-muted-foreground">{activity}</span>
                             </li>
                           ))}
@@ -259,7 +306,7 @@ export default function ProductFlowPage() {
                   {/* Connection Line */}
                   {index < developmentStages.length - 1 && (
                     <div className="flex justify-center mt-8">
-                      <div className="w-0.5 h-16 bg-gradient-to-b from-energy-600 to-transparent"></div>
+                      <div className="w-0.5 h-16 bg-linear-to-b from-energy-600 to-transparent"></div>
                     </div>
                   )}
                 </div>
