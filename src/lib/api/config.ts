@@ -38,7 +38,7 @@ export class ApiError extends Error {
   constructor(
     public status: number,
     public statusText: string,
-    public data?: any,
+    public data?: unknown,
     message?: string
   ) {
     super(message || `API Error: ${status} ${statusText}`);
@@ -52,7 +52,7 @@ export class ApiError extends Error {
 export interface RequestOptions {
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
   headers?: Record<string, string>;
-  body?: any;
+  body?: unknown;
   timeout?: number;
   signal?: AbortSignal;
 }
@@ -60,7 +60,7 @@ export interface RequestOptions {
 /**
  * Response wrapper interface
  */
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   data: T;
   status: number;
   statusText: string;

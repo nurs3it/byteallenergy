@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from 'framer-motion'
 import { ArrowRight, CheckCircle, Search, Palette, Code, TestTube, Rocket, Users, GitBranch, Shield, Zap, Target, BarChart3 } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'

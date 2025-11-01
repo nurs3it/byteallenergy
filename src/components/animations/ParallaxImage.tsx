@@ -41,15 +41,6 @@ export function ParallaxImage({
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  // Disable parallax on mobile and for users who prefer reduced motion
-  if (isMobile || prefersReducedMotion) {
-    return (
-      <div className={className}>
-        {children}
-      </div>
-    )
-  }
-
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -61,12 +52,18 @@ export function ParallaxImage({
     direction === 'up' ? [0, -100 * speed] : [0, 100 * speed]
   )
 
+  const disableParallax = isMobile || prefersReducedMotion
+
+  if (disableParallax) {
+    return (
+      <div className={className}>
+        {children}
+      </div>
+    )
+  }
+
   return (
-    <motion.div
-      ref={ref}
-      style={{ y }}
-      className={className}
-    >
+    <motion.div ref={ref} style={{ y }} className={className}>
       {children}
     </motion.div>
   )

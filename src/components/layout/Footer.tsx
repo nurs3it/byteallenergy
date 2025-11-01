@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Phone, Linkedin, Globe } from 'lucide-react'
+import { Mail, MapPin, Linkedin, Globe } from 'lucide-react'
 import { companyData } from '@/lib/data/company'
 import { content } from '@/lib/data/company'
 
@@ -39,10 +39,10 @@ export function Footer() {
             className="space-y-4"
           >
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-energy-500 to-energy-700 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-linear-to-br from-energy-500 to-energy-700 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">BE</span>
               </div>
-              <span className="font-bold text-xl bg-gradient-to-r from-energy-600 to-energy-800 bg-clip-text text-transparent">
+              <span className="font-bold text-xl bg-linear-to-r from-energy-600 to-energy-800 bg-clip-text text-transparent">
                 ByteAll Energy
               </span>
             </div>
@@ -124,14 +124,14 @@ export function Footer() {
             <h3 className="font-semibold text-foreground">Contact</h3>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <MapPin className="w-4 h-4 text-energy-600 mt-0.5 flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-energy-600 mt-0.5 shrink-0" />
                 <div className="text-sm text-muted-foreground">
                   <p>{companyData.headquarters.address}</p>
                   <p>{companyData.headquarters.city}, {companyData.headquarters.country}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-energy-600 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-energy-600 shrink-0" />
                 <a
                   href={`mailto:${companyData.email}`}
                   className="text-sm text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center"
@@ -140,7 +140,7 @@ export function Footer() {
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Globe className="w-4 h-4 text-energy-600 flex-shrink-0" />
+                <Globe className="w-4 h-4 text-energy-600 shrink-0" />
                 <a
                   href={companyData.website}
                   target="_blank"
