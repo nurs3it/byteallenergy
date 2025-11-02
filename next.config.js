@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react']
   },
   images: {
+    unoptimized: true,
     domains: ['media.licdn.com', 'images.unsplash.com'],
     remotePatterns: [
       {
