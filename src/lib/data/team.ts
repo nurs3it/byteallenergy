@@ -63,8 +63,8 @@ export const teamMembers: TeamMember[] = [
     isLeadership: false
   },
   {
-    id: "aibek-ozhiken",
-    name: "Aibek Ozhiken",
+    id: "nazerke-murat",
+    name: "Nazerke Murat",
     role: "Frontend Developer",
     roleRu: "Frontend Developer",
     bio: "Software engineer specialising in building data-driven, user-centric web applications for modern digital solutions.",
@@ -87,8 +87,8 @@ export const teamMembers: TeamMember[] = [
     isLeadership: false
   },
   {
-    id: "nazerke-murat",
-    name: "Nazerke Murat",
+    id: "akerke-kussanova",
+    name: "Akerke Kussanova",
     role: "Project Manager",
     roleRu: "Project Manager",
     bio: "Project manager overseeing deadlines, supporting administrative tasks, and preparing reports for smooth execution.",
@@ -123,15 +123,27 @@ export const teamMembers: TeamMember[] = [
     isLeadership: false
   },
   {
-    id: "ali-aristanov",
-    name: "Ali Aristanov",
-    role: "Backend Developer",
-    roleRu: "Backend Developer",
-    bio: "Developer focused on creating efficient server-side systems and optimising processes to support business operations.",
-    bioRu: "Developer focused on creating efficient server-side systems and optimising processes to support business operations.",
-    image: "https://img1.wsimg.com/isteam/ip/20c41127-f617-4cb4-8864-5231b81fdf0b/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%20%D0%B1%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-2.png",
-    expertise: ["Backend Development", "Process Optimisation", "Systems Architecture", "Automation"],
-    expertiseRu: ["Backend Development", "Process Optimisation", "Systems Architecture", "Automation"],
+    id: "adilgereyev-raiymbek",
+    name: "Adilgereyev Raiymbek",
+    role: "Full-Stack Developer",
+    roleRu: "Full-Stack Developer",
+    bio: "IT engineer specialising in full-stack and Digital Oilfield development, creating web applications and data-driven tools for energy operations.",
+    bioRu: "IT engineer specialising in full-stack and Digital Oilfield development, creating web applications and data-driven tools for energy operations.",
+    image: "/team/adilgereyev-raiymbek.jpeg",
+    expertise: ["Full-Stack Development", "Digital Oilfield", "Web Applications", "Data-Driven Tools"],
+    expertiseRu: ["Full-Stack Development", "Digital Oilfield", "Web Applications", "Data-Driven Tools"],
+    isLeadership: false
+  },
+  {
+    id: "aibek-ozhiken",
+    name: "Aibek Ozhiken",
+    role: "Reservoir Engineer | DOF Developer",
+    roleRu: "Reservoir Engineer | DOF Developer",
+    bio: "Specialized in IPSM and digital solutions with extensive expertise in reservoir management and process optimization.",
+    bioRu: "Specialized in IPSM and digital solutions with extensive expertise in reservoir management and process optimization.",
+    image: "/team/aibek-ozhiken.jpeg",
+    expertise: ["Reservoir Management", "IPSM", "Process Optimization", "Digital Solutions"],
+    expertiseRu: ["Reservoir Management", "IPSM", "Process Optimization", "Digital Solutions"],
     isLeadership: false
   }
 ]

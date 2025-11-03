@@ -312,7 +312,7 @@ export default function AboutPage() {
                       <h3 className="text-xl font-semibold">International Office</h3>
                       <p className="text-muted-foreground">
                         {companyData.internationalOffices[0].city}, {companyData.internationalOffices[0].country}<br />
-                        {companyData.internationalOffices[0].note}
+                        {companyData.internationalOffices[0].address}
                       </p>
                     </div>
                   </div>

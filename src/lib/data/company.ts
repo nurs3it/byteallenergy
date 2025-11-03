@@ -5,15 +5,15 @@ export const companyData = {
   type: "Private Limited Company",
   industry: "Oil & Gas Digitalization, Energy Software & Engineering",
   headquarters: {
-    city: "Uralsk",
-    country: "Kazakhstan",
-    address: "37 Kh. Churina Street"
+    city: "Esbjerg",
+    country: "Denmark",
+    address: "Vestkraftgade 1, 3. sal / 6700 Esbjerg"
   },
   internationalOffices: [
     {
-      city: "Esbjerg",
-      country: "Denmark",
-      note: "Representative office"
+      city: "Astana",
+      country: "Kazakhstan",
+      address: "г. Астана, район «Есиль», ул. Д. Конаева, д. 12/1, Бизнес-центр «TRUST», ВП-32, 3 этаж, офис Nº19"
     }
   ],
   registration: {
