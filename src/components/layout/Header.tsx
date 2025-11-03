@@ -2,11 +2,12 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { content } from '@/lib/data/company'
+import { content, companyData } from '@/lib/data/company'
 import { useTheme } from 'next-themes'
 
 const navigation = [
@@ -97,13 +98,14 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className={`flex items-center justify-between ${isMobile ? 'h-14' : 'h-16'}`}>
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 min-h-[44px] min-w-[44px]">
-            <div className="w-8 h-8 bg-gradient-to-br from-energy-500 to-energy-700 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">BE</span>
-            </div>
-            <span className={`font-bold bg-gradient-to-r from-energy-600 to-energy-800 bg-clip-text text-transparent ${isMobile ? 'text-lg' : 'text-xl'}`}>
-              ByteAll Energy
-            </span>
+          <Link href="/" className="flex items-center min-h-[44px] min-w-[44px]">
+            <Image
+              src={companyData.logo}
+              alt="ByteAll Energy Logo"
+              width={48}
+              height={48}
+              className="h-12 w-12 object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}

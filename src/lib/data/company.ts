@@ -25,7 +25,7 @@ export const companyData = {
   website: "https://byteallenergy.com",
   email: "info@byteallenergy.com",
   linkedin: "https://www.linkedin.com/company/byteallenergy/",
-  logo: "https://media.licdn.com/dms/image/v2/D4E0BAQGTXqiVF5VUDg/company-logo_200_200/B4EZbtDcCZHcAI-/0/1747733827821/byteallenergy_logo",
+  logo: "/logo.png",
   description: {
     short: "ByteAll Energy delivers innovative IAM & DOF services, integrated production modelling, and software engineering for upstream energy assets.",
     long: "ByteAll Energy empowers the petroleum industry with intelligent digital solutions. We combine integrated production system modelling, IAM & Digital Oilfield deployment, process engineering, and full-stack software development to optimise production, streamline collaboration, and drive smarter decision making across the entire asset lifecycle."

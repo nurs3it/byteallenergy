@@ -1,6 +1,7 @@
 "use client"
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Mail, MapPin, Linkedin, Globe } from 'lucide-react'
 import { companyData } from '@/lib/data/company'
@@ -38,13 +39,14 @@ export function Footer() {
             transition={{ duration: 0.6 }}
             className="space-y-4"
           >
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-linear-to-br from-energy-500 to-energy-700 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">BE</span>
-              </div>
-              <span className="font-bold text-xl bg-linear-to-r from-energy-600 to-energy-800 bg-clip-text text-transparent">
-                ByteAll Energy
-              </span>
+            <div className="flex items-center">
+              <Image
+                src={companyData.logo}
+                alt="ByteAll Energy Logo"
+                width={48}
+                height={48}
+                className="h-12 w-12 object-contain"
+              />
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {companyData.description.short}
