@@ -13,30 +13,6 @@ export interface Client {
 
 export const clients: Client[] = [
   {
-    id: "kazmunaigas",
-    name: "KazMunayGas",
-    logo: "/images/clients/kazmunaigas.png",
-    industry: "National Oil Company",
-    industryRu: "Национальная нефтяная компания",
-    country: "Kazakhstan",
-    description: "Leading national oil company implementing digital oilfield solutions across multiple fields.",
-    descriptionRu: "Ведущая национальная нефтяная компания, внедряющая цифровые решения для нефтяных месторождений на множественных месторождениях.",
-    projectType: "Integrated Production Modelling",
-    projectTypeRu: "Интегрированное моделирование производства"
-  },
-  {
-    id: "tengizchevroil",
-    name: "Tengizchevroil",
-    logo: "/images/clients/tengizchevroil.png",
-    industry: "International Oil Company",
-    industryRu: "Международная нефтяная компания",
-    country: "Kazakhstan",
-    description: "Major international joint venture implementing advanced digital monitoring systems.",
-    descriptionRu: "Крупное международное совместное предприятие, внедряющее передовые системы цифрового мониторинга.",
-    projectType: "Real-time Monitoring",
-    projectTypeRu: "Мониторинг в реальном времени"
-  },
-  {
     id: "karachaganak",
     name: "Karachaganak Petroleum Operating",
     logo: "/images/clients/karachaganak.png",
@@ -47,30 +23,6 @@ export const clients: Client[] = [
     descriptionRu: "Оператор сложного газоконденсатного месторождения, использующий передовые технологии моделирования резервуаров.",
     projectType: "Reservoir Simulation",
     projectTypeRu: "Моделирование резервуаров"
-  },
-  {
-    id: "kashagan",
-    name: "North Caspian Operating Company",
-    logo: "/images/clients/kashagan.png",
-    industry: "Offshore Oil Operator",
-    industryRu: "Морской нефтяной оператор",
-    country: "Kazakhstan",
-    description: "Offshore oil production company implementing comprehensive digital transformation solutions.",
-    descriptionRu: "Компания по морской добыче нефти, внедряющая комплексные решения цифровой трансформации.",
-    projectType: "Digital Oilfield Solutions",
-    projectTypeRu: "Цифровые решения для нефтяных месторождений"
-  },
-  {
-    id: "equinor",
-    name: "Equinor",
-    logo: "/images/clients/equinor.png",
-    industry: "International Energy Company",
-    industryRu: "Международная энергетическая компания",
-    country: "Norway",
-    description: "Global energy company collaborating on innovative digital solutions for sustainable energy production.",
-    descriptionRu: "Глобальная энергетическая компания, сотрудничающая в области инновационных цифровых решений для устойчивого производства энергии.",
-    projectType: "Data Integration",
-    projectTypeRu: "Интеграция данных"
   },
   {
     id: "shell",
@@ -85,18 +37,6 @@ export const clients: Client[] = [
     projectTypeRu: "Инженерное консультирование"
   },
   {
-    id: "bp",
-    name: "BP",
-    logo: "/images/clients/bp.png",
-    industry: "International Oil Company",
-    industryRu: "Международная нефтяная компания",
-    country: "United Kingdom",
-    description: "Major oil company using integrated production modeling for field optimization.",
-    descriptionRu: "Крупная нефтяная компания, использующая интегрированное моделирование производства для оптимизации месторождений.",
-    projectType: "Software Development",
-    projectTypeRu: "Разработка программного обеспечения"
-  },
-  {
     id: "totalenergies",
     name: "TotalEnergies",
     logo: "/images/clients/totalenergies.png",
@@ -107,12 +47,36 @@ export const clients: Client[] = [
     descriptionRu: "Глобальная энергетическая компания, внедряющая цифровые решения для операционного совершенства.",
     projectType: "PVT Characterization",
     projectTypeRu: "PVT характеристика"
+  },
+  {
+    id: "tenaz-energy",
+    name: "Tenaz Energy",
+    logo: "/images/clients/tenaz-energy.png",
+    industry: "Energy Company",
+    industryRu: "Энергетическая компания",
+    country: "Canada",
+    description: "Energy company focused on production optimization and digital transformation initiatives.",
+    descriptionRu: "Энергетическая компания, специализирующаяся на оптимизации производства и цифровой трансформации.",
+    projectType: "Production Optimization",
+    projectTypeRu: "Оптимизация производства"
+  },
+  {
+    id: "ineos",
+    name: "Ineos",
+    logo: "/images/clients/ineos.png",
+    industry: "Chemical and Energy Company",
+    industryRu: "Химическая и энергетическая компания",
+    country: "United Kingdom",
+    description: "Leading chemical and energy company implementing integrated production modelling solutions.",
+    descriptionRu: "Ведущая химическая и энергетическая компания, внедряющая решения интегрированного моделирования производства.",
+    projectType: "Integrated Production Modelling",
+    projectTypeRu: "Интегрированное моделирование производства"
   }
 ]
 
 export const clientStats = {
-  totalClients: 50,
-  countries: 15,
-  projectsCompleted: 200,
+  totalClients: 5,
+  countries: 4,
+  projectsCompleted: 5,
   yearsOfExperience: 7
 }

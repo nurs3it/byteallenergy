@@ -179,9 +179,9 @@ export default function HomePage() {
                 >
                   {[
                     { label: content.about.founded, value: 2017, suffix: '' },
-                    { label: content.about.teamSize, value: 25, suffix: '+' },
+                    { label: content.about.teamSize, value: 11, suffix: '' },
                     { label: content.about.offices, value: 2, suffix: '' },
-                    { label: content.about.countries, value: 3, suffix: '' },
+                    { label: content.about.countries, value: 4, suffix: '' },
                   ].map((stat, index) => (
                     <div key={index} className="text-center">
                       <div className="text-2xl md:text-3xl font-bold text-white">

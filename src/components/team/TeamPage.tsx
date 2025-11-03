@@ -15,9 +15,9 @@ import { teamMembers } from '@/lib/data/team';
 
 const teamStats = [
   { label: 'Team Members', value: teamMembers.length, suffix: '' },
-  { label: 'Years of Experience', value: 30, suffix: '+' },
-  { label: 'Countries', value: 5, suffix: '' },
-  { label: 'Delivered Projects', value: 40, suffix: '+' }
+  { label: 'Years of Experience', value: 7, suffix: '' },
+  { label: 'Countries', value: 4, suffix: '' },
+  { label: 'Delivered Projects', value: 5, suffix: '' }
 ];
 
 const leadershipTeam = teamMembers.filter(member => member.isLeadership);

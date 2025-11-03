@@ -1,6 +1,6 @@
 "use client"
 
-import { Building2, MapPin, Award, Users, Globe, TrendingUp, Shield } from 'lucide-react'
+import { MapPin, Award, Users, TrendingUp, Shield } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
 import { StatCounter } from '@/components/animations/StatCounter'
@@ -11,27 +11,9 @@ export default function ClientsPage() {
   
 
   const stats = [
-    { label: "Total Clients", value: clientStats.totalClients, suffix: "+" },
+    { label: "Total Clients", value: clientStats.totalClients, suffix: "" },
     { label: "Countries Served", value: clientStats.countries, suffix: "" },
-    { label: "Projects Completed", value: clientStats.projectsCompleted, suffix: "+" },
-    { label: "Years of Experience", value: clientStats.yearsOfExperience, suffix: "" },
-  ]
-
-  const industries = [
-    { name: "National Oil Companies", count: 15, icon: Building2 },
-    { name: "International Operators", count: 20, icon: Globe },
-    { name: "Service Companies", count: 10, icon: Users },
-    { name: "Technology Partners", count: 5, icon: Award },
-  ]
-
-  const regions = [
-    { name: "Kazakhstan", count: 25, flag: "🇰🇿" },
-    { name: "Denmark", count: 8, flag: "🇩🇰" },
-    { name: "Norway", count: 6, flag: "🇳🇴" },
-    { name: "Netherlands", count: 4, flag: "🇳🇱" },
-    { name: "United Kingdom", count: 3, flag: "🇬🇧" },
-    { name: "France", count: 2, flag: "🇫🇷" },
-    { name: "Others", count: 2, flag: "🌍" },
+    { label: "Projects Completed", value: clientStats.projectsCompleted, suffix: "" },
   ]
 
   return (
@@ -66,7 +48,7 @@ export default function ClientsPage() {
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {stats.map((stat, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
                 <div className="text-center space-y-2">
@@ -125,78 +107,6 @@ export default function ClientsPage() {
                 </Card>
               </AnimatedSection>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Served */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
-                Industries We Serve
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Diverse expertise across the energy sector
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {industries.map((industry, index) => (
-              <AnimatedSection key={index} delay={index * 0.1}>
-                <Card className="card-hover text-center">
-                  <CardContent className="p-6 space-y-4">
-                    <div className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto">
-                      <industry.icon className="w-8 h-8 text-energy-600" />
-                    </div>
-                    <h3 className="text-xl font-semibold">{industry.name}</h3>
-                    <div className="text-3xl font-bold gradient-text">{industry.count}+</div>
-                    <p className="text-sm text-muted-foreground">Clients</p>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Global Reach */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
-                Global Reach
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Serving clients across multiple countries and regions
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {regions.map((region, index) => (
-                <AnimatedSection key={index} delay={index * 0.1}>
-                  <Card className="card-hover">
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-3">
-                          <span className="text-2xl">{region.flag}</span>
-                          <div>
-                            <h3 className="font-semibold">{region.name}</h3>
-                            <p className="text-sm text-muted-foreground">{region.count} clients</p>
-                          </div>
-                        </div>
-                        <div className="text-2xl font-bold gradient-text">{region.count}</div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </AnimatedSection>
-              ))}
-            </div>
           </div>
         </div>
       </section>
