@@ -10,7 +10,7 @@ import { content, companyData } from '@/lib/data/company'
 export default function AboutPage() {
 
   const stats = [
-    { label: content.about.founded, value: 2017, suffix: '' },
+    { label: content.about.founded, value: 2017, suffix: '', needFormat: false },
     { label: content.about.teamSize, value: 10, suffix: '+' },
     { label: content.about.offices, value: 2, suffix: '' },
   ]

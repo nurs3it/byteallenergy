@@ -176,14 +176,14 @@ export default function HomePage() {
                   className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8"
                 >
                   {[
-                    { label: content.about.founded, value: 2017, suffix: '' },
-                    { label: content.about.teamSize, value: 11, suffix: '' },
-                    { label: content.about.offices, value: 2, suffix: '' },
-                    { label: content.about.countries, value: 4, suffix: '' },
+                    { label: content.about.founded, value: 2017, suffix: '', needFormat: false },
+                    { label: content.about.teamSize, value: 10, suffix: '+', needFormat: true },
+                    { label: content.about.offices, value: 2, suffix: '', needFormat: true },
+                    { label: content.about.countries, value: 4, suffix: '', needFormat: true },
                   ].map((stat, index) => (
                     <div key={index} className="text-center">
                       <div className="text-2xl md:text-3xl font-bold text-white">
-                        <StatCounter end={stat.value} suffix={stat.suffix} />
+                        <StatCounter needFormat={stat.needFormat} end={stat.value} suffix={stat.suffix} />
                       </div>
                       <div className="text-sm text-white/70 mt-1">
                         {stat.label}

@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 
 interface StatCounterProps {
+  needFormat?: boolean
   end: number
   duration?: number
   suffix?: string
@@ -12,6 +13,7 @@ interface StatCounterProps {
 }
 
 export function StatCounter({ 
+  needFormat = true,
   end, 
   duration = 2, 
   suffix = '', 
@@ -57,7 +59,7 @@ export function StatCounter({
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {prefix}{count.toLocaleString()}{suffix}
+      {prefix}{needFormat ? count.toLocaleString() : count}{suffix}
     </motion.span>
   )
 }
