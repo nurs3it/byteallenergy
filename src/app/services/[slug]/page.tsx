@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation'
 
 import { ServicePageContent } from './ServicePageContent'
 import { services } from '@/lib/data/services'
-import { testimonials } from '@/lib/data/testimonials'
 
 interface ServicePageProps {
   params: {
@@ -23,15 +22,10 @@ export default function ServicePage({ params }: ServicePageProps) {
     .filter(s => s.id !== service.id && s.category === service.category)
     .slice(0, 3)
 
-  const serviceTestimonials = testimonials.filter(testimonial =>
-    testimonial.project.toLowerCase().includes(service.title.toLowerCase())
-  )
-
   return (
     <ServicePageContent
       service={service}
       relatedServices={relatedServices}
-      testimonials={serviceTestimonials}
     />
   )
 }

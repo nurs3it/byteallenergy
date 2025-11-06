@@ -1,20 +1,18 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Play, CheckCircle, Star, Award } from 'lucide-react'
+import { ArrowRight, Play, CheckCircle, Award } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
 import { StatCounter } from '@/components/animations/StatCounter'
 import { content, companyData } from '@/lib/data/company'
 import { services } from '@/lib/data/services'
-import { testimonials } from '@/lib/data/testimonials'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
 export default function HomePage() {
   const featuredServices = services.filter(service => service.featured)
-  const featuredTestimonials = testimonials.filter(testimonial => testimonial.featured)
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isMobile, setIsMobile] = useState(false)
   const [videoLoaded, setVideoLoaded] = useState(false)
@@ -298,49 +296,6 @@ export default function HomePage() {
                 </div>
               </div>
             </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
-                What Our Clients Say
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Trusted by leading energy companies worldwide
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredTestimonials.map((testimonial, index) => (
-              <AnimatedSection key={testimonial.id} delay={index * 0.1}>
-                <Card className="card-hover h-full">
-                  <CardContent className="p-6">
-                    <div className="space-y-4">
-                      <div className="flex space-x-1">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                        ))}
-                      </div>
-                      <p className="text-muted-foreground italic">
-                        &ldquo;{testimonial.content}&rdquo;
-                      </p>
-                      <div className="pt-4 border-t">
-                        <div className="font-semibold">{testimonial.name}</div>
-                        <div className="text-sm text-muted-foreground">
-                          {testimonial.position}, {testimonial.company}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
-            ))}
           </div>
         </div>
       </section>
