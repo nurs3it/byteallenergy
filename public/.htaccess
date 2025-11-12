@@ -6,12 +6,15 @@ RewriteBase /
 # Set default directory index
 DirectoryIndex index.html index.htm
 
+# Disable directory browsing
+Options -Indexes
+
 # If the request is for an existing file, serve it
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [L]
 
-# Handle URLs with trailing slash - redirect to .html file if it exists
-# Example: /team/ -> /team.html
+# Handle URLs with trailing slash - check if .html file exists first
+# Example: /team/ -> /team.html (if team.html exists)
 RewriteCond %{REQUEST_URI} ^(.+)/$
 RewriteCond %{DOCUMENT_ROOT}%1.html -f
 RewriteRule ^(.+)/$ /$1.html [L,R=301]
@@ -24,11 +27,11 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
 RewriteRule ^(.*)$ $1.html [L]
 
-# If the request is for an existing directory (and no .html file), try index.html
-# This is for actual directories that should have index.html
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html !-f
-RewriteRule ^(.*)$ $1/index.html [L]
+# Handle 404 - redirect to 404.html if it exists
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/404.html -f
+RewriteRule ^(.*)$ /404.html [L]
 </IfModule>
 
 # Security headers

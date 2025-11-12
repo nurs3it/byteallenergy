@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack && npm run clean-txt",
+    "build": "next build --turbopack",
     "clean-txt": "node scripts/clean-txt.js",
     "start": "next start",
     "lint": "eslint"
