@@ -154,18 +154,22 @@ export default function HomePage() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="flex flex-col sm:flex-row gap-4"
                 >
-                  <Button size="lg" className="energy-gradient text-white hover:opacity-90 transition-opacity touch-target">
-                    {content.hero.cta}
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="group touch-target border-white text-white hover:bg-white/10"
-                  >
-                    <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                    {content.hero.learnMore}
-                  </Button>
+                  <Link href="/services">
+                    <Button size="lg" className="energy-gradient text-white hover:opacity-90 transition-opacity touch-target">
+                      {content.hero.cta}
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                  </Link>
+                  <Link href="/workflow">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="group touch-target border-white text-white hover:bg-white/10"
+                    >
+                      <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+                      {content.hero.learnMore}
+                    </Button>
+                  </Link>
                 </motion.div>
 
                 {/* Stats */}
