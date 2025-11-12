@@ -245,6 +245,13 @@
     @apply grid-cols-2 sm:grid-cols-3 md:grid-cols-4;
   }
   
+  /* Tablet-specific font size increase (768px - 1024px) */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    html {
+      font-size: 18px; /* Increase base font size from 16px to 18px (12.5% increase) */
+    }
+  }
+  
   /* Mobile-specific improvements */
   @media (max-width: 768px) {
     .container {
