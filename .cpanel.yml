@@ -1,0 +1,7 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/ep6ew3m1vzel/public_html
+    # Удаляем всё, кроме .well-known
+    - /usr/bin/find ${DEPLOYPATH} -mindepth 1 -not -path "${DEPLOYPATH}/.well-known*" -exec rm -rf {} +
+    # Копируем содержимое out/
+    - /bin/cp -R /home/ep6ew3m1vzel/repositories/byteallenergy/out/* ${DEPLOYPATH}/
