@@ -2,25 +2,32 @@
 RewriteEngine On
 RewriteBase /
 
-# Handle trailing slashes - remove trailing slash if not a directory
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} (.+)/$
-RewriteRule ^ %1 [R=301,L]
+# Set default directory index
+DirectoryIndex index.html index.htm
 
 # If the request is for an existing file, serve it
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [L]
 
-# If the request is for an existing directory, try index.html
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^(.*)$ $1/index.html [L]
+# Handle URLs with trailing slash - redirect to .html file if it exists
+# Example: /team/ -> /team.html
+RewriteCond %{REQUEST_URI} ^(.+)/$
+RewriteCond %{DOCUMENT_ROOT}%1.html -f
+RewriteRule ^(.+)/$ /$1.html [L,R=301]
 
 # Remove .html extension from URLs (for files that exist with .html extension)
 # This handles both root level and nested routes
+# Example: /team -> /team.html (internal rewrite, no redirect)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
 RewriteRule ^(.*)$ $1.html [L]
+
+# If the request is for an existing directory (and no .html file), try index.html
+# This is for actual directories that should have index.html
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html !-f
+RewriteRule ^(.*)$ $1/index.html [L]
 
 # Security headers
 <IfModule mod_headers.c>
