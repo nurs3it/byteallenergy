@@ -21,7 +21,7 @@ export const teamMembers: TeamMember[] = [
     roleRu: "Founder and Managing Director",
     bio: "Petroleum industry expert and Digital Oilfield developer focused on creating efficient, data-driven solutions for modern energy challenges.",
     bioRu: "Petroleum industry expert and Digital Oilfield developer focused on creating efficient, data-driven solutions for modern energy challenges.",
-    image: "https://img1.wsimg.com/isteam/ip/20c41127-f617-4cb4-8864-5231b81fdf0b/%7Btypelayers%2Cclient%7Bts1736465244477%2Cver-595cbd8.png",
+    image: "/team/amir.png",
     expertise: ["Digital Oilfield", "Strategic Leadership", "Production Optimization", "Innovation"],
     expertiseRu: ["Digital Oilfield", "Strategic Leadership", "Production Optimization", "Innovation"],
     isLeadership: true
@@ -105,7 +105,7 @@ export const teamMembers: TeamMember[] = [
     roleRu: "Petroleum Engineer",
     bio: "Reservoir engineer with expertise in Digital Oilfield development and building specialised applications for energy operations.",
     bioRu: "Reservoir engineer with expertise in Digital Oilfield development and building specialised applications for energy operations.",
-    image: "https://img1.wsimg.com/isteam/ip/20c41127-f617-4cb4-8864-5231b81fdf0b/%D0%98%D0%B1%D1%80%D0%B0%D0%B5%D0%B2%20%D0%90%D0%BA%D1%82%D0%B0%D0%BD%20(4).jpg",
+    image: "/team/aktan.png",
     expertise: ["Reservoir Management", "Digital Oilfield", "Production Analysis", "Software Development"],
     expertiseRu: ["Reservoir Management", "Digital Oilfield", "Production Analysis", "Software Development"],
     isLeadership: false
@@ -117,7 +117,7 @@ export const teamMembers: TeamMember[] = [
     roleRu: "Petroleum Engineer | DOF Engineer",
     bio: "Expert in creating and optimising production engineering tools in the IPM suite with strong focus on well performance modelling and optimisation.",
     bioRu: "Expert in creating and optimising production engineering tools in the IPM suite with strong focus on well performance modelling and optimisation.",
-    image: "https://img1.wsimg.com/isteam/ip/20c41127-f617-4cb4-8864-5231b81fdf0b/%7Btypelayers%2Cclient%7Bts1736465244477%2Cver-144b481.png",
+    image: "/team/aibek-mukhtarov.png",
     expertise: ["Production Engineering", "IPM Suite", "Well Modelling", "Optimisation"],
     expertiseRu: ["Production Engineering", "IPM Suite", "Well Modelling", "Optimisation"],
     isLeadership: false

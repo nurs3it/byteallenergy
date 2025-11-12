@@ -74,7 +74,7 @@ export function TeamMemberCard({ member, index, loading = false }: TeamMemberCar
                 alt={member.name}
                 width={128}
                 height={128}
-                className="w-32 h-32 rounded-full object-cover"
+                className="w-32 h-32 rounded-full object-cover object-center"
                 onError={() => setImageError(true)}
                 unoptimized
               />

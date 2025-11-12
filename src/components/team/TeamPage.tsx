@@ -14,7 +14,7 @@ import { TeamMembersSection } from './sections/TeamMembersSection';
 import { teamMembers } from '@/lib/data/team';
 
 const teamStats = [
-  { label: 'Team Members', value: teamMembers.length, suffix: '' },
+  { label: 'Team Members', value: 10, suffix: '+' },
   { label: 'Years of Experience', value: 7, suffix: '' },
   { label: 'Countries', value: 4, suffix: '' },
   { label: 'Delivered Projects', value: 5, suffix: '' }
