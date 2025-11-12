@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  trailingSlash: false,
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react']
   },

@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-function deleteTxtFiles(dir) {
+function deleteTxtFiles() {
   let deletedCount = 0;
   
   function walkDir(currentPath) {
@@ -34,5 +34,18 @@ function deleteTxtFiles(dir) {
   console.log(`\nCleaned up ${deletedCount} .txt file(s) from out directory.`);
 }
 
+function copyHtaccess() {
+  const publicHtaccess = path.join(process.cwd(), 'public', '.htaccess');
+  const outHtaccess = path.join(process.cwd(), 'out', '.htaccess');
+  
+  if (fs.existsSync(publicHtaccess)) {
+    fs.copyFileSync(publicHtaccess, outHtaccess);
+    console.log('Copied .htaccess to out directory.');
+  } else {
+    console.log('Warning: .htaccess not found in public directory.');
+  }
+}
+
 deleteTxtFiles();
+copyHtaccess();
 
