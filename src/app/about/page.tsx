@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
 import { StatCounter } from '@/components/animations/StatCounter'
 import { ParallaxImage } from '@/components/animations/ParallaxImage'
+import { LocationMap } from '@/components/map/LocationMap'
 import { content, companyData } from '@/lib/data/company'
 
 export default function AboutPage() {
@@ -279,9 +280,40 @@ export default function AboutPage() {
             </div>
           </AnimatedSection>
 
+          {/* Map Section */}
+          <AnimatedSection delay={0.1}>
+            <div className="mb-12">
+              <LocationMap
+                locations={[
+                  {
+                    id: 'headquarters',
+                    name: 'Headquarters',
+                    address: companyData.headquarters.address,
+                    city: companyData.headquarters.city,
+                    country: companyData.headquarters.country,
+                    coordinates: [55.46211303713292, 8.45102031453924], // Esbjerg, Denmark - Vestkraftgade 1
+                    // Images will be auto-generated from Google Maps by coordinates
+                  },
+                  {
+                    id: 'international-office',
+                    name: 'International Office',
+                    address: companyData.internationalOffices[0].address,
+                    city: companyData.internationalOffices[0].city,
+                    country: companyData.internationalOffices[0].country,
+                    coordinates: [51.13011294042581, 71.4276067128349], // Astana, Kazakhstan - ул. Д. Конаева, д. 12/1
+                    // Images will be auto-generated from Google Maps by coordinates
+                  },
+                ]}
+                height="400px"
+                defaultZoom={4}
+                className="w-full md:h-[500px] lg:h-[600px]"
+              />
+            </div>
+          </AnimatedSection>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Headquarters */}
-            <AnimatedSection delay={0.1}>
+            <AnimatedSection delay={0.2}>
               <Card className="card-hover">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
@@ -306,7 +338,7 @@ export default function AboutPage() {
             </AnimatedSection>
 
             {/* International Office */}
-            <AnimatedSection delay={0.2}>
+            <AnimatedSection delay={0.3}>
               <Card className="card-hover">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">

@@ -8,6 +8,46 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'maps.googleapis.com',
+        pathname: '/maps/api/streetview/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'staticmap.openstreetmap.de',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tile.openstreetmap.org',
+      },
+      {
+        protocol: 'https',
+        hostname: 'server.arcgisonline.com',
+        pathname: '/ArcGIS/rest/services/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static-maps.yandex.ru',
+      },
+      {
+        protocol: 'https',
+        hostname: 'catalog.api.2gis.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tile2.maps.2gis.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+      },
+    ],
   },
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react', 'phosphor-react'],

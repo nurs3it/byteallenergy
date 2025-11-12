@@ -45,6 +45,51 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 94.1%;
   }
+  .leaflet-container {
+    @apply !bg-card !font-[inherit];
+  }
+  .leaflet-container a {
+    @apply !text-inherit;
+  }
+  .leaflet-div-icon {
+    @apply !bg-transparent !border-none;
+  }
+  .leaflet-popup-content-wrapper, .leaflet-popup-content, .leaflet-popup-content p {
+    @apply ![all:unset];
+  }
+  .leaflet-popup {
+    @apply !animate-none;
+  }
+  .leaflet-popup-close-button {
+    @apply ring-offset-background focus:ring-ring bg-secondary rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:outline-hidden;
+  }
+  .leaflet-tooltip, .leaflet-draw-tooltip {
+    @apply !bg-foreground !text-background !animate-none !rounded-md !border-none !p-0 !px-3 !py-1.5 !shadow-none;
+  }
+  .leaflet-draw-tooltip:before {
+    @apply bg-foreground !top-1/2 !right-0.5 size-2.5 translate-x-1/2 -translate-y-1/2 rotate-45 rounded-[2px] !border-none;
+  }
+  .leaflet-error-draw-tooltip {
+    @apply !bg-destructive !text-white;
+  }
+  .leaflet-error-draw-tooltip:before {
+    @apply bg-destructive;
+  }
+  .leaflet-draw-tooltip-subtext {
+    @apply !text-background;
+  }
+  .leaflet-popup-tip-container, .leaflet-tooltip-top:before, .leaflet-tooltip-bottom:before, .leaflet-tooltip-left:before, .leaflet-tooltip-right:before {
+    @apply hidden;
+  }
+  .leaflet-control-attribution {
+    @apply !bg-muted rounded-md !px-[4px] !py-[2px] text-[10px] !leading-none !text-inherit;
+  }
+  .leaflet-draw-guide-dash {
+    @apply rounded-full;
+  }
+  .leaflet-edit-marker-selected {
+    @apply !border-transparent !bg-transparent;
+  }
 }
 
 @layer base {
@@ -57,7 +102,6 @@
   }
 }
 
-
 @layer utilities {
   .gradient-text {
     background: linear-gradient(to right, #0284c7, #075985);
@@ -65,48 +109,48 @@
     background-clip: text;
     color: transparent;
   }
-  
+
   .gradient-bg {
     background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe);
   }
-  
+
   .dark .gradient-bg {
     background: linear-gradient(to bottom right, #082f49, #0c4a6e);
   }
-  
+
   .energy-gradient {
     background: linear-gradient(to right, #0ea5e9, #0284c7, #0369a1);
   }
-  
+
   .oil-gradient {
     background: linear-gradient(to right, #facc15, #eab308, #ca8a04);
   }
-  
+
   .glass-effect {
     background-color: hsl(var(--background) / 0.8);
     backdrop-filter: blur(12px);
     border: 1px solid hsl(var(--border) / 0.5);
   }
-  
+
   .card-hover {
     transition: all 0.3s ease;
   }
-  
+
   .card-hover:hover {
     box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.1);
     transform: translateY(-4px);
   }
-  
+
   .text-shadow {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
+
   .hero-pattern {
     background-image: 
       radial-gradient(circle at 25% 25%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
       radial-gradient(circle at 75% 75%, rgba(234, 179, 8, 0.1) 0%, transparent 50%);
   }
-  
+
   .energy-pattern {
     background-image: 
       linear-gradient(45deg, rgba(14, 165, 233, 0.05) 25%, transparent 25%),
@@ -124,166 +168,310 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-  
+
   .perspective-1000 {
     perspective: 1000px;
   }
-  
+
   .preserve-3d {
     transform-style: preserve-3d;
   }
-  
+
   .backface-hidden {
     backface-visibility: hidden;
   }
-  
+
   /* Mobile-specific utilities */
   .mobile-text-xs {
     @apply text-xs sm:text-sm;
   }
-  
+
   .mobile-text-sm {
     @apply text-sm sm:text-base;
   }
-  
+
   .mobile-text-base {
     @apply text-base sm:text-lg;
   }
-  
+
   .mobile-text-lg {
     @apply text-lg sm:text-xl;
   }
-  
+
   .mobile-text-xl {
     @apply text-xl sm:text-2xl;
   }
-  
+
   .mobile-text-2xl {
     @apply text-2xl sm:text-3xl;
   }
-  
+
   .mobile-text-3xl {
     @apply text-3xl sm:text-4xl;
   }
-  
+
   .mobile-text-4xl {
     @apply text-4xl sm:text-5xl;
   }
-  
+
   .mobile-text-5xl {
     @apply text-5xl sm:text-6xl;
   }
-  
+
   .mobile-text-6xl {
     @apply text-6xl sm:text-7xl;
   }
-  
+
   /* Desktop-specific utilities to restore original sizes */
   .desktop-text-4xl {
     @apply text-4xl md:text-6xl;
   }
-  
+
   .desktop-text-3xl {
     @apply text-3xl md:text-4xl;
   }
-  
+
   .desktop-text-xl {
     @apply text-xl md:text-2xl;
   }
-  
+
   /* Mobile spacing utilities */
   .mobile-py {
     @apply py-8 sm:py-12 md:py-16 lg:py-20;
   }
-  
+
   .mobile-px {
     @apply px-4 sm:px-6 md:px-8;
   }
-  
+
   .mobile-gap {
     @apply gap-4 sm:gap-6 md:gap-8;
   }
-  
+
   .mobile-space-y {
     @apply space-y-4 sm:space-y-6 md:space-y-8;
   }
-  
+
   /* Touch-friendly utilities */
   .touch-target {
     @apply min-h-[44px] min-w-[44px];
   }
-  
+
   .touch-padding {
     @apply p-3 sm:p-4;
   }
-  
+
   /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     .motion-safe\:animate-none {
       animation: none !important;
     }
-    
+
     .motion-safe\:transition-none {
       transition: none !important;
     }
   }
-  
+
   /* Mobile grid utilities */
   .mobile-grid-1 {
     @apply grid-cols-1 sm:grid-cols-2;
   }
-  
+
   .mobile-grid-2 {
     @apply grid-cols-1 sm:grid-cols-2 md:grid-cols-3;
   }
-  
+
   .mobile-grid-3 {
     @apply grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
   }
-  
+
   .mobile-grid-4 {
     @apply grid-cols-2 sm:grid-cols-3 md:grid-cols-4;
   }
-  
+
   /* Tablet-specific font size increase (768px - 1024px) */
-  @media (min-width: 768px) and (max-width: 1024px) {
-    html {
-      font-size: 18px; /* Increase base font size from 16px to 18px (12.5% increase) */
-    }
+@media (min-width: 768px) and (max-width: 1024px) {
+  html {
+    font-size: 18px; /* Increase base font size from 16px to 18px (12.5% increase) */
+  }
+}
+
+/* Leaflet Map Styles */
+.leaflet-container {
+  font-family: inherit;
+  z-index: 0 !important;
+  background: hsl(var(--background)) !important;
+}
+
+.dark .leaflet-container {
+  background: hsl(var(--background)) !important;
+}
+
+.leaflet-control-container {
+  z-index: 40 !important;
+}
+
+.leaflet-control {
+  z-index: 40 !important;
+  background: hsl(var(--card)) !important;
+  border-color: hsl(var(--border)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.leaflet-control a {
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+
+.leaflet-control a:hover {
+  background-color: hsl(var(--accent)) !important;
+  color: hsl(var(--accent-foreground)) !important;
+}
+
+.leaflet-control-attribution {
+  background: hsl(var(--muted)) !important;
+  color: hsl(var(--muted-foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+
+.leaflet-control-attribution a {
+  color: hsl(var(--primary)) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.5rem;
+  padding: 0;
+  background: hsl(var(--popover)) !important;
+  color: hsl(var(--popover-foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  color: hsl(var(--popover-foreground)) !important;
+}
+
+.leaflet-popup-tip {
+  background: hsl(var(--popover)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+
+.leaflet-bar {
+  background: hsl(var(--card)) !important;
+  border-color: hsl(var(--border)) !important;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4) !important;
+}
+
+.leaflet-bar a {
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-bottom-color: hsl(var(--border)) !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: hsl(var(--accent)) !important;
+  color: hsl(var(--accent-foreground)) !important;
+}
+
+.leaflet-bar a.leaflet-disabled {
+  background-color: hsl(var(--muted)) !important;
+  color: hsl(var(--muted-foreground)) !important;
+  opacity: 0.5 !important;
+}
+
+.leaflet-touch .leaflet-bar a {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.custom-marker-icon {
+  background: transparent !important;
+  border: none !important;
+  pointer-events: auto !important;
+}
+
+.custom-marker-icon > div {
+  pointer-events: auto !important;
+}
+
+/* Mobile and tablet optimizations for map */
+@media (max-width: 1024px) {
+  .leaflet-control {
+    font-size: 14px !important;
   }
   
+  .leaflet-bar a {
+    width: 28px !important;
+    height: 28px !important;
+    line-height: 28px !important;
+    font-size: 18px !important;
+  }
+  
+  .leaflet-touch .leaflet-bar a {
+    width: 32px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .leaflet-control {
+    font-size: 12px !important;
+  }
+  
+  .leaflet-bar a {
+    width: 32px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+    font-size: 20px !important;
+  }
+  
+  .leaflet-touch .leaflet-bar a {
+    width: 36px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+  }
+  
+  .leaflet-control-attribution {
+    font-size: 10px !important;
+    padding: 4px 6px !important;
+  }
+}
+
   /* Mobile-specific improvements */
   @media (max-width: 768px) {
     .container {
       @apply px-4;
     }
-    
+
     /* Improve touch targets */
     a, button, [role="button"] {
       @apply min-h-[44px] min-w-[44px];
     }
-    
+
     /* Prevent zoom on input focus */
     input, textarea, select {
       @apply text-base;
     }
-    
+
     /* Improve scrolling */
     .scroll-smooth {
       scroll-behavior: smooth;
     }
   }
-  
+
   /* Touch device optimizations */
   @media (hover: none) and (pointer: coarse) {
     .hover\:scale-105:hover {
       transform: none;
     }
-    
+
     .hover\:translate-x-1:hover {
       transform: none;
     }
-    
+
     .group:hover .group-hover\:scale-110 {
       transform: none;
     }
