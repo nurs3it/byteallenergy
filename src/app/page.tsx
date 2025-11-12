@@ -278,9 +278,9 @@ export default function HomePage() {
                 </div>
                 <div className="flex flex-wrap gap-4">
                   {companyData.services.slice(0, 4).map((service, index) => (
-                    <div key={index} className="flex items-center space-x-2 light:bg-energy-50 dark:bg-black px-3 py-2 rounded-full">
+                    <div key={index} className="flex items-center space-x-2 bg-energy-50 dark:bg-black px-3 py-2 rounded-full">
                       <CheckCircle className="w-4 h-4 text-energy-600" />
-                      <span className="text-sm font-medium">{service}</span>
+                      <span className="text-sm font-medium text-energy-900 dark:text-white">{service}</span>
                     </div>
                   ))}
                 </div>

@@ -133,9 +133,9 @@ export default function AboutPage() {
                 </p>
                 <div className="flex flex-wrap gap-4">
                   {companyData.services.slice(0, 4).map((service, index) => (
-                    <div key={index} className="flex items-center space-x-2 light:bg-energy-50 dark:bg-black px-3 py-2 rounded-full">
+                    <div key={index} className="flex items-center space-x-2 bg-energy-50 dark:bg-black px-3 py-2 rounded-full">
                       <CheckCircle className="w-4 h-4 text-energy-600" />
-                      <span className="text-sm font-medium">{service}</span>
+                      <span className="text-sm font-medium text-energy-900 dark:text-white">{service}</span>
                     </div>
                   ))}
                 </div>
@@ -175,7 +175,7 @@ export default function AboutPage() {
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
                 <div className="text-center space-y-2">
@@ -304,7 +304,7 @@ export default function AboutPage() {
               <Card className="card-hover">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center">
+                    <div className="w-12 h-12 min-w-12 min-h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center">
                       <Globe className="w-6 h-6 text-energy-600" />
                     </div>
                     <div className="space-y-2">
