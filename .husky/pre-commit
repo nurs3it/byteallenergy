@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔨 Building project..."
+npm run build
+
+echo "📦 Adding files from out/ to staging area..."
+git add out/
+
+echo "✅ Pre-commit hook completed successfully!"
