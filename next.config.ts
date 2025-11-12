@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   experimental: {
-    optimizePackageImports: ['framer-motion', 'lucide-react'],
+    optimizePackageImports: ['framer-motion', 'lucide-react', 'phosphor-react'],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

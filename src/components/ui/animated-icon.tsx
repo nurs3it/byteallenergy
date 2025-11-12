@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, MotionProps } from 'framer-motion'
+import { motion, HTMLMotionProps } from 'framer-motion'
 import { ComponentType, SVGProps } from 'react'
 
 interface AnimatedIconProps extends SVGProps<SVGSVGElement> {
@@ -23,9 +23,8 @@ export function AnimatedIcon({
     return iconElement
   }
 
-  const motionProps: MotionProps = {
+  const motionProps: HTMLMotionProps<'div'> = {
     className,
-    ...props,
   }
 
   if (animateOnMount) {
