@@ -1,4 +1,5 @@
 # Enable Rewrite Engine
+<IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
 
@@ -28,6 +29,7 @@ RewriteRule ^(.*)$ $1.html [L]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html !-f
 RewriteRule ^(.*)$ $1/index.html [L]
+</IfModule>
 
 # Security headers
 <IfModule mod_headers.c>
