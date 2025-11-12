@@ -9,18 +9,18 @@ import {
   Activity,
   ArrowLeft,
   ArrowRight,
-  Award,
-  BarChart3,
+  Medal as Award,
+  ChartBar as BarChart3,
   CheckCircle,
   Clock,
   Code,
   Cpu,
-  Droplets,
-  Network,
+  Drop as Droplets,
+  ShareNetwork as Network,
   Star,
   Users,
-  Users2,
-} from 'lucide-react'
+  UsersFour as Users2,
+} from 'phosphor-react'
 import Link from 'next/link'
 
 const serviceIcons = {
@@ -39,31 +39,17 @@ interface ServicePageContentProps {
 }
 
 export function ServicePageContent({ service, relatedServices }: ServicePageContentProps) {
-  const IconComponent = serviceIcons[service.icon as keyof typeof serviceIcons] || Network
-
   return (
     <div className="min-h-screen pt-8">
       {/* Hero Section */}
-      <section className="py-20 bg-linear-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
+      <section className="py-20 bg-linear-to-br from-energy-950 via-energy-900 to-oil-900 text-white">
         <div className="container mx-auto px-4">
           <AnimatedSection>
-            <div className="max-w-4xl mx-auto text-center space-y-6">
-              <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground mb-4">
-                <Link href="/services" className="hover:text-energy-600 transition-colors">
-                  Services
-                </Link>
-                <span>/</span>
-                <span>{service.title}</span>
-              </div>
-
-              <div className="w-20 h-20 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto">
-                <IconComponent className="w-10 h-10 text-energy-600" />
-              </div>
-
-              <h1 className="text-4xl md:text-6xl font-bold gradient-text">
+            <div className="text-center space-y-6 max-w-4xl mx-auto">
+              <h1 className="text-4xl md:text-6xl font-bold text-white">
                 {service.title}
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground">
+              <p className="text-xl md:text-2xl text-energy-100/90">
                 {service.shortDescription}
               </p>
             </div>
@@ -96,7 +82,7 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         className="flex items-start space-x-3"
                       >
-                        <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 shrink-0" weight="fill" />
                         <span className="text-muted-foreground">{feature}</span>
                       </motion.li>
                     ))}
@@ -110,25 +96,41 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
-                      <Award className="w-5 h-5 text-energy-600" />
+                      <motion.div
+                        animate={{ rotate: [0, 5, -5, 0] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                      >
+                        <Award className="w-5 h-5 text-energy-600" weight="duotone" />
+                      </motion.div>
                       <span>Why Partner With ByteAll?</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex items-center space-x-3">
-                      <Star className="w-5 h-5 text-yellow-500" />
+                      <motion.div whileHover={{ scale: 1.2, rotate: 15 }}>
+                        <Star className="w-5 h-5 text-yellow-500" weight="fill" />
+                      </motion.div>
                       <span className="text-sm">Hybrid teams of petroleum engineers and software specialists</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <Clock className="w-5 h-5 text-energy-600" />
+                      <motion.div
+                        animate={{ rotate: [0, 360] }}
+                        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                      >
+                        <Clock className="w-5 h-5 text-energy-600" weight="duotone" />
+                      </motion.div>
                       <span className="text-sm">Accelerated delivery with measurable field impact</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <Users2 className="w-5 h-5 text-energy-600" />
+                      <motion.div whileHover={{ scale: 1.1 }}>
+                        <Users2 className="w-5 h-5 text-energy-600" weight="duotone" />
+                      </motion.div>
                       <span className="text-sm">Embedded enablement, training, and change management</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <Award className="w-5 h-5 text-energy-600" />
+                      <motion.div whileHover={{ scale: 1.1, y: -2 }}>
+                        <Award className="w-5 h-5 text-energy-600" weight="duotone" />
+                      </motion.div>
                       <span className="text-sm">Solutions tuned to your workflows, systems, and stakeholders</span>
                     </div>
                   </CardContent>

@@ -1,6 +1,6 @@
 "use client"
 
-import { MapPin, Mail, Linkedin, Globe, Clock, Building2, Users } from 'lucide-react'
+import { MapPin, Envelope as Mail, LinkedinLogo as Linkedin, Globe, Clock, Buildings as Building2, Users } from 'phosphor-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
 import { companyData } from '@/lib/data/company'

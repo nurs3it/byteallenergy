@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Play, CheckCircle, Award } from 'lucide-react'
+import { ArrowRight, Play, CheckCircle, Medal as Award } from 'phosphor-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
@@ -157,7 +157,12 @@ export default function HomePage() {
                   <Link href="/services">
                     <Button size="lg" className="energy-gradient text-white hover:opacity-90 transition-opacity touch-target">
                       {content.hero.cta}
-                      <ArrowRight className="ml-2 w-5 h-5" />
+                      <motion.div
+                        whileHover={{ x: 3 }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                      >
+                        <ArrowRight className="ml-2 w-5 h-5" weight="bold" />
+                      </motion.div>
                     </Button>
                   </Link>
                   <Link href="/workflow">
@@ -166,7 +171,12 @@ export default function HomePage() {
                       variant="outline"
                       className="group touch-target border-white text-white hover:bg-white/10"
                     >
-                      <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <Play className="mr-2 w-5 h-5" weight="fill" />
+                      </motion.div>
                       {content.hero.learnMore}
                     </Button>
                   </Link>
@@ -229,7 +239,14 @@ export default function HomePage() {
                       <p className="text-muted-foreground">{service.shortDescription}</p>
                       <Link href={`/services/${service.slug}`}>
                         <Button variant="ghost" className="p-0 h-auto text-energy-600 hover:text-energy-700">
-                          Learn More <ArrowRight className="ml-1 w-4 h-4" />
+                          Learn More{' '}
+                          <motion.span
+                            whileHover={{ x: 3 }}
+                            transition={{ type: 'spring', stiffness: 400 }}
+                            className="inline-block"
+                          >
+                            <ArrowRight className="ml-1 w-4 h-4" weight="bold" />
+                          </motion.span>
                         </Button>
                       </Link>
                     </div>
@@ -264,7 +281,13 @@ export default function HomePage() {
                     <Card key={label} className="h-full">
                       <CardContent className="p-5 space-y-2">
                         <div className="flex items-center space-x-2">
-                          <Award className="w-5 h-5 text-energy-600" />
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+                          >
+                            <Award className="w-5 h-5 text-energy-600" weight="duotone" />
+                          </motion.div>
                           <span className="text-xs font-semibold uppercase tracking-wide text-energy-600">
                             {label}
                           </span>
@@ -278,10 +301,17 @@ export default function HomePage() {
                 </div>
                 <div className="flex flex-wrap gap-4">
                   {companyData.services.slice(0, 4).map((service, index) => (
-                    <div key={index} className="flex items-center space-x-2 bg-energy-50 dark:bg-black px-3 py-2 rounded-full">
-                      <CheckCircle className="w-4 h-4 text-energy-600" />
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.1, duration: 0.3 }}
+                      whileHover={{ scale: 1.05 }}
+                      className="flex items-center space-x-2 bg-energy-50 dark:bg-black px-3 py-2 rounded-full"
+                    >
+                      <CheckCircle className="w-4 h-4 text-energy-600" weight="fill" />
                       <span className="text-sm font-medium text-energy-900 dark:text-white">{service}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -291,9 +321,13 @@ export default function HomePage() {
               <div className="relative">
                 <div className="w-full h-96 bg-linear-to-br from-energy-500/20 to-oil-500/20 rounded-2xl border border-energy-200/50 dark:border-energy-800/50 flex items-center justify-center">
                   <div className="text-center space-y-4">
-                    <div className="w-20 h-20 bg-energy-600 rounded-full flex items-center justify-center mx-auto">
-                      <CheckCircle className="w-10 h-10 text-white" />
-                    </div>
+                    <motion.div
+                      className="w-20 h-20 bg-energy-600 rounded-full flex items-center justify-center mx-auto"
+                      animate={{ rotate: [0, 5, -5, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                    >
+                      <CheckCircle className="w-10 h-10 text-white" weight="fill" />
+                    </motion.div>
                     <h3 className="text-2xl font-bold">Since 2017</h3>
                     <p className="text-muted-foreground">Transforming Energy Operations</p>
                   </div>
@@ -318,7 +352,13 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="energy-gradient text-white hover:opacity-90 touch-target">
                   Get Started Today
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <motion.span
+                    whileHover={{ x: 3 }}
+                    transition={{ type: 'spring', stiffness: 400 }}
+                    className="inline-block"
+                  >
+                    <ArrowRight className="ml-2 w-5 h-5" weight="bold" />
+                  </motion.span>
                 </Button>
                 <Button size="lg" variant="outline" className="touch-target">
                   Schedule a Consultation

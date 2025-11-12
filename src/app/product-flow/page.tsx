@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, CheckCircle, Search, Palette, Code, TestTube, Rocket, Users, GitBranch, Shield, Zap, Target, BarChart3 } from 'lucide-react'
+import { ArrowRight, CheckCircle, MagnifyingGlass as Search, Palette, Code, Flask as TestTube, Rocket, Users, GitBranch, Shield, Lightning as Zap, Target, ChartBar as BarChart3 } from 'phosphor-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'

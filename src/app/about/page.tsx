@@ -1,6 +1,7 @@
 "use client"
 
-import { CheckCircle, Award, Users, Globe, Target, Lightbulb, Shield } from 'lucide-react'
+import { CheckCircle, Medal as Award, Users, Globe, Target, Lightbulb, Shield } from 'phosphor-react'
+import { motion } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
 import { StatCounter } from '@/components/animations/StatCounter'
@@ -114,7 +115,7 @@ export default function AboutPage() {
                     <Card key={label} className="h-full">
                       <CardContent className="p-5 space-y-2">
                         <div className="flex items-center space-x-2">
-                          <Award className="w-5 h-5 text-energy-600" />
+                          <Award className="w-5 h-5 text-energy-600" weight="duotone" />
                           <h3 className="text-sm font-semibold uppercase tracking-wide text-energy-600">
                             {label}
                           </h3>
@@ -134,7 +135,7 @@ export default function AboutPage() {
                 <div className="flex flex-wrap gap-4">
                   {companyData.services.slice(0, 4).map((service, index) => (
                     <div key={index} className="flex items-center space-x-2 bg-energy-50 dark:bg-black px-3 py-2 rounded-full">
-                      <CheckCircle className="w-4 h-4 text-energy-600" />
+                      <CheckCircle className="w-4 h-4 text-energy-600" weight="fill" />
                       <span className="text-sm font-medium text-energy-900 dark:text-white">{service}</span>
                     </div>
                   ))}
@@ -212,7 +213,7 @@ export default function AboutPage() {
                 <Card className="card-hover h-full text-center">
                   <CardContent className="p-6 space-y-4">
                     <div className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto">
-                      <value.icon className="w-8 h-8 text-energy-600" />
+                      <value.icon className="w-8 h-8 text-energy-600" weight="duotone" />
                     </div>
                     <h3 className="text-xl font-semibold">{value.title}</h3>
                     <p className="text-muted-foreground">{value.description}</p>
@@ -285,7 +286,12 @@ export default function AboutPage() {
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center">
-                      <Globe className="w-6 h-6 text-energy-600" />
+                      <motion.div
+                        animate={{ rotate: [0, 360] }}
+                        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                      >
+                        <Globe className="w-6 h-6 text-energy-600" weight="duotone" />
+                      </motion.div>
                     </div>
                     <div className="space-y-2">
                       <h3 className="text-xl font-semibold">Headquarters</h3>
@@ -305,7 +311,12 @@ export default function AboutPage() {
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 min-w-12 min-h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center">
-                      <Globe className="w-6 h-6 text-energy-600" />
+                      <motion.div
+                        animate={{ rotate: [0, 360] }}
+                        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                      >
+                        <Globe className="w-6 h-6 text-energy-600" weight="duotone" />
+                      </motion.div>
                     </div>
                     <div className="space-y-2">
                       <h3 className="text-xl font-semibold">International Office</h3>

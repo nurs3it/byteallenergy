@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sun, Moon } from 'lucide-react'
+import { List as Menu, X, Sun, Moon } from 'phosphor-react'
 import { Button } from '@/components/ui/button'
 import { content, companyData } from '@/lib/data/company'
 import { useTheme } from 'next-themes'
@@ -141,9 +141,19 @@ export function Header() {
               className="flex items-center space-x-1 min-h-[44px] min-w-[44px] p-2"
             >
               {theme === 'dark' ? (
-                <Sun className="w-4 h-4" />
+                <motion.div
+                  whileHover={{ rotate: 180, scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Sun className="w-4 h-4" weight="fill" />
+                </motion.div>
               ) : (
-                <Moon className="w-4 h-4" />
+                <motion.div
+                  whileHover={{ rotate: -15, scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Moon className="w-4 h-4" weight="fill" />
+                </motion.div>
               )}
             </Button>
 
@@ -154,7 +164,23 @@ export function Header() {
               className="lg:hidden min-h-[44px] min-w-[44px] p-2"
               onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isOpen ? (
+                <motion.div
+                  initial={{ rotate: 0 }}
+                  animate={{ rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X className="w-5 h-5" weight="bold" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  initial={{ rotate: 90 }}
+                  animate={{ rotate: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu className="w-5 h-5" weight="bold" />
+                </motion.div>
+              )}
             </Button>
           </div>
         </div>

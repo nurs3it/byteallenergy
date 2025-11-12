@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, CheckCircle, Users, Search, Lightbulb, Cog, BarChart3, Target, Clock, Award, Zap } from 'lucide-react'
+import { ArrowRight, CheckCircle, Users, MagnifyingGlass as Search, Lightbulb, Gear as Cog, ChartBar as BarChart3, Target, Clock, Medal as Award, Lightning as Zap } from 'phosphor-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'

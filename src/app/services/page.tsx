@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { ArrowRight, CheckCircle, Network, Cpu, Activity, Droplets, Code, BarChart3, Users } from 'lucide-react'
+import { ArrowRight, CheckCircle, ShareNetwork as Network, Cpu, Activity, Drop as Droplets, Code, ChartBar as BarChart3, Users } from 'phosphor-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'

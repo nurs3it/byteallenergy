@@ -5,12 +5,13 @@
 
 'use client';
 
-import { Target, Shield, Users, Lightbulb, LucideIcon } from 'lucide-react';
+import { Target, Shield, Users, Lightbulb, Icon as PhosphorIcon } from 'phosphor-react';
+import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedSection } from '@/components/animations/AnimatedSection';
 
 interface TeamValue {
-  icon: LucideIcon;
+  icon: PhosphorIcon;
   title: string;
   description: string;
 }
@@ -86,9 +87,15 @@ export function TeamValuesSection({
               <AnimatedSection key={index} delay={index * 0.1}>
                 <Card className="card-hover h-full text-center">
                   <CardContent className="p-6 space-y-4">
-                    <div className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto">
-                      <value.icon className="w-8 h-8 text-energy-600" />
-                    </div>
+                    <motion.div
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ delay: index * 0.1, type: 'spring', stiffness: 200 }}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto"
+                    >
+                      <value.icon className="w-8 h-8 text-energy-600" weight="duotone" />
+                    </motion.div>
                     <h3 className="text-xl font-semibold">{value.title}</h3>
                     <p className="text-muted-foreground text-sm">{value.description}</p>
                   </CardContent>

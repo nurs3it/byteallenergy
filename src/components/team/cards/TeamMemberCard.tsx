@@ -7,7 +7,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Mail, Linkedin, Award } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Envelope as Mail, LinkedinLogo as Linkedin, Medal as Award } from 'phosphor-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedSection } from '@/components/animations/AnimatedSection';
 import type { TeamMember } from '@/lib/data/team';
@@ -81,9 +82,13 @@ export function TeamMemberCard({ member, index, loading = false }: TeamMemberCar
             )}
 
             {member.isLeadership && (
-              <div className="absolute -top-2 -right-2 w-8 h-8 bg-oil-500 rounded-full flex items-center justify-center">
-                <Award className="w-4 h-4 text-white" />
-              </div>
+              <motion.div
+                className="absolute -top-2 -right-2 w-8 h-8 bg-oil-500 rounded-full flex items-center justify-center"
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <Award className="w-4 h-4 text-white" weight="fill" />
+              </motion.div>
             )}
           </div>
           
@@ -108,24 +113,28 @@ export function TeamMemberCard({ member, index, loading = false }: TeamMemberCar
 
           <div className="flex justify-center space-x-4 pt-4">
             {member.email && (
-              <a
+              <motion.a
                 href={`mailto:${member.email}`}
                 className="text-muted-foreground hover:text-energy-600 transition-colors"
                 aria-label={`Email ${member.name}`}
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.9 }}
               >
-                <Mail className="w-5 h-5" />
-              </a>
+                <Mail className="w-5 h-5" weight="fill" />
+              </motion.a>
             )}
             {member.linkedin && (
-              <a
+              <motion.a
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-energy-600 transition-colors"
                 aria-label={`LinkedIn profile of ${member.name}`}
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.9 }}
               >
-                <Linkedin className="w-5 h-5" />
-              </a>
+                <Linkedin className="w-5 h-5" weight="fill" />
+              </motion.a>
             )}
           </div>
         </CardContent>

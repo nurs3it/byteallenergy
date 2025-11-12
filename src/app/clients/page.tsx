@@ -1,6 +1,6 @@
 "use client"
 
-import { MapPin, Award, Users, TrendingUp, Shield } from 'lucide-react'
+import { MapPin, Medal as Award, Users, TrendUp as TrendingUp, Shield } from 'phosphor-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
 import { StatCounter } from '@/components/animations/StatCounter'

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Linkedin, Globe } from 'lucide-react'
+import { Envelope as Mail, MapPin, LinkedinLogo as Linkedin, Globe } from 'phosphor-react'
 import { companyData } from '@/lib/data/company'
 import { content } from '@/lib/data/company'
 
@@ -52,20 +52,24 @@ export function Footer() {
               {companyData.description.short}
             </p>
             <div className="flex space-x-4">
-              <a
+              <motion.a
                 href={companyData.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center justify-center"
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.9 }}
               >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
+                <Linkedin className="w-5 h-5" weight="fill" />
+              </motion.a>
+              <motion.a
                 href={`mailto:${companyData.email}`}
                 className="text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center justify-center"
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.9 }}
               >
-                <Mail className="w-5 h-5" />
-              </a>
+                <Mail className="w-5 h-5" weight="fill" />
+              </motion.a>
             </div>
           </motion.div>
 
