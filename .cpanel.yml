@@ -1,7 +1,11 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/ep6ew3m1vzel/public_html
+    - export SOURCEPATH=/home/ep6ew3m1vzel/repositories/byteallenergy/out
     # Удаляем всё, кроме .well-known
     - /usr/bin/find ${DEPLOYPATH} -mindepth 1 -not -path "${DEPLOYPATH}/.well-known*" -exec rm -rf {} +
-    # Копируем содержимое out/
-    - /bin/cp -R /home/ep6ew3m1vzel/repositories/byteallenergy/out/* ${DEPLOYPATH}/
+    # Копируем содержимое out/ (обычные файлы)
+    - /bin/cp -R ${SOURCEPATH}/* ${DEPLOYPATH}/ 2>/dev/null || true
+    # Явно копируем скрытые файлы (.htaccess и другие)
+    - /bin/cp ${SOURCEPATH}/.htaccess ${DEPLOYPATH}/.htaccess 2>/dev/null || true
+    - /bin/cp ${SOURCEPATH}/.well-known ${DEPLOYPATH}/.well-known 2>/dev/null || true
