@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { ArrowRight, CheckCircle, ShareNetwork as Network, Cpu, Activity, Drop as Droplets, Code, ChartBar as BarChart3, Users } from 'phosphor-react'
+import { ArrowRight, CheckCircle, ShareNetwork, Cpu, Activity, Drop, Code, ChartBar, Users } from 'phosphor-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
@@ -11,12 +11,12 @@ import { content } from '@/lib/data/company'
 import Link from 'next/link'
 
 const serviceIcons = {
-  Network,
+  ShareNetwork,
   Cpu,
   Activity,
-  Droplets,
+  Drop,
   Code,
-  BarChart3,
+  ChartBar,
   Users,
 }
 
@@ -63,7 +63,7 @@ export default function ServicesPage() {
               <AnimatedSection direction="left">
                 <div className="space-y-6">
                   <div className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center">
-                    <Network className="w-8 h-8 text-energy-600" />
+                    <ShareNetwork className="w-8 h-8 text-energy-600" />
                   </div>
                   <h3 className="text-2xl font-bold">Key Features</h3>
                   <ul className="space-y-4">
@@ -81,9 +81,11 @@ export default function ServicesPage() {
                       </motion.li>
                     ))}
                   </ul>
-                  <Button size="lg" className="energy-gradient text-white touch-target">
-                    Talk to Our Team
-                    <ArrowRight className="ml-2 w-5 h-5" />
+                  <Button asChild className="energy-gradient text-white hover:opacity-90 touch-target">
+                    <Link href="/team">
+                      Talk to Our Team
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Link>
                   </Button>
                 </div>
               </AnimatedSection>
@@ -93,7 +95,7 @@ export default function ServicesPage() {
                 <div className="w-full h-96 bg-linear-to-br from-energy-500/20 to-oil-500/20 rounded-2xl border border-energy-200/50 dark:border-energy-800/50 flex items-center justify-center">
                     <div className="text-center space-y-4">
                       <div className="w-24 h-24 bg-energy-600 rounded-full flex items-center justify-center mx-auto">
-                        <Network className="w-12 h-12 text-white" />
+                        <ShareNetwork className="w-12 h-12 text-white" />
                       </div>
                       <h3 className="text-2xl font-bold">Integrated Production Modelling</h3>
                       <p className="text-muted-foreground">Advanced asset modeling solutions</p>
@@ -122,7 +124,7 @@ export default function ServicesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {otherServices.map((service, index) => {
-              const IconComponent = serviceIcons[service.icon as keyof typeof serviceIcons] || Network
+              const IconComponent = serviceIcons[service.icon as keyof typeof serviceIcons] || ShareNetwork
               
               return (
                 <AnimatedSection key={service.id} delay={index * 0.1}>
@@ -204,35 +206,6 @@ export default function ServicesPage() {
               </AnimatedSection>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-linear-to-br from-energy-900 via-oil-900 to-black text-white">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
-                Ready to Get Started?
-              </h2>
-              <p className="text-xl text-energy-100/90 max-w-2xl mx-auto">
-                Let&apos;s discuss how our services can transform your energy operations and drive better results.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="energy-gradient text-white hover:opacity-90 touch-target">
-                  Schedule a Consultation
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="touch-target border-energy-100 text-energy-100 hover:bg-energy-100/10"
-                >
-                  Download Our Brochure
-                </Button>
-              </div>
-            </div>
-          </AnimatedSection>
         </div>
       </section>
     </div>

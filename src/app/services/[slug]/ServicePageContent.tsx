@@ -10,13 +10,13 @@ import {
   ArrowLeft,
   ArrowRight,
   Medal as Award,
-  ChartBar as BarChart3,
+  ChartBar,
   CheckCircle,
   Clock,
   Code,
   Cpu,
-  Drop as Droplets,
-  ShareNetwork as Network,
+  Drop,
+  ShareNetwork,
   Star,
   Users,
   UsersFour as Users2,
@@ -24,12 +24,12 @@ import {
 import Link from 'next/link'
 
 const serviceIcons = {
-  Network,
+  ShareNetwork,
   Cpu,
   Activity,
-  Droplets,
+  Drop,
   Code,
-  BarChart3,
+  ChartBar,
   Users,
 }
 
@@ -229,7 +229,7 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {relatedServices.map((relatedService, index) => {
-                const RelatedIconComponent = serviceIcons[relatedService.icon as keyof typeof serviceIcons] || Network
+                const RelatedIconComponent = serviceIcons[relatedService.icon as keyof typeof serviceIcons] || ShareNetwork
 
                 return (
                   <AnimatedSection key={relatedService.id} delay={index * 0.1}>
@@ -263,34 +263,6 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
           </div>
         </section>
       )}
-
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
-                Ready to Get Started?
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Let&apos;s discuss how our {service.title.toLowerCase()} can transform your operations.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="energy-gradient text-white hover:opacity-90">
-                  Schedule a Consultation
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button size="lg" variant="outline">
-                  <Link href="/services" className="flex items-center">
-                    <ArrowLeft className="mr-2 w-5 h-5" />
-                    Back to All Services
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
     </div>
   )
 }

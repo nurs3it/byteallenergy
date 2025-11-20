@@ -39,7 +39,7 @@ export const services: Service[] = [
       "Embedded optimisation scenarios and decision support dashboards",
       "Actionable insights that shorten forecasting cycles and maximise uptime"
     ],
-    icon: "Network",
+    icon: "ShareNetwork",
     category: "Modelling",
     featured: true,
     slug: "integrated-production-modelling"
@@ -126,7 +126,7 @@ export const services: Service[] = [
       "Uncertainty quantification and risk mitigation studies",
       "History matching, model tuning, and validation support"
     ],
-    icon: "Droplets",
+    icon: "Drop",
     category: "Reservoir Engineering",
     featured: false,
     slug: "pvt-characterization"
@@ -213,7 +213,7 @@ export const services: Service[] = [
       "Technology evaluation, selection, and rollout governance",
       "Project management, change management, and post go-live support"
     ],
-    icon: "BarChart3",
+    icon: "ChartBar",
     category: "Consulting",
     featured: false,
     slug: "engineering-consulting"

@@ -13,7 +13,7 @@ export const companyData = {
     {
       city: "Astana",
       country: "Kazakhstan",
-      address: "г. Астана, район «Есиль», ул. Д. Конаева, д. 12/1, Бизнес-центр «TRUST», ВП-32, 3 этаж, офис Nº19"
+      address: "Astana, Esil District, 12/1 D. Konayev St., TRUST Business Center, VP-32, 3rd Floor, Office No. 19"
     }
   ],
   registration: {
@@ -23,7 +23,7 @@ export const companyData = {
     riskLevel: "Low"
   },
   website: "https://byteallenergy.com",
-  email: "info@byteallenergy.com",
+  email: "director@byteallenergy.com",
   linkedin: "https://www.linkedin.com/company/byteallenergy/",
   logo: "/logo.png",
   description: {

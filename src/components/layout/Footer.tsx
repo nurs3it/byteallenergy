@@ -45,7 +45,7 @@ export function Footer() {
                 alt="ByteAll Energy Logo"
                 width={48}
                 height={48}
-                className="h-12 w-12 object-contain"
+                className="h-24 w-24 object-contain"
               />
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">

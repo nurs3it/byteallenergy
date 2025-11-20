@@ -8,6 +8,8 @@ import { StatCounter } from '@/components/animations/StatCounter'
 import { ParallaxImage } from '@/components/animations/ParallaxImage'
 import { LocationMap } from '@/components/map/LocationMap'
 import { content, companyData } from '@/lib/data/company'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function AboutPage() {
 
@@ -169,7 +171,7 @@ export default function AboutPage() {
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
               <h2 className="text-3xl md:text-4xl font-bold gradient-text">
-                By the Numbers
+                By Numbers
               </h2>
               <p className="text-xl text-muted-foreground">
                 Our impact in the energy industry
@@ -182,7 +184,7 @@ export default function AboutPage() {
               <AnimatedSection key={index} delay={index * 0.1}>
                 <div className="text-center space-y-2">
                   <div className="text-4xl md:text-5xl font-bold gradient-text">
-                    <StatCounter end={stat.value} suffix={stat.suffix} />
+                    <StatCounter needFormat={stat.needFormat} end={stat.value} suffix={stat.suffix} />
                   </div>
                   <div className="text-sm text-muted-foreground">
                     {stat.label}
@@ -377,12 +379,16 @@ export default function AboutPage() {
                 Join the growing number of energy companies that trust ByteAll Energy for their digital transformation needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-3 bg-energy-600 text-white rounded-lg hover:bg-energy-700 transition-colors touch-target">
-                  Get in Touch
-                </button>
-                <button className="px-8 py-3 border border-energy-600 text-energy-600 rounded-lg hover:bg-energy-50 dark:hover:bg-energy-950 transition-colors touch-target">
-                  View Our Services
-                </button>
+                <Button asChild className="energy-gradient text-white hover:opacity-90 touch-target">
+                  <Link href="/contact">
+                    Get in Touch
+                  </Link>
+                </Button>
+                <Button asChild>
+                  <Link href="/services">
+                    View Our Services
+                  </Link>
+                </Button>
               </div>
             </div>
           </AnimatedSection>

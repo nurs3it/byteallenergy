@@ -307,7 +307,7 @@ export default function HomePage() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.1, duration: 0.3 }}
                       whileHover={{ scale: 1.05 }}
-                      className="flex items-center space-x-2 bg-energy-50 dark:bg-black px-3 py-2 rounded-full"
+                      className="flex items-center space-x-2 px-3 py-2 rounded-full"
                     >
                       <CheckCircle className="w-4 h-4 text-energy-600" weight="fill" />
                       <span className="text-sm font-medium text-energy-900 dark:text-white">{service}</span>
@@ -350,7 +350,7 @@ export default function HomePage() {
                 Let&apos;s discuss how our digital solutions can optimize your energy operations and drive better results.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="energy-gradient text-white hover:opacity-90 touch-target">
+                <Button to="/contact" size="lg" className="energy-gradient text-white hover:opacity-90 touch-target">
                   Get Started Today
                   <motion.span
                     whileHover={{ x: 3 }}
@@ -359,9 +359,6 @@ export default function HomePage() {
                   >
                     <ArrowRight className="ml-2 w-5 h-5" weight="bold" />
                   </motion.span>
-                </Button>
-                <Button size="lg" variant="outline" className="touch-target">
-                  Schedule a Consultation
                 </Button>
               </div>
             </div>

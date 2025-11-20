@@ -33,25 +33,25 @@ export function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
     }
-    
+
     // Detect mobile device
     const checkMobile = () => {
       const isMobileDevice = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
       setIsMobile(isMobileDevice)
     }
-    
+
     // Check for reduced motion preference
     const checkReducedMotion = () => {
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
       setPrefersReducedMotion(prefersReduced)
     }
-    
+
     checkMobile()
     checkReducedMotion()
-    
+
     window.addEventListener('scroll', handleScroll)
     window.addEventListener('resize', checkMobile)
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', checkMobile)
@@ -89,24 +89,26 @@ export function Header() {
       ref={headerRef}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-        ? 'bg-background/80 backdrop-blur-md border-b border-border' 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? 'bg-background/80 backdrop-blur-md border-b border-border'
         : 'bg-transparent'
-      }`}
+        }`}
     >
       <div className="container mx-auto px-4">
         <div className={`flex items-center justify-between ${isMobile ? 'h-14' : 'h-16'}`}>
           {/* Logo */}
-          <Link href="/" className="flex items-center min-h-[44px] min-w-[44px]">
-            <Image
-              src={companyData.logo}
-              alt="ByteAll Energy Logo"
-              width={48}
-              height={48}
-              className="h-12 w-12 object-contain"
-            />
-          </Link>
+          <Button asChild>
+            <Link href="/" className="flex items-center min-h-[44px] min-w-[44px]">
+              <Image
+                src={companyData.logo}
+                alt="ByteAll Energy Logo"
+                width={64}
+                draggable={false}
+                height={64}
+                className="h-24 w-24 object-contain"
+              />
+            </Link>
+          </Button>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
@@ -114,11 +116,10 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`relative text-sm font-medium transition-colors hover:text-energy-600 ${
-                  pathname === item.href 
-                  ? 'text-energy-600' 
+                className={`relative text-sm font-medium transition-colors hover:text-energy-600 ${pathname === item.href
+                  ? 'text-energy-600'
                   : 'text-foreground'
-                }`}
+                  }`}
               >
                 {item.name}
                 {pathname === item.href && (
@@ -203,11 +204,10 @@ export function Header() {
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`text-base font-medium transition-colors hover:text-energy-600 min-h-[44px] flex items-center px-2 py-3 rounded-lg hover:bg-muted/50 ${
-                      pathname === item.href 
-                  ? 'text-energy-600 bg-energy-50 dark:bg-energy-950' 
-                  : 'text-foreground'
-                    }`}
+                    className={`text-base font-medium transition-colors hover:text-energy-600 min-h-[44px] flex items-center px-2 py-3 rounded-lg hover:bg-muted/50 ${pathname === item.href
+                      ? 'text-energy-600 bg-energy-50 dark:bg-energy-950'
+                      : 'text-foreground'
+                      }`}
                   >
                     {item.name}
                   </Link>
