@@ -350,15 +350,17 @@ export default function HomePage() {
                 Let&apos;s discuss how our digital solutions can optimize your energy operations and drive better results.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button to="/contact" size="lg" className="energy-gradient text-white hover:opacity-90 touch-target">
-                  Get Started Today
-                  <motion.span
-                    whileHover={{ x: 3 }}
-                    transition={{ type: 'spring', stiffness: 400 }}
-                    className="inline-block"
-                  >
-                    <ArrowRight className="ml-2 w-5 h-5" weight="bold" />
-                  </motion.span>
+                <Button asChild size="lg" className="energy-gradient text-white hover:opacity-90 touch-target">
+                  <Link href="/contact" className="inline-flex items-center justify-center">
+                    Get Started Today
+                    <motion.span
+                      whileHover={{ x: 3 }}
+                      transition={{ type: 'spring', stiffness: 400 }}
+                      className="inline-block"
+                    >
+                      <ArrowRight className="ml-2 w-5 h-5" weight="bold" />
+                    </motion.span>
+                  </Link>
                 </Button>
               </div>
             </div>

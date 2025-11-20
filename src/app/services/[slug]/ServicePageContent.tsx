@@ -7,7 +7,6 @@ import type { Service } from '@/lib/data/services'
 import { motion } from 'framer-motion'
 import {
   Activity,
-  ArrowLeft,
   ArrowRight,
   Medal as Award,
   ChartBar,

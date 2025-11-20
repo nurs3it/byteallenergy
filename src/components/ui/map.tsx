@@ -61,6 +61,7 @@ import dynamic from "next/dynamic"
 import {
     createContext,
     Ref,
+    useCallback,
     useContext,
     useEffect,
     useRef,
@@ -225,7 +226,7 @@ function MapTileLayer({
                 attribution: resolvedAttribution,
             })
         }
-    }, [context, name, url, attribution])
+    }, [context, name, resolvedUrl, resolvedAttribution])
 
     if (context && context.selectedTileLayer !== name) {
         return null
@@ -723,7 +724,7 @@ function MapLocateControl({
     const [isLocating, setIsLocating] = useDebounceLoadingState(200)
     const [position, setPosition] = useState<LatLngExpression | null>(null)
 
-    function startLocating() {
+    const startLocating = useCallback(() => {
         setIsLocating(true)
         map.locate({ setView: true, maxZoom: map.getMaxZoom(), watch })
         map.on("locationfound", (location: LocationEvent) => {
@@ -736,19 +737,19 @@ function MapLocateControl({
             setIsLocating(false)
             onLocationError?.(error)
         })
-    }
+    }, [map, onLocationError, onLocationFound, watch, setIsLocating])
 
-    function stopLocating() {
+    const stopLocating = useCallback(() => {
         map.stopLocate()
         map.off("locationfound")
         map.off("locationerror")
         setPosition(null)
         setIsLocating(false)
-    }
+    }, [map, setIsLocating])
 
     useEffect(() => {
         return () => stopLocating()
-    }, [])
+    }, [stopLocating])
 
     return (
         <>
@@ -821,19 +822,22 @@ function MapDrawControl({
     const deleteControlRef = useRef<EditToolbar.Delete | null>(null)
     const [activeMode, setActiveMode] = useState<MapDrawMode>(null)
 
-    function handleDrawCreated(event: DrawEvents.Created) {
-        if (!featureGroupRef.current) return
-        const { layer } = event
-        featureGroupRef.current.addLayer(layer)
-        onLayersChange?.(featureGroupRef.current)
-        setActiveMode(null)
-    }
+    const handleDrawCreated = useCallback(
+        (event: DrawEvents.Created) => {
+            if (!featureGroupRef.current) return
+            const { layer } = event
+            featureGroupRef.current.addLayer(layer)
+            onLayersChange?.(featureGroupRef.current)
+            setActiveMode(null)
+        },
+        [onLayersChange]
+    )
 
-    function handleDrawEditedOrDeleted() {
+    const handleDrawEditedOrDeleted = useCallback(() => {
         if (!featureGroupRef.current) return
         onLayersChange?.(featureGroupRef.current)
         setActiveMode(null)
-    }
+    }, [onLayersChange])
 
     useEffect(() => {
         if (!L || !LeafletDraw) return
@@ -853,7 +857,14 @@ function MapDrawControl({
             map.off(L.Draw.Event.EDITED, handleDrawEditedOrDeleted)
             map.off(L.Draw.Event.DELETED, handleDrawEditedOrDeleted)
         }
-    }, [L, LeafletDraw, map, onLayersChange])
+    }, [
+        L,
+        LeafletDraw,
+        map,
+        onLayersChange,
+        handleDrawCreated,
+        handleDrawEditedOrDeleted,
+    ])
 
     return (
         <MapDrawContext.Provider
@@ -1104,7 +1115,7 @@ function MapDrawActionButton<T extends EditToolbar.Edit | EditToolbar.Delete>({
             control.disable?.()
             controlRef.current = null
         }
-    }, [L, map, isActive, featureGroup, createDrawTool])
+    }, [L, map, isActive, featureGroup, createDrawTool, controlRef])
 
     function handleClick() {
         controlRef.current?.save()
@@ -1164,7 +1175,7 @@ function MapDrawEdit({
         L.drawLocal.edit.handlers.remove.tooltip = {
             text: "Click on a shape to remove.",
         }
-    }, [mapDrawHandleIcon])
+    }, [L, mapDrawHandleIcon])
 
     return (
         <MapDrawActionButton
