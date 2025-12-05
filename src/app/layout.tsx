@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { Toaster } from "@/components/ui/sonner"
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -123,6 +124,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`} suppressHydrationWarning>
+        <GoogleAnalytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

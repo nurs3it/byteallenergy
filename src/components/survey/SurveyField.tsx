@@ -9,6 +9,8 @@ import { SurveyField as SurveyFieldType, SurveyFieldValue } from '@/lib/services
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
+import { useAnalytics } from '@/hooks/useAnalytics';
+import { useEffect, useRef } from 'react';
 
 interface SurveyFieldProps {
   field: SurveyFieldType;
@@ -16,6 +18,7 @@ interface SurveyFieldProps {
   onChange: (value: SurveyFieldValue) => void;
   error?: string;
   disabled?: boolean;
+  formId?: string;
 }
 
 export function SurveyField({
@@ -24,7 +27,29 @@ export function SurveyField({
   onChange,
   error,
   disabled = false,
+  formId,
 }: SurveyFieldProps) {
+  const { trackField } = useAnalytics();
+  const hasTrackedFocus = useRef(false);
+
+  useEffect(() => {
+    if (error && formId) {
+      trackField(formId, field.label, 'error');
+    }
+  }, [error, formId, field.label, trackField]);
+
+  const handleFocus = () => {
+    if (!hasTrackedFocus.current && formId) {
+      trackField(formId, field.label, 'focus');
+      hasTrackedFocus.current = true;
+    }
+  };
+
+  const handleBlur = () => {
+    if (formId) {
+      trackField(formId, field.label, 'blur');
+    }
+  };
   const renderField = () => {
     switch (field.type) {
       case 'text':
@@ -35,6 +60,8 @@ export function SurveyField({
             type={field.type}
             value={typeof value === 'string' ? value : ''}
             onChange={(e) => onChange(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             placeholder={field.placeholder}
             disabled={disabled}
             aria-invalid={!!error}
@@ -47,6 +74,8 @@ export function SurveyField({
           <Textarea
             value={typeof value === 'string' ? value : ''}
             onChange={(e) => onChange(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             placeholder={field.placeholder}
             disabled={disabled}
             aria-invalid={!!error}

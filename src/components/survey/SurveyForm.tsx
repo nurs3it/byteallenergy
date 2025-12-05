@@ -16,6 +16,7 @@ import { AnimatedSection } from '@/components/animations/AnimatedSection';
 import { motion } from 'framer-motion';
 import { CheckCircle, Warning } from 'phosphor-react';
 import { toast } from 'sonner';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface SurveyFormProps {
   config: SurveyConfig;
@@ -24,10 +25,12 @@ interface SurveyFormProps {
 
 export function SurveyForm({ config, onSuccess }: SurveyFormProps) {
   const router = useRouter();
+  const { trackForm, trackField, trackSurvey, trackError: trackErr } = useAnalytics();
   const [values, setValues] = useState<Record<string, SurveyFieldValue>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [startTime] = useState(Date.now());
+  const [formStarted, setFormStarted] = useState(false);
 
   // Check if already submitted
   useEffect(() => {
@@ -36,8 +39,14 @@ export function SurveyForm({ config, onSuccess }: SurveyFormProps) {
       if (config.redirectAfterSubmit) {
         router.push(config.redirectAfterSubmit);
       }
+    } else {
+      // Track form start
+      if (!formStarted) {
+        trackForm(config.title, config.id);
+        setFormStarted(true);
+      }
     }
-  }, [config, router]);
+  }, [config, router, formStarted, trackForm]);
 
   // Initialize default values
   useEffect(() => {
@@ -67,6 +76,11 @@ export function SurveyForm({ config, onSuccess }: SurveyFormProps) {
 
   const handleFieldChange = (fieldId: string, value: SurveyFieldValue) => {
     setValues(prev => ({ ...prev, [fieldId]: value }));
+    // Track field interaction
+    const field = visibleFields.find(f => f.id === fieldId);
+    if (field) {
+      trackField(config.id, field.label, 'change');
+    }
     // Clear error when user starts typing
     if (errors[fieldId]) {
       setErrors(prev => {
@@ -86,6 +100,14 @@ export function SurveyForm({ config, onSuccess }: SurveyFormProps) {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       toast.error('Please fix the errors before submitting');
+      // Track form errors
+      Object.keys(validationErrors).forEach(fieldId => {
+        const field = visibleFields.find(f => f.id === fieldId);
+        if (field) {
+          trackField(config.id, field.label, 'error');
+        }
+      });
+      trackErr(`Form validation failed: ${Object.keys(validationErrors).length} errors`, config.id);
       // Scroll to first error
       const firstErrorField = Object.keys(validationErrors)[0];
       const element = document.getElementById(`field-${firstErrorField}`);
@@ -125,6 +147,11 @@ export function SurveyForm({ config, onSuccess }: SurveyFormProps) {
         surveyStorage.markAsSubmitted(config.id);
       }
 
+      // Track successful submission
+      const fieldsCompleted = Object.keys(values).length;
+      trackSurvey(config.title, duration, fieldsCompleted);
+      trackForm(config.title, config.id);
+
       // Call success callback
       if (onSuccess) {
         onSuccess(response);
@@ -140,6 +167,8 @@ export function SurveyForm({ config, onSuccess }: SurveyFormProps) {
       }
     } catch (error) {
       console.error('Error submitting survey:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      trackErr(`Survey submission failed: ${errorMessage}`, config.id);
       toast.error('Failed to submit survey. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -219,6 +248,7 @@ export function SurveyForm({ config, onSuccess }: SurveyFormProps) {
                         onChange={(value) => handleFieldChange(field.id, value)}
                         error={errors[field.id]}
                         disabled={isSubmitting}
+                        formId={config.id}
                       />
                     </motion.div>
                   ))}

@@ -6,8 +6,10 @@ import { motion } from 'framer-motion'
 import { Envelope as Mail, MapPin, LinkedinLogo as Linkedin, Globe } from 'phosphor-react'
 import { companyData } from '@/lib/data/company'
 import { content } from '@/lib/data/company'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 export function Footer() {
+  const { trackLink, trackEmail, trackSocial } = useAnalytics()
 
   const footerLinks = {
     company: [
@@ -56,6 +58,7 @@ export function Footer() {
                 href={companyData.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackSocial('LinkedIn', companyData.linkedin)}
                 className="text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center justify-center"
                 whileHover={{ scale: 1.2, y: -2 }}
                 whileTap={{ scale: 0.9 }}
@@ -64,6 +67,7 @@ export function Footer() {
               </motion.a>
               <motion.a
                 href={`mailto:${companyData.email}`}
+                onClick={() => trackEmail(companyData.email, 'footer')}
                 className="text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center justify-center"
                 whileHover={{ scale: 1.2, y: -2 }}
                 whileTap={{ scale: 0.9 }}
@@ -87,6 +91,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
+                    onClick={() => trackLink(link.name, link.href)}
                     className="text-muted-foreground hover:text-energy-600 transition-colors text-sm touch-target flex items-center"
                   >
                     {link.name}
@@ -110,6 +115,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
+                    onClick={() => trackLink(link.name, link.href)}
                     className="text-muted-foreground hover:text-energy-600 transition-colors text-sm touch-target flex items-center"
                   >
                     {link.name}
@@ -140,6 +146,7 @@ export function Footer() {
                 <Mail className="w-4 h-4 text-energy-600 shrink-0" />
                 <a
                   href={`mailto:${companyData.email}`}
+                  onClick={() => trackEmail(companyData.email, 'footer_contact')}
                   className="text-sm text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center"
                 >
                   {companyData.email}
@@ -151,6 +158,7 @@ export function Footer() {
                   href={companyData.website}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackLink('Website', companyData.website, true)}
                   className="text-sm text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center"
                 >
                   {companyData.website}
@@ -177,6 +185,7 @@ export function Footer() {
                 <Link
                   key={link.name}
                   href={link.href}
+                  onClick={() => trackLink(link.name, link.href)}
                   className="text-sm text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center"
                 >
                   {link.name}

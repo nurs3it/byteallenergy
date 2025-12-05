@@ -9,6 +9,7 @@ import { List as Menu, X, Sun, Moon } from 'phosphor-react'
 import { Button } from '@/components/ui/button'
 import { content, companyData } from '@/lib/data/company'
 import { useTheme } from 'next-themes'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 const navigation = [
   { name: content.nav.home, href: '/' },
@@ -28,6 +29,7 @@ export function Header() {
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
   const headerRef = useRef<HTMLElement>(null)
+  const { trackLink, trackTheme, trackMenu, trackButton } = useAnalytics()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,7 +83,20 @@ export function Header() {
   }, [pathname])
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    trackTheme(newTheme)
+  }
+
+  const handleMenuToggle = () => {
+    const newState = !isOpen
+    setIsOpen(newState)
+    trackMenu(newState ? 'open' : 'close')
+  }
+
+  const handleNavClick = (itemName: string) => {
+    trackMenu('item_click', itemName)
+    setIsOpen(false)
   }
 
   return (
@@ -98,7 +113,11 @@ export function Header() {
         <div className={`flex items-center justify-between ${isMobile ? 'h-14' : 'h-16'}`}>
           {/* Logo */}
           <Button asChild>
-            <Link href="/" className="flex items-center min-h-[44px] min-w-[44px]">
+            <Link 
+              href="/" 
+              className="flex items-center min-h-[44px] min-w-[44px]"
+              onClick={() => trackButton('Logo', 'header')}
+            >
               <Image
                 src={companyData.logo}
                 alt="ByteAll Energy Logo"
@@ -116,6 +135,7 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={() => trackLink(item.name, item.href)}
                 className={`relative text-sm font-medium transition-colors hover:text-energy-600 ${pathname === item.href
                   ? 'text-energy-600'
                   : 'text-foreground'
@@ -163,7 +183,7 @@ export function Header() {
               variant="ghost"
               size="sm"
               className="lg:hidden min-h-[44px] min-w-[44px] p-2"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={handleMenuToggle}
             >
               {isOpen ? (
                 <motion.div
@@ -203,7 +223,7 @@ export function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => handleNavClick(item.name)}
                     className={`text-base font-medium transition-colors hover:text-energy-600 min-h-[44px] flex items-center px-2 py-3 rounded-lg hover:bg-muted/50 ${pathname === item.href
                       ? 'text-energy-600 bg-energy-50 dark:bg-energy-950'
                       : 'text-foreground'
