@@ -13,7 +13,7 @@ export const companyData = {
     {
       city: "Astana",
       country: "Kazakhstan",
-      address: "Astana, Esil District, 12/1 D. Konayev St., TRUST Business Center, VP-32, 3rd Floor, Office No. 19"
+      address: "Konaev st. 12/1, Astana, Kazakhstan"
     }
   ],
   registration: {

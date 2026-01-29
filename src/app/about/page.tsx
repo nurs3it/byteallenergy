@@ -302,7 +302,7 @@ export default function AboutPage() {
                     address: companyData.internationalOffices[0].address,
                     city: companyData.internationalOffices[0].city,
                     country: companyData.internationalOffices[0].country,
-                    coordinates: [51.13011294042581, 71.4276067128349], // Astana, Kazakhstan - ул. Д. Конаева, д. 12/1
+                    coordinates: [51.13011294042581, 71.4276067128349], // Astana, Kazakhstan - Konaev st. 12/1
                     // Images will be auto-generated from Google Maps by coordinates
                   },
                 ]}

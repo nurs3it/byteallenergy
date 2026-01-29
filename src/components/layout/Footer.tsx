@@ -137,9 +137,15 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-energy-600 mt-0.5 shrink-0" />
-                <div className="text-sm text-muted-foreground">
-                  <p>{companyData.headquarters.address}</p>
-                  <p>{companyData.headquarters.city}, {companyData.headquarters.country}</p>
+                <div className="text-sm text-muted-foreground space-y-2">
+                  <div>
+                    <p className="font-medium">{companyData.headquarters.city}, {companyData.headquarters.country}</p>
+                    <p>{companyData.headquarters.address}</p>
+                  </div>
+                  <div>
+                    <p className="font-medium">{companyData.internationalOffices[0].city}, {companyData.internationalOffices[0].country}</p>
+                    <p>{companyData.internationalOffices[0].address}</p>
+                  </div>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
