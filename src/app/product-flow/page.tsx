@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, MagnifyingGlass as Search, Palette, Code, Flas
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
+import { PageBanner } from '@/components/layout/PageBanner'
 
 
 export default function ProductFlowPage() {
@@ -163,21 +164,10 @@ export default function ProductFlowPage() {
 
   return (
     <div className="min-h-screen pt-8">
-      {/* Hero Section */}
-      <section className="py-20 bg-linear-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center space-y-6 max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold gradient-text">
-                ProdCast Delivery Flow
-              </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground">
-                How ByteAll Energy designs, builds, and sustains the ProdCast production forecasting platform
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageBanner
+        title="ProdCast Delivery Flow"
+        subtitle="From concept to production — a comprehensive software development lifecycle for our flagship product."
+      />
 
       {/* ProdCast Overview */}
       <section className="py-16">
@@ -185,7 +175,7 @@ export default function ProductFlowPage() {
           <AnimatedSection>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+                <h2 className="text-3xl md:text-4xl font-bold text-primary">
                   ProdCast – Your Edge in Production Optimisation
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
@@ -199,17 +189,17 @@ export default function ProductFlowPage() {
                     "Delivers intuitive dashboards, alerting, and collaboration tools that align engineering, operations, and leadership"
                   ].map((feature, index) => (
                     <li key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                       <span className="text-muted-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <AnimatedSection direction="right">
-                <Card className="card-hover h-full">
+                <Card className="h-full">
                   <CardContent className="p-8 space-y-6">
-                    <div className="w-20 h-20 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center">
-                      <BarChart3 className="w-10 h-10 text-energy-600" />
+                    <div className="w-20 h-20 bg-accent dark:bg-accent rounded-sm flex items-center justify-center">
+                      <BarChart3 className="w-10 h-10 text-primary" />
                     </div>
                     <p className="text-muted-foreground leading-relaxed">
                       Within weeks, ProdCast provides trusted forecasts, streamlined collaboration, and tangible uplift in production optimisation initiatives, all backed by ByteAll Energy&apos;s managed services.
@@ -231,7 +221,7 @@ export default function ProductFlowPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Our 6-Stage Development Process
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -248,12 +238,12 @@ export default function ProductFlowPage() {
                     {/* Content */}
                     <div className={`space-y-6 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                       <div className="flex items-center space-x-4">
-                        <div className="w-16 h-16 bg-energy-600 text-white rounded-full flex items-center justify-center text-xl font-bold">
+                        <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">
                           {stage.stage}
                         </div>
                         <div>
                           <h3 className="text-2xl font-bold">{stage.title}</h3>
-                          <p className="text-energy-600 font-medium">{stage.duration}</p>
+                          <p className="text-primary font-medium">{stage.duration}</p>
                         </div>
                       </div>
                       
@@ -266,7 +256,7 @@ export default function ProductFlowPage() {
                         <ul className="space-y-2">
                           {stage.activities.map((activity, activityIndex) => (
                             <li key={activityIndex} className="flex items-start space-x-3">
-                              <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 shrink-0" />
+                              <CheckCircle className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                               <span className="text-muted-foreground">{activity}</span>
                             </li>
                           ))}
@@ -277,7 +267,7 @@ export default function ProductFlowPage() {
                         <h4 className="font-semibold">Deliverables:</h4>
                         <div className="flex flex-wrap gap-2">
                           {stage.deliverables.map((deliverable, deliverableIndex) => (
-                            <span key={deliverableIndex} className="px-3 py-1 bg-energy-50 dark:bg-energy-950 text-energy-700 dark:text-energy-300 text-sm rounded-full">
+                            <span key={deliverableIndex} className="px-3 py-1 bg-accent dark:bg-accent text-accent-foreground text-sm rounded-full">
                               {deliverable}
                             </span>
                           ))}
@@ -287,14 +277,14 @@ export default function ProductFlowPage() {
 
                     {/* Visual */}
                     <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                      <Card className="card-hover">
+                      <Card>
                         <CardContent className="p-8 text-center">
-                          <div className="w-24 h-24 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                            <stage.icon className="w-12 h-12 text-energy-600" />
+                          <div className="w-24 h-24 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto mb-6">
+                            <stage.icon className="w-12 h-12 text-primary" />
                           </div>
                           <h3 className="text-xl font-semibold mb-2">{stage.title}</h3>
                           <p className="text-muted-foreground mb-4">{stage.description}</p>
-                          <div className="flex items-center justify-center space-x-2 text-sm text-energy-600">
+                          <div className="flex items-center justify-center space-x-2 text-sm text-primary">
                             <span>{stage.duration}</span>
                           </div>
                         </CardContent>
@@ -305,7 +295,7 @@ export default function ProductFlowPage() {
                   {/* Connection Line */}
                   {index < developmentStages.length - 1 && (
                     <div className="flex justify-center mt-8">
-                      <div className="w-0.5 h-16 bg-linear-to-b from-energy-600 to-transparent"></div>
+                      <div className="w-0.5 h-16 bg-border"></div>
                     </div>
                   )}
                 </div>
@@ -320,7 +310,7 @@ export default function ProductFlowPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Our Methodologies
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -332,10 +322,10 @@ export default function ProductFlowPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {methodologies.map((methodology, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
-                <Card className="card-hover h-full">
+                <Card className="h-full">
                   <CardContent className="p-6 text-center space-y-4">
-                    <div className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto">
-                      <methodology.icon className="w-8 h-8 text-energy-600" />
+                    <div className="w-16 h-16 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto">
+                      <methodology.icon className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold">{methodology.title}</h3>
                     <p className="text-muted-foreground">{methodology.description}</p>
@@ -343,7 +333,7 @@ export default function ProductFlowPage() {
                       <h4 className="font-medium text-sm">Benefits:</h4>
                       <div className="flex flex-wrap gap-2 justify-center">
                         {methodology.benefits.map((benefit, benefitIndex) => (
-                          <span key={benefitIndex} className="px-2 py-1 bg-energy-50 dark:bg-energy-950 text-energy-700 dark:text-energy-300 text-xs rounded-full">
+                          <span key={benefitIndex} className="px-2 py-1 bg-accent dark:bg-accent text-accent-foreground text-xs rounded-full">
                             {benefit}
                           </span>
                         ))}
@@ -362,7 +352,7 @@ export default function ProductFlowPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Technology Stack
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -374,7 +364,7 @@ export default function ProductFlowPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {Object.entries(techStack).map(([category, technologies], index) => (
               <AnimatedSection key={category} delay={index * 0.1}>
-                <Card className="card-hover">
+                <Card>
                   <CardHeader>
                     <CardTitle className="text-lg capitalize">{category}</CardTitle>
                   </CardHeader>
@@ -399,7 +389,7 @@ export default function ProductFlowPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Quality Metrics
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -411,13 +401,13 @@ export default function ProductFlowPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {qualityMetrics.map((metric, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
-                <Card className="card-hover text-center">
+                <Card className="text-center">
                   <CardContent className="p-6 space-y-4">
-                    <div className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto">
-                      <metric.icon className="w-8 h-8 text-energy-600" />
+                    <div className="w-16 h-16 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto">
+                      <metric.icon className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold">{metric.title}</h3>
-                    <div className="text-3xl font-bold gradient-text">{metric.value}</div>
+                    <div className="text-3xl font-bold text-primary">{metric.value}</div>
                     <p className="text-sm text-muted-foreground">{metric.description}</p>
                   </CardContent>
                 </Card>
@@ -432,14 +422,14 @@ export default function ProductFlowPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Ready to Build Your Product?
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Let&apos;s discuss how our proven development process can bring your vision to life.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="energy-gradient text-white hover:opacity-90">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
                   Start Your Project
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>

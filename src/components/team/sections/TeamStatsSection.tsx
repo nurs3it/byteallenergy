@@ -36,7 +36,7 @@ export function TeamStatsSection({
       <div className="container mx-auto px-4">
         <AnimatedSection>
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary">
               {title}
             </h2>
             <p className="text-xl text-muted-foreground">
@@ -60,7 +60,7 @@ export function TeamStatsSection({
             stats.map((stat, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
                 <div className="text-center space-y-2">
-                  <div className="text-4xl md:text-5xl font-bold gradient-text">
+                  <div className="text-4xl md:text-5xl font-bold text-primary">
                     {stat.value}{stat.suffix}
                   </div>
                   <div className="text-sm text-muted-foreground">

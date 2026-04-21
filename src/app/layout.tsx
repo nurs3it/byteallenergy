@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter, Poppins } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "next-themes"
 import { Header } from "@/components/layout/Header"
@@ -7,16 +7,9 @@ import { Footer } from "@/components/layout/Footer"
 import { Toaster } from "@/components/ui/sonner"
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics"
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
-  display: 'swap',
-})
-
-const poppins = Poppins({ 
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-display",
   display: 'swap',
 })
 
@@ -123,7 +116,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`} suppressHydrationWarning>
+      <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         <GoogleAnalytics />
         <ThemeProvider
           attribute="class"

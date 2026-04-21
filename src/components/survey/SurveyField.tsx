@@ -106,10 +106,10 @@ export function SurveyField({
                       onClick={() => onChange(scaleValue)}
                       disabled={disabled}
                       className={cn(
-                        'flex-1 h-12 rounded-lg border-2 font-medium transition-all',
-                        'hover:border-energy-500 hover:bg-energy-50 dark:hover:bg-energy-950',
+                        'flex-1 h-12 rounded-sm border-2 font-medium transition-all',
+                        'hover:border-primary hover:bg-accent dark:hover:bg-accent',
                         value === scaleValue
-                          ? 'border-energy-600 bg-energy-100 dark:bg-energy-900 text-energy-700 dark:text-energy-300'
+                          ? 'border-primary bg-accent dark:bg-accent text-accent-foreground'
                           : 'border-border',
                         disabled && 'opacity-50 cursor-not-allowed'
                       )}
@@ -130,10 +130,10 @@ export function SurveyField({
               <label
                 key={option.value}
                 className={cn(
-                  'flex items-start gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all',
-                  'hover:border-energy-500 hover:bg-energy-50 dark:hover:bg-energy-950',
+                  'flex items-start gap-3 p-4 rounded-sm border-2 cursor-pointer transition-all',
+                  'hover:border-primary hover:bg-accent dark:hover:bg-accent',
                   value === option.value
-                    ? 'border-energy-600 bg-energy-100 dark:bg-energy-900'
+                    ? 'border-primary bg-accent dark:bg-accent'
                     : 'border-border',
                   disabled && 'opacity-50 cursor-not-allowed'
                 )}
@@ -145,7 +145,7 @@ export function SurveyField({
                   checked={value === option.value}
                   onChange={(e) => onChange(e.target.value)}
                   disabled={disabled}
-                  className="mt-0.5 text-energy-600 focus:ring-energy-500"
+                  className="mt-0.5 text-primary focus:ring-ring"
                 />
                 <div className="flex-1">
                   <div className="font-medium">{option.label}</div>
@@ -169,10 +169,10 @@ export function SurveyField({
                 <label
                   key={option.value}
                   className={cn(
-                    'flex items-start gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all',
-                    'hover:border-energy-500 hover:bg-energy-50 dark:hover:bg-energy-950',
+                    'flex items-start gap-3 p-4 rounded-sm border-2 cursor-pointer transition-all',
+                    'hover:border-primary hover:bg-accent dark:hover:bg-accent',
                     isChecked
-                      ? 'border-energy-600 bg-energy-100 dark:bg-energy-900'
+                      ? 'border-primary bg-accent dark:bg-accent'
                       : 'border-border',
                     disabled && 'opacity-50 cursor-not-allowed'
                   )}
@@ -192,7 +192,7 @@ export function SurveyField({
                       onChange(newValue);
                     }}
                     disabled={disabled}
-                    className="mt-0.5 text-energy-600 focus:ring-energy-500 rounded"
+                    className="mt-0.5 text-primary focus:ring-ring rounded"
                   />
                   <div className="flex-1">
                     <div className="font-medium">{option.label}</div>
@@ -216,7 +216,7 @@ export function SurveyField({
             disabled={disabled}
             className={cn(
               'w-full h-10 px-3 rounded-md border bg-background text-foreground',
-              'focus:outline-none focus:ring-2 focus:ring-energy-500',
+              'focus:outline-none focus:ring-2 focus:ring-ring',
               error && 'border-destructive',
               disabled && 'opacity-50 cursor-not-allowed'
             )}

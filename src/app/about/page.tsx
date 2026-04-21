@@ -8,6 +8,7 @@ import { StatCounter } from '@/components/animations/StatCounter'
 import { ParallaxImage } from '@/components/animations/ParallaxImage'
 import { LocationMap } from '@/components/map/LocationMap'
 import { content, companyData } from '@/lib/data/company'
+import { PageBanner } from '@/components/layout/PageBanner'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
@@ -82,21 +83,10 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen pt-8">
-      {/* Hero Section */}
-      <section className="py-20 bg-linear-to-br from-energy-950 via-energy-900 to-oil-900 text-white">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center space-y-6 max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold text-white">
-                {content.about.title}
-              </h1>
-              <p className="text-xl md:text-2xl text-energy-100/90">
-                {content.about.subtitle}
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageBanner
+        title={content.about.title}
+        subtitle={content.about.subtitle}
+      />
 
       {/* Company Story */}
       <section className="py-20">
@@ -104,7 +94,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection direction="left">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+                <h2 className="text-3xl md:text-4xl font-bold text-primary">
                   Our Story
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
@@ -118,8 +108,8 @@ export default function AboutPage() {
                     <Card key={label} className="h-full">
                       <CardContent className="p-5 space-y-2">
                         <div className="flex items-center space-x-2">
-                          <Award className="w-5 h-5 text-energy-600" weight="duotone" />
-                          <h3 className="text-sm font-semibold uppercase tracking-wide text-energy-600">
+                          <Award className="w-5 h-5 text-primary" weight="duotone" />
+                          <h3 className="text-sm font-semibold uppercase tracking-wide text-primary">
                             {label}
                           </h3>
                         </div>
@@ -137,9 +127,9 @@ export default function AboutPage() {
                 </p>
                 <div className="flex flex-wrap gap-4">
                   {companyData.services.slice(0, 4).map((service, index) => (
-                    <div key={index} className="flex items-center space-x-2 bg-energy-50 dark:bg-black px-3 py-2 rounded-full">
-                      <CheckCircle className="w-4 h-4 text-energy-600" weight="fill" />
-                      <span className="text-sm font-medium text-energy-900 dark:text-white">{service}</span>
+                    <div key={index} className="flex items-center space-x-2 bg-accent dark:bg-accent px-3 py-2 rounded-full">
+                      <CheckCircle className="w-4 h-4 text-primary" weight="fill" />
+                      <span className="text-sm font-medium text-foreground">{service}</span>
                     </div>
                   ))}
                 </div>
@@ -149,9 +139,9 @@ export default function AboutPage() {
             <AnimatedSection direction="right">
               <div className="relative">
                 <ParallaxImage speed={0.3}>
-                <div className="w-full h-96 bg-linear-to-br from-energy-500/20 to-oil-500/20 rounded-2xl border border-energy-200/50 dark:border-energy-800/50 flex items-center justify-center">
+                <div className="w-full h-96 bg-accent rounded-2xl border border-border flex items-center justify-center">
                     <div className="text-center space-y-4">
-                      <div className="w-20 h-20 bg-energy-600 rounded-full flex items-center justify-center mx-auto">
+                      <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto">
                         <Award className="w-10 h-10 text-white" />
                       </div>
                       <h3 className="text-2xl font-bold">Since 2017</h3>
@@ -170,7 +160,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 By Numbers
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -183,7 +173,7 @@ export default function AboutPage() {
             {stats.map((stat, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
                 <div className="text-center space-y-2">
-                  <div className="text-4xl md:text-5xl font-bold gradient-text">
+                  <div className="text-4xl md:text-5xl font-bold text-primary">
                     <StatCounter needFormat={stat.needFormat} end={stat.value} suffix={stat.suffix} />
                   </div>
                   <div className="text-sm text-muted-foreground">
@@ -201,7 +191,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Our Values
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -213,10 +203,10 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
-                <Card className="card-hover h-full text-center">
+                <Card className="h-full text-center">
                   <CardContent className="p-6 space-y-4">
-                    <div className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto">
-                      <value.icon className="w-8 h-8 text-energy-600" weight="duotone" />
+                    <div className="w-16 h-16 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto">
+                      <value.icon className="w-8 h-8 text-primary" weight="duotone" />
                     </div>
                     <h3 className="text-xl font-semibold">{value.title}</h3>
                     <p className="text-muted-foreground">{value.description}</p>
@@ -233,7 +223,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Our Journey
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -245,13 +235,13 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Timeline line - hidden on mobile */}
-              <div className="hidden sm:block absolute left-8 top-0 bottom-0 w-0.5 bg-energy-200 dark:bg-energy-800"></div>
+              <div className="hidden sm:block absolute left-8 top-0 bottom-0 w-0.5 bg-border dark:bg-border"></div>
               
               {timeline.map((item, index) => (
                 <AnimatedSection key={index} delay={index * 0.1}>
                   <div className="relative flex flex-col sm:flex-row sm:items-start space-y-4 sm:space-y-0 sm:space-x-8 mb-12">
                     {/* Timeline dot */}
-                    <div className="shrink-0 w-16 h-16 bg-energy-600 rounded-full flex items-center justify-center text-white font-bold text-sm z-10 mx-auto sm:mx-0">
+                    <div className="shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm z-10 mx-auto sm:mx-0">
                       {item.year}
                     </div>
                     
@@ -273,7 +263,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Our Locations
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -316,15 +306,15 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Headquarters */}
             <AnimatedSection delay={0.2}>
-              <Card className="card-hover">
+              <Card>
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center">
+                    <div className="w-12 h-12 bg-accent dark:bg-accent rounded-lg flex items-center justify-center">
                       <motion.div
                         animate={{ rotate: [0, 360] }}
                         transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                       >
-                        <Globe className="w-6 h-6 text-energy-600" weight="duotone" />
+                        <Globe className="w-6 h-6 text-primary" weight="duotone" />
                       </motion.div>
                     </div>
                     <div className="space-y-2">
@@ -341,15 +331,15 @@ export default function AboutPage() {
 
             {/* International Office */}
             <AnimatedSection delay={0.3}>
-              <Card className="card-hover">
+              <Card>
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 min-w-12 min-h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center">
+                    <div className="w-12 h-12 min-w-12 min-h-12 bg-accent dark:bg-accent rounded-lg flex items-center justify-center">
                       <motion.div
                         animate={{ rotate: [0, 360] }}
                         transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                       >
-                        <Globe className="w-6 h-6 text-energy-600" weight="duotone" />
+                        <Globe className="w-6 h-6 text-primary" weight="duotone" />
                       </motion.div>
                     </div>
                     <div className="space-y-2">
@@ -368,18 +358,18 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-linear-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
+      <section className="py-20 bg-accent dark:bg-accent">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Ready to Work With Us?
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Join the growing number of energy companies that trust ByteAll Energy for their digital transformation needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild className="energy-gradient text-white hover:opacity-90 touch-target">
+                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 touch-target">
                   <Link href="/contact">
                     Get in Touch
                   </Link>

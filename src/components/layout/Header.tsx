@@ -18,6 +18,7 @@ const navigation = [
   { name: content.nav.team, href: '/team' },
   { name: content.nav.clients, href: '/clients' },
   { name: content.nav.workflow, href: '/workflow' },
+  { name: content.nav.news, href: '/news' },
   { name: content.nav.contact, href: '/contact' },
 ]
 
@@ -105,29 +106,27 @@ export function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? 'bg-background/80 backdrop-blur-md border-b border-border'
+        ? 'bg-background/95 backdrop-blur-sm border-b border-border'
         : 'bg-transparent'
         }`}
     >
       <div className="container mx-auto px-4">
         <div className={`flex items-center justify-between ${isMobile ? 'h-14' : 'h-16'}`}>
           {/* Logo */}
-          <Button asChild>
-            <Link 
-              href="/" 
-              className="flex items-center min-h-[44px] min-w-[44px]"
-              onClick={() => trackButton('Logo', 'header')}
-            >
-              <Image
-                src={companyData.logo}
-                alt="ByteAll Energy Logo"
-                width={64}
-                draggable={false}
-                height={64}
-                className="h-24 w-24 object-contain"
-              />
-            </Link>
-          </Button>
+          <Link
+            href="/"
+            className="flex items-center min-h-[44px] min-w-[44px]"
+            onClick={() => trackButton('Logo', 'header')}
+          >
+            <Image
+              src={companyData.logo}
+              alt="ByteAll Energy Logo"
+              width={80}
+              draggable={false}
+              height={80}
+              className="h-28 w-28 object-contain dark:brightness-0 dark:invert"
+            />
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
@@ -136,8 +135,8 @@ export function Header() {
                 key={item.name}
                 href={item.href}
                 onClick={() => trackLink(item.name, item.href)}
-                className={`relative text-sm font-medium transition-colors hover:text-energy-600 ${pathname === item.href
-                  ? 'text-energy-600'
+                className={`relative text-sm font-medium transition-colors hover:text-primary ${pathname === item.href
+                  ? 'text-primary'
                   : 'text-foreground'
                   }`}
               >
@@ -145,7 +144,7 @@ export function Header() {
                 {pathname === item.href && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-energy-600"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
                   />
                 )}
               </Link>
@@ -215,7 +214,7 @@ export function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={prefersReducedMotion ? { duration: 0.1 } : { duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden bg-background/95 backdrop-blur-md border-b border-border"
+            className="lg:hidden bg-background/95 backdrop-blur-sm border-b border-border"
           >
             <div className="container mx-auto px-4 py-6">
               <nav className="flex flex-col space-y-2">
@@ -224,8 +223,8 @@ export function Header() {
                     key={item.name}
                     href={item.href}
                     onClick={() => handleNavClick(item.name)}
-                    className={`text-base font-medium transition-colors hover:text-energy-600 min-h-[44px] flex items-center px-2 py-3 rounded-lg hover:bg-muted/50 ${pathname === item.href
-                      ? 'text-energy-600 bg-energy-50 dark:bg-energy-950'
+                    className={`text-base font-medium transition-colors hover:text-primary min-h-[44px] flex items-center px-2 py-3 rounded-sm hover:bg-muted/50 ${pathname === item.href
+                      ? 'text-primary bg-accent dark:bg-accent'
                       : 'text-foreground'
                       }`}
                   >

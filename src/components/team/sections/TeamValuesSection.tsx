@@ -55,7 +55,7 @@ export function TeamValuesSection({
       <div className="container mx-auto px-4">
         <AnimatedSection>
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary">
               {title}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -71,7 +71,7 @@ export function TeamValuesSection({
               <AnimatedSection key={index} delay={index * 0.1}>
                 <Card className="h-full text-center">
                   <CardContent className="p-6 space-y-4">
-                    <div className="w-16 h-16 bg-muted rounded-2xl mx-auto animate-pulse" />
+                    <div className="w-16 h-16 bg-muted rounded-sm mx-auto animate-pulse" />
                     <div className="h-6 bg-muted rounded animate-pulse" />
                     <div className="space-y-2">
                       <div className="h-3 bg-muted rounded animate-pulse" />
@@ -85,16 +85,16 @@ export function TeamValuesSection({
           ) : (
             values.map((value, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
-                <Card className="card-hover h-full text-center">
+                <Card className="h-full text-center">
                   <CardContent className="p-6 space-y-4">
                     <motion.div
                       initial={{ scale: 0, rotate: -180 }}
                       animate={{ scale: 1, rotate: 0 }}
                       transition={{ delay: index * 0.1, type: 'spring', stiffness: 200 }}
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto"
+                      className="w-16 h-16 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto"
                     >
-                      <value.icon className="w-8 h-8 text-energy-600" weight="duotone" />
+                      <value.icon className="w-8 h-8 text-primary" weight="duotone" />
                     </motion.div>
                     <h3 className="text-xl font-semibold">{value.title}</h3>
                     <p className="text-muted-foreground text-sm">{value.description}</p>

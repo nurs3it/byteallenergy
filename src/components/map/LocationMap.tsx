@@ -395,7 +395,7 @@ export function LocationMap({
                   <div className="p-3 sm:p-4 md:p-4 lg:p-6 lg:col-span-2">
                     <div className="flex items-start justify-between mb-2 md:mb-3">
                       <div className="flex items-center space-x-2 flex-1 min-w-0">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-energy-600 rounded-full flex items-center justify-center shrink-0">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary rounded-full flex items-center justify-center shrink-0">
                           <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-white" weight="fill" />
                         </div>
                         <div className="min-w-0 flex-1">
@@ -416,7 +416,7 @@ export function LocationMap({
 
                     <div className="space-y-1.5 mb-2 md:mb-3">
                       <div className="flex items-start space-x-1.5">
-                        <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-energy-600 mt-0.5 shrink-0" weight="fill" />
+                        <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary mt-0.5 shrink-0" weight="fill" />
                         <p className="text-xs text-foreground leading-relaxed break-words hyphens-auto line-clamp-2 md:line-clamp-none">
                           {selectedLocation.address}
                         </p>
@@ -425,7 +425,7 @@ export function LocationMap({
 
                     <Button
                       onClick={() => zoomToLocation(selectedLocation)}
-                      className="w-full energy-gradient text-white hover:opacity-90 transition-opacity text-xs h-8 md:h-9"
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-opacity text-xs h-8 md:h-9"
                       size="sm"
                     >
                       <MagnifyingGlassPlus className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1.5" />

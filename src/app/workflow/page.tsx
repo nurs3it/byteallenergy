@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, Users, MagnifyingGlass as Search, Lightbulb, G
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
+import { PageBanner } from '@/components/layout/PageBanner'
 
 
 export default function WorkflowPage() {
@@ -130,28 +131,17 @@ export default function WorkflowPage() {
 
   return (
     <div className="min-h-screen pt-8">
-      {/* Hero Section */}
-      <section className="py-20 bg-linear-to-br from-energy-950 via-energy-900 to-oil-900 text-white">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center space-y-6 max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold text-white">
-                Our Workflow
-              </h1>
-              <p className="text-xl md:text-2xl text-energy-100/90">
-                Hybrid engineering and software delivery built around upstream teams
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageBanner
+        title="Our Workflow"
+        subtitle="Hybrid engineering and software delivery built around upstream teams"
+      />
 
       {/* Workflow Steps */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Our 5-Step Process
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -168,12 +158,12 @@ export default function WorkflowPage() {
                     {/* Content */}
                     <div className={`space-y-6 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                       <div className="flex items-center space-x-4">
-                        <div className="w-16 h-16 bg-energy-600 text-white rounded-full flex items-center justify-center text-xl font-bold">
+                        <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">
                           {step.step}
                         </div>
                         <div>
                           <h3 className="text-2xl font-bold">{step.title}</h3>
-                          <p className="text-energy-600 font-medium">{step.duration}</p>
+                          <p className="text-primary font-medium">{step.duration}</p>
                         </div>
                       </div>
                       
@@ -186,7 +176,7 @@ export default function WorkflowPage() {
                         <ul className="space-y-2">
                           {step.details.map((detail, detailIndex) => (
                             <li key={detailIndex} className="flex items-start space-x-3">
-                              <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 shrink-0" />
+                              <CheckCircle className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                               <span className="text-muted-foreground">{detail}</span>
                             </li>
                           ))}
@@ -197,7 +187,7 @@ export default function WorkflowPage() {
                         <h4 className="font-semibold">Deliverables:</h4>
                         <div className="flex flex-wrap gap-2">
                           {step.deliverables.map((deliverable, deliverableIndex) => (
-                            <span key={deliverableIndex} className="px-3 py-1 bg-energy-50 dark:bg-energy-950 text-energy-700 dark:text-energy-300 text-sm rounded-full">
+                            <span key={deliverableIndex} className="px-3 py-1 bg-accent dark:bg-accent text-accent-foreground text-sm rounded-full">
                               {deliverable}
                             </span>
                           ))}
@@ -207,14 +197,14 @@ export default function WorkflowPage() {
 
                     {/* Visual */}
                     <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                      <Card className="card-hover">
+                      <Card className="">
                         <CardContent className="p-8 text-center">
-                          <div className="w-24 h-24 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                            <step.icon className="w-12 h-12 text-energy-600" />
+                          <div className="w-24 h-24 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto mb-6">
+                            <step.icon className="w-12 h-12 text-primary" />
                           </div>
                           <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
                           <p className="text-muted-foreground mb-4">{step.description}</p>
-                          <div className="flex items-center justify-center space-x-2 text-sm text-energy-600">
+                          <div className="flex items-center justify-center space-x-2 text-sm text-primary">
                             <Clock className="w-4 h-4" />
                             <span>{step.duration}</span>
                           </div>
@@ -226,7 +216,7 @@ export default function WorkflowPage() {
                   {/* Connection Line */}
                   {index < workflowSteps.length - 1 && (
                     <div className="flex justify-center mt-8">
-                      <div className="w-0.5 h-16 bg-linear-to-b from-energy-600 to-transparent"></div>
+                      <div className="w-0.5 h-16 bg-border"></div>
                     </div>
                   )}
                 </div>
@@ -241,7 +231,7 @@ export default function WorkflowPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Our Methodologies
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -253,10 +243,10 @@ export default function WorkflowPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {methodologies.map((methodology, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
-                <Card className="card-hover h-full">
+                <Card className="h-full">
                   <CardContent className="p-6 text-center space-y-4">
-                    <div className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto">
-                      <methodology.icon className="w-8 h-8 text-energy-600" />
+                    <div className="w-16 h-16 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto">
+                      <methodology.icon className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold">{methodology.title}</h3>
                     <p className="text-muted-foreground">{methodology.description}</p>
@@ -264,7 +254,7 @@ export default function WorkflowPage() {
                       <h4 className="font-medium text-sm">Benefits:</h4>
                       <div className="flex flex-wrap gap-2 justify-center">
                         {methodology.benefits.map((benefit, benefitIndex) => (
-                          <span key={benefitIndex} className="px-2 py-1 bg-energy-50 dark:bg-energy-950 text-energy-700 dark:text-energy-300 text-xs rounded-full">
+                          <span key={benefitIndex} className="px-2 py-1 bg-accent dark:bg-accent text-accent-foreground text-xs rounded-full">
                             {benefit}
                           </span>
                         ))}
@@ -283,7 +273,7 @@ export default function WorkflowPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Tools & Technologies
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -295,7 +285,7 @@ export default function WorkflowPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tools.map((toolCategory, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
-                <Card className="card-hover">
+                <Card className="">
                   <CardHeader>
                     <CardTitle className="text-lg">{toolCategory.name}</CardTitle>
                   </CardHeader>
@@ -320,7 +310,7 @@ export default function WorkflowPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Our Success Metrics
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -337,13 +327,13 @@ export default function WorkflowPage() {
               { icon: Zap, title: "Support Responsiveness", value: "<1 hr", description: "Average response time for managed service incidents" }
             ].map((metric, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
-                <Card className="card-hover text-center">
+                <Card className="text-center">
                   <CardContent className="p-6 space-y-4">
-                    <div className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto">
-                      <metric.icon className="w-8 h-8 text-energy-600" />
+                    <div className="w-16 h-16 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto">
+                      <metric.icon className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold">{metric.title}</h3>
-                    <div className="text-3xl font-bold gradient-text">{metric.value}</div>
+                    <div className="text-3xl font-bold text-primary">{metric.value}</div>
                     <p className="text-sm text-muted-foreground">{metric.description}</p>
                   </CardContent>
                 </Card>
@@ -358,14 +348,14 @@ export default function WorkflowPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Ready to Accelerate Your Programme?
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Let&apos;s discuss how our hybrid delivery model can unlock measurable value for your asset teams.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="energy-gradient text-white hover:opacity-90">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
                   Start Your Project
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>

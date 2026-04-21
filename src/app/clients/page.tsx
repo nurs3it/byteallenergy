@@ -6,6 +6,7 @@ import { AnimatedSection } from '@/components/animations/AnimatedSection'
 import { StatCounter } from '@/components/animations/StatCounter'
 
 import { clients, clientStats } from '@/lib/data/clients'
+import { PageBanner } from '@/components/layout/PageBanner'
 
 export default function ClientsPage() {
   
@@ -18,28 +19,17 @@ export default function ClientsPage() {
 
   return (
     <div className="min-h-screen pt-8">
-      {/* Hero Section */}
-      <section className="py-20 bg-linear-to-br from-energy-950 via-energy-900 to-oil-900 text-white">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center space-y-6 max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold text-white">
-                Our Clients
-              </h1>
-              <p className="text-xl md:text-2xl text-energy-100/90">
-                Trusted by national, international, and independent operators across Central Asia and Europe
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageBanner
+        title="Our Clients"
+        subtitle="Trusted by leading energy companies across the globe"
+      />
 
       {/* Stats Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Our Impact
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -52,7 +42,7 @@ export default function ClientsPage() {
             {stats.map((stat, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
                 <div className="text-center space-y-2">
-                  <div className="text-4xl md:text-5xl font-bold gradient-text">
+                  <div className="text-4xl md:text-5xl font-bold text-primary">
                     <StatCounter end={stat.value} suffix={stat.suffix} />
                   </div>
                   <div className="text-sm text-muted-foreground">
@@ -70,7 +60,7 @@ export default function ClientsPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Our Client Portfolio
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -82,10 +72,10 @@ export default function ClientsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {clients.map((client, index) => (
               <AnimatedSection key={client.id} delay={index * 0.1}>
-                <Card className="card-hover h-full">
+                <Card className="h-full">
                   <CardHeader className="pb-4">
                     <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-linear-to-br from-energy-500 to-energy-700 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                      <div className="w-16 h-16 bg-primary rounded-sm flex items-center justify-center text-white font-bold text-lg">
                         {client.name.split(' ').map(word => word[0]).join('').slice(0, 2)}
                       </div>
                       <div>
@@ -101,7 +91,7 @@ export default function ClientsPage() {
                     </div>
                     <p className="text-sm text-muted-foreground">{client.description}</p>
                     <div className="pt-2 border-t">
-                      <div className="text-xs font-medium text-energy-600">{client.projectType}</div>
+                      <div className="text-xs font-medium text-primary">{client.projectType}</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -116,7 +106,7 @@ export default function ClientsPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Success Metrics
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -153,13 +143,13 @@ export default function ClientsPage() {
               }
             ].map((metric, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
-                <Card className="card-hover text-center">
+                <Card className="text-center">
                   <CardContent className="p-6 space-y-4">
-                    <div className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center mx-auto">
-                      <metric.icon className="w-8 h-8 text-energy-600" />
+                    <div className="w-16 h-16 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto">
+                      <metric.icon className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold">{metric.title}</h3>
-                    <div className="text-3xl font-bold gradient-text">{metric.value}</div>
+                    <div className="text-3xl font-bold text-primary">{metric.value}</div>
                     <p className="text-sm text-muted-foreground">{metric.description}</p>
                   </CardContent>
                 </Card>
@@ -170,21 +160,21 @@ export default function ClientsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-linear-to-br from-energy-50 to-energy-100 dark:from-energy-950 dark:to-energy-900">
+      <section className="py-20 bg-accent dark:bg-accent">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Join Our Success Stories
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Become part of our growing client portfolio and experience the benefits of our digital solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-3 bg-energy-600 text-white rounded-lg hover:bg-energy-700 transition-colors">
+                <button className="px-8 py-3 bg-primary text-primary-foreground rounded-sm hover:bg-primary/90 transition-colors">
                   Start Your Project
                 </button>
-                <button className="px-8 py-3 border border-energy-600 text-energy-600 rounded-lg hover:bg-energy-50 dark:hover:bg-energy-950 transition-colors">
+                <button className="px-8 py-3 border border-primary text-primary rounded-sm hover:bg-accent dark:hover:bg-accent transition-colors">
                   View Case Studies
                 </button>
               </div>
