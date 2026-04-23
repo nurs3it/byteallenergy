@@ -1,6 +1,9 @@
 "use client"
 
+import Image from 'next/image'
+import Link from 'next/link'
 import { MapPin, Medal as Award, Users, TrendUp as TrendingUp, Shield } from 'phosphor-react'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
 import { StatCounter } from '@/components/animations/StatCounter'
@@ -75,8 +78,14 @@ export default function ClientsPage() {
                 <Card className="h-full">
                   <CardHeader className="pb-4">
                     <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-primary rounded-sm flex items-center justify-center text-white font-bold text-lg">
-                        {client.name.split(' ').map(word => word[0]).join('').slice(0, 2)}
+                      <div className="w-16 h-16 bg-accent rounded-sm flex items-center justify-center p-2">
+                        <Image
+                          src={client.logo}
+                          alt={`${client.name} logo`}
+                          width={56}
+                          height={56}
+                          className="object-contain"
+                        />
                       </div>
                       <div>
                         <CardTitle className="text-lg">{client.name}</CardTitle>
@@ -171,12 +180,12 @@ export default function ClientsPage() {
                 Become part of our growing client portfolio and experience the benefits of our digital solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-3 bg-primary text-primary-foreground rounded-sm hover:bg-primary/90 transition-colors">
-                  Start Your Project
-                </button>
-                <button className="px-8 py-3 border border-primary text-primary rounded-sm hover:bg-accent dark:hover:bg-accent transition-colors">
-                  View Case Studies
-                </button>
+                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Link href="/contact">Start Your Project</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/case-studies">View Case Studies</Link>
+                </Button>
               </div>
             </div>
           </AnimatedSection>

@@ -120,8 +120,8 @@ export default function RootLayout({
         <GoogleAnalytics />
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <div className="min-h-screen bg-background text-foreground">

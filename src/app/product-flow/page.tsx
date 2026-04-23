@@ -1,5 +1,6 @@
 "use client"
 
+import Link from 'next/link'
 import { ArrowRight, CheckCircle, MagnifyingGlass as Search, Palette, Code, Flask as TestTube, Rocket, Users, GitBranch, Shield, Lightning as Zap, Target, ChartBar as BarChart3 } from 'phosphor-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -204,9 +205,11 @@ export default function ProductFlowPage() {
                     <p className="text-muted-foreground leading-relaxed">
                       Within weeks, ProdCast provides trusted forecasts, streamlined collaboration, and tangible uplift in production optimisation initiatives, all backed by ByteAll Energy&apos;s managed services.
                     </p>
-                    <Button variant="outline" size="lg" className="touch-target">
-                      See ProdCast in Action
-                      <ArrowRight className="ml-2 w-4 h-4" />
+                    <Button asChild variant="outline" size="lg" className="touch-target">
+                      <Link href="/contact?subject=ProdCast+Demo">
+                        See ProdCast in Action
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -429,12 +432,14 @@ export default function ProductFlowPage() {
                 Let&apos;s discuss how our proven development process can bring your vision to life.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  Start Your Project
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Link href="/contact">
+                    Start Your Project
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Link>
                 </Button>
-                <Button size="lg" variant="outline">
-                  View Our Portfolio
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/case-studies">View Our Portfolio</Link>
                 </Button>
               </div>
             </div>

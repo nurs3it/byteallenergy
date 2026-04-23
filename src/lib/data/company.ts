@@ -67,12 +67,15 @@ export const content = {
   nav: {
     home: "Home",
     services: "Services",
-    about: "About",
+    about: "About us",
     team: "Team",
     clients: "Clients",
     workflow: "Workflow",
     training: "Training",
+    caseStudies: "Case Studies",
+    insights: "Insights",
     news: "News",
+    careers: "Careers",
     contact: "Contact"
   },
   hero: {

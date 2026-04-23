@@ -134,12 +134,16 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
                       Ready to transform your operations with our {service.title.toLowerCase()}?
                     </p>
                     <div className="space-y-2">
-                      <Button className="w-full bg-primary text-primary-foreground">
-                        Schedule a Consultation
-                        <ArrowRight className="ml-2 w-4 h-4" />
+                      <Button asChild className="w-full bg-primary text-primary-foreground">
+                        <Link href="/contact">
+                          Schedule a Consultation
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </Link>
                       </Button>
-                      <Button variant="outline" className="w-full">
-                        Download Brochure
+                      <Button asChild variant="outline" className="w-full">
+                        <a href={`mailto:info@byteallenergy.com?subject=Brochure Request — ${service.title}`}>
+                          Request Brochure
+                        </a>
                       </Button>
                     </div>
                   </CardContent>

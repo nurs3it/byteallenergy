@@ -15,7 +15,7 @@ export const clients: Client[] = [
   {
     id: "karachaganak",
     name: "Karachaganak Petroleum Operating",
-    logo: "/images/clients/karachaganak.png",
+    logo: "/images/clients/karachaganak.svg",
     industry: "Oil & Gas Operator",
     industryRu: "Оператор нефти и газа",
     country: "Kazakhstan",
@@ -27,7 +27,7 @@ export const clients: Client[] = [
   {
     id: "shell",
     name: "Shell",
-    logo: "/images/clients/shell.png",
+    logo: "/images/clients/shell.svg",
     industry: "Multinational Oil Company",
     industryRu: "Многонациональная нефтяная компания",
     country: "Netherlands",
@@ -39,7 +39,7 @@ export const clients: Client[] = [
   {
     id: "totalenergies",
     name: "TotalEnergies",
-    logo: "/images/clients/totalenergies.png",
+    logo: "/images/clients/totalenergies.svg",
     industry: "Multinational Energy Company",
     industryRu: "Многонациональная энергетическая компания",
     country: "France",
@@ -51,7 +51,7 @@ export const clients: Client[] = [
   {
     id: "tenaz-energy",
     name: "Tenaz Energy",
-    logo: "/images/clients/tenaz-energy.png",
+    logo: "/images/clients/tenaz-energy.svg",
     industry: "Energy Company",
     industryRu: "Энергетическая компания",
     country: "Canada",
@@ -63,7 +63,7 @@ export const clients: Client[] = [
   {
     id: "ineos",
     name: "Ineos",
-    logo: "/images/clients/ineos.png",
+    logo: "/images/clients/ineos.svg",
     industry: "Chemical and Energy Company",
     industryRu: "Химическая и энергетическая компания",
     country: "United Kingdom",

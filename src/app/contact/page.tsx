@@ -1,11 +1,162 @@
 "use client"
 
-import { MapPin, Envelope as Mail, LinkedinLogo as Linkedin, Globe, Clock, Buildings as Building2, Users } from 'phosphor-react'
+import { useState } from 'react'
+import { MapPin, Envelope as Mail, LinkedinLogo as Linkedin, Globe, Clock, Buildings as Building2, Users, PaperPlaneTilt, SpinnerGap, Check } from 'phosphor-react'
 import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
 import { companyData } from '@/lib/data/company'
 import { motion } from 'framer-motion'
 import { PageBanner } from '@/components/layout/PageBanner'
+import { submitInquiry } from '@/lib/api/services/inquiries'
+import { toast } from 'sonner'
+
+function ContactForm() {
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+  })
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus('submitting')
+
+    try {
+      await submitInquiry({
+        ...form,
+        phone: form.phone || undefined,
+      })
+      setStatus('success')
+      toast.success('Message sent successfully!')
+      setForm({ name: '', email: '', phone: '', subject: '', message: '' })
+    } catch (err) {
+      setStatus('error')
+      toast.error(err instanceof Error ? err.message : 'Failed to send message')
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <Card className="max-w-2xl mx-auto">
+        <CardContent className="p-8">
+          <div className="text-center space-y-4">
+            <div className="w-16 h-16 bg-accent rounded-sm flex items-center justify-center mx-auto">
+              <Check className="w-8 h-8 text-primary" weight="bold" />
+            </div>
+            <h3 className="text-xl font-semibold">Message Sent</h3>
+            <p className="text-muted-foreground">
+              Thank you for reaching out! We will review your message and get back to you shortly.
+            </p>
+            <Button
+              variant="outline"
+              onClick={() => setStatus('idle')}
+            >
+              Send Another Message
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  return (
+    <Card className="max-w-2xl mx-auto">
+      <CardContent className="p-8">
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="text-sm font-medium mb-1.5 block">Name *</label>
+              <input
+                type="text"
+                required
+                minLength={2}
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                className="w-full px-3 py-2.5 text-sm border border-border rounded-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium mb-1.5 block">Email *</label>
+              <input
+                type="email"
+                required
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                className="w-full px-3 py-2.5 text-sm border border-border rounded-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary"
+                placeholder="your@email.com"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="text-sm font-medium mb-1.5 block">Phone</label>
+              <input
+                type="tel"
+                value={form.phone}
+                onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                className="w-full px-3 py-2.5 text-sm border border-border rounded-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary"
+                placeholder="+7 777 123 4567"
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium mb-1.5 block">Subject *</label>
+              <input
+                type="text"
+                required
+                minLength={2}
+                value={form.subject}
+                onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                className="w-full px-3 py-2.5 text-sm border border-border rounded-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary"
+                placeholder="How can we help?"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="text-sm font-medium mb-1.5 block">Message *</label>
+            <textarea
+              required
+              minLength={10}
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              rows={5}
+              className="w-full px-3 py-2.5 text-sm border border-border rounded-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary resize-none"
+              placeholder="Tell us about your project or question..."
+            />
+          </div>
+
+          {status === 'error' && (
+            <p className="text-sm text-red-500">Something went wrong. Please try again.</p>
+          )}
+
+          <Button
+            type="submit"
+            disabled={status === 'submitting'}
+            className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+          >
+            {status === 'submitting' ? (
+              <>
+                <SpinnerGap className="w-4 h-4 mr-2 animate-spin" />
+                Sending...
+              </>
+            ) : (
+              <>
+                <PaperPlaneTilt className="w-4 h-4 mr-2" weight="duotone" />
+                Send Message
+              </>
+            )}
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  )
+}
 
 export default function ContactPage() {
   const contactMethods = [
@@ -162,6 +313,26 @@ export default function ContactPage() {
               </AnimatedSection>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Contact Form */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <AnimatedSection>
+            <div className="text-center space-y-4 mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
+                Send Us a Message
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Have a question or want to discuss a project? Fill out the form below and we will get back to you.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <ContactForm />
+          </AnimatedSection>
         </div>
       </section>
 

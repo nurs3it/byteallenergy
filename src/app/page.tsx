@@ -165,7 +165,7 @@ export default function HomePage() {
                       </motion.div>
                     </Button>
                   </Link>
-                  <Link href="/workflow">
+                  <Link href="/about">
                     <Button
                       size="lg"
                       className="group touch-target border border-white/80 bg-transparent text-white hover:bg-white/10"
