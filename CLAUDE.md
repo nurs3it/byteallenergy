@@ -123,8 +123,11 @@ Minimal, formalized through CSS variables:
 ## Build & Deploy
 
 - Path alias: `@/*` → `src/*`
-- Two Next.js configs exist: `next.config.ts` (active, full features) and `next.config.js` (legacy static export). `.ts` takes precedence.
-- Husky pre-commit runs `npm run build` and stages `out/` — the static export is committed to the repo as a deployment artifact.
+- Single Next.js config: `next.config.ts`. `output: 'export'` is enabled conditionally when `BUILD_STATIC=true`.
+- Two build modes:
+  - `npm run build` — Turbopack build for Vercel (SSR/ISR, no static export).
+  - `npm run build:static` — webpack build with `BUILD_STATIC=true`, produces `out/` for static deploy. Turbopack is intentionally NOT used here (production turbopack + `output: export` is unstable).
+- Husky pre-commit runs `build:static` and stages `out/` — the static export is committed to the repo as a deployment artifact.
 - `typescript.ignoreBuildErrors: false` and `eslint.ignoreDuringBuilds: false` — both strictly enforced in build.
 - `compiler.removeConsole` strips console logs in production.
 - Image optimization configured with WebP/AVIF formats and remote patterns for map tile services.
