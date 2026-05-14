@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "next-themes"
@@ -13,16 +13,17 @@ const inter = Inter({
   display: 'swap',
 })
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+}
+
 export const metadata: Metadata = {
   title: {
     default: "ByteAll Energy - Digital Oilfield Solutions",
     template: "%s | ByteAll Energy"
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
   },
   description: "Leading digital oilfield solutions provider specializing in integrated production modeling, real-time field data monitoring, and advanced energy software. Transforming oil & gas operations through cutting-edge technology since 2017.",
   keywords: [

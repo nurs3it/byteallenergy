@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[29831,["/_next/static/chunks/015078arown3_.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/0b.68y~bjh7rg.js","/_next/static/chunks/013u9y7u.-b~m.js","/_next/static/chunks/03s3g.gmq6v09.js","/_next/static/chunks/0s40az~n0a-gs.js"],"JobPageContent"]
+3:I[97367,["/_next/static/chunks/015078arown3_.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/0b.68y~bjh7rg.js","/_next/static/chunks/013u9y7u.-b~m.js","/_next/static/chunks/03s3g.gmq6v09.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"vacancy":{"id":"9b86df03-7165-4dfc-8ba8-2ee6831d8390","title":"test","slug":"test","department":"test","location":"test","type":"Full-time","description":"test","about":"test","responsibilities":["2123","123","123","123"],"requirements":["123","123","123"],"niceToHave":["123","123"],"status":"published","isNew":true,"sortOrder":1,"publishedAt":"2026-04-22T19:48:47.276Z","createdAt":"2026-04-22T19:48:47.295Z","updatedAt":"2026-04-22T19:48:47.295Z"},"relatedJobs":[]}],[["$","script","script-0",{"src":"/_next/static/chunks/0s40az~n0a-gs.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"FauoThvOuyXtNs5nQ9C91"}
+5:null
