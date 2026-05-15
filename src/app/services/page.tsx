@@ -82,7 +82,7 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                   <Button asChild className="energy-gradient text-white hover:opacity-90 touch-target">
-                    <Link href="/team">
+                    <Link href="/contact">
                       Talk to Our Team
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Link>

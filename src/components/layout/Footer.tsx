@@ -14,7 +14,6 @@ export function Footer() {
   const footerLinks = {
     company: [
       { name: content.nav.about, href: '/about' },
-      { name: content.nav.team, href: '/team' },
       { name: content.nav.clients, href: '/clients' },
       { name: content.nav.workflow, href: '/workflow' },
     ],
