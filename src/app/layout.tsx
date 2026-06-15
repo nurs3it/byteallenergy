@@ -1,5 +1,5 @@
-import type { Metadata } from "next"
-import { Inter, Poppins } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "next-themes"
 import { Header } from "@/components/layout/Header"
@@ -7,29 +7,23 @@ import { Footer } from "@/components/layout/Footer"
 import { Toaster } from "@/components/ui/sonner"
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics"
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: 'swap',
 })
 
-const poppins = Poppins({ 
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-display",
-  display: 'swap',
-})
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+}
 
 export const metadata: Metadata = {
   title: {
     default: "ByteAll Energy - Digital Oilfield Solutions",
     template: "%s | ByteAll Energy"
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
   },
   description: "Leading digital oilfield solutions provider specializing in integrated production modeling, real-time field data monitoring, and advanced energy software. Transforming oil & gas operations through cutting-edge technology since 2017.",
   keywords: [
@@ -123,12 +117,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`} suppressHydrationWarning>
+      <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         <GoogleAnalytics />
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <div className="min-h-screen bg-background text-foreground">

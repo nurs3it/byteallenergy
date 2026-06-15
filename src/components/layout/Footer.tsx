@@ -14,6 +14,7 @@ export function Footer() {
   const footerLinks = {
     company: [
       { name: content.nav.about, href: '/about' },
+      { name: content.nav.team, href: '/team' },
       { name: content.nav.clients, href: '/clients' },
       { name: content.nav.workflow, href: '/workflow' },
     ],
@@ -44,9 +45,9 @@ export function Footer() {
               <Image
                 src={companyData.logo}
                 alt="ByteAll Energy Logo"
-                width={48}
-                height={48}
-                className="h-24 w-24 object-contain"
+                width={80}
+                height={80}
+                className="h-28 w-28 object-contain dark:brightness-0 dark:invert"
               />
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -58,7 +59,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackSocial('LinkedIn', companyData.linkedin)}
-                className="text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center justify-center"
+                className="text-muted-foreground hover:text-primary transition-colors touch-target flex items-center justify-center"
                 whileHover={{ scale: 1.2, y: -2 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -67,7 +68,7 @@ export function Footer() {
               <motion.a
                 href={`mailto:${companyData.email}`}
                 onClick={() => trackEmail(companyData.email, 'footer')}
-                className="text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center justify-center"
+                className="text-muted-foreground hover:text-primary transition-colors touch-target flex items-center justify-center"
                 whileHover={{ scale: 1.2, y: -2 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -91,7 +92,7 @@ export function Footer() {
                   <Link
                     href={link.href}
                     onClick={() => trackLink(link.name, link.href)}
-                    className="text-muted-foreground hover:text-energy-600 transition-colors text-sm touch-target flex items-center"
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm touch-target flex items-center"
                   >
                     {link.name}
                   </Link>
@@ -115,7 +116,7 @@ export function Footer() {
                   <Link
                     href={link.href}
                     onClick={() => trackLink(link.name, link.href)}
-                    className="text-muted-foreground hover:text-energy-600 transition-colors text-sm touch-target flex items-center"
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm touch-target flex items-center"
                   >
                     {link.name}
                   </Link>
@@ -135,7 +136,7 @@ export function Footer() {
             <h3 className="font-semibold text-foreground">Contact</h3>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <MapPin className="w-4 h-4 text-energy-600 mt-0.5 shrink-0" />
+                <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                 <div className="text-sm text-muted-foreground space-y-2">
                   <div>
                     <p className="font-medium">{companyData.headquarters.city}, {companyData.headquarters.country}</p>
@@ -148,23 +149,23 @@ export function Footer() {
                 </div>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-energy-600 shrink-0" />
+                <Mail className="w-4 h-4 text-primary shrink-0" />
                 <a
                   href={`mailto:${companyData.email}`}
                   onClick={() => trackEmail(companyData.email, 'footer_contact')}
-                  className="text-sm text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors touch-target flex items-center"
                 >
                   {companyData.email}
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Globe className="w-4 h-4 text-energy-600 shrink-0" />
+                <Globe className="w-4 h-4 text-primary shrink-0" />
                 <a
                   href={companyData.website}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackLink('Website', companyData.website, true)}
-                  className="text-sm text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors touch-target flex items-center"
                 >
                   {companyData.website}
                 </a>
@@ -191,7 +192,7 @@ export function Footer() {
                   key={link.name}
                   href={link.href}
                   onClick={() => trackLink(link.name, link.href)}
-                  className="text-sm text-muted-foreground hover:text-energy-600 transition-colors touch-target flex items-center"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors touch-target flex items-center"
                 >
                   {link.name}
                 </Link>

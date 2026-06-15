@@ -32,7 +32,7 @@ export function JoinTeamSection({
       <div className="container mx-auto px-4">
         <AnimatedSection>
           <div className="text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary">
               {title}
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -41,7 +41,7 @@ export function JoinTeamSection({
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="energy-gradient text-white hover:opacity-90"
+                className="bg-primary text-primary-foreground hover:bg-primary/90"
                 onClick={onPrimaryClick}
                 disabled={loading}
               >

@@ -21,7 +21,7 @@ export function CustomMapPin({ isActive = false, onClick }: CustomMapPinProps) {
       {/* Outer pulse ring */}
       {isActive && (
         <motion.div
-          className="absolute inset-0 rounded-full bg-energy-600/30"
+          className="absolute inset-0 rounded-full bg-primary/30"
           animate={{
             scale: [1, 1.5, 1.5],
             opacity: [0.5, 0, 0],
@@ -39,7 +39,7 @@ export function CustomMapPin({ isActive = false, onClick }: CustomMapPinProps) {
       
       {/* Main pin */}
       <div className="relative">
-        <div className="w-10 h-10 bg-energy-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white dark:border-energy-900">
+        <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg border-2 border-white dark:border-background">
           <MapPin 
             className="w-6 h-6 text-white" 
             weight="fill"
@@ -48,7 +48,7 @@ export function CustomMapPin({ isActive = false, onClick }: CustomMapPinProps) {
         
         {/* Pin point */}
         <div className="absolute top-8 left-1/2 transform -translate-x-1/2">
-          <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-10 border-l-transparent border-r-transparent border-t-energy-600" />
+          <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-10 border-l-transparent border-r-transparent border-t-primary" />
         </div>
       </div>
     </motion.div>

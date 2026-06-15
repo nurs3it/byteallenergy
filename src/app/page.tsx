@@ -140,10 +140,10 @@ export default function HomePage() {
                   <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white">
                     {content.hero.title}
                   </h1>
-                  <p className="text-xl md:text-2xl text-energy-100/90 font-medium">
+                  <p className="text-xl md:text-2xl text-white/90 font-medium">
                     {content.hero.subtitle}
                   </p>
-                  <p className="text-lg text-energy-100/80 leading-relaxed">
+                  <p className="text-lg text-white/80 leading-relaxed">
                     {content.hero.description}
                   </p>
                 </motion.div>
@@ -155,7 +155,7 @@ export default function HomePage() {
                   className="flex flex-col sm:flex-row gap-4"
                 >
                   <Link href="/services">
-                    <Button size="lg" className="energy-gradient text-white hover:opacity-90 transition-opacity touch-target">
+                    <Button size="lg" className="bg-white text-black hover:bg-white/90 transition-opacity touch-target">
                       {content.hero.cta}
                       <motion.div
                         whileHover={{ x: 3 }}
@@ -165,11 +165,10 @@ export default function HomePage() {
                       </motion.div>
                     </Button>
                   </Link>
-                  <Link href="/workflow">
+                  <Link href="/about">
                     <Button
                       size="lg"
-                      variant="outline"
-                      className="group touch-target border-white text-white hover:bg-white/10"
+                      className="group touch-target border border-white/80 bg-transparent text-white hover:bg-white/10"
                     >
                       <motion.div
                         whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
@@ -217,7 +216,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 {content.services.title}
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -229,16 +228,16 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service, index) => (
               <AnimatedSection key={service.id} delay={index * 0.1}>
-                <Card className="card-hover h-full">
+                <Card className="h-full">
                   <CardContent className="p-6">
                     <div className="space-y-4">
-                      <div className="w-12 h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center">
-                        <div className="w-6 h-6 bg-energy-600 rounded" />
+                      <div className="w-12 h-12 bg-accent dark:bg-accent rounded-lg flex items-center justify-center">
+                        <div className="w-6 h-6 bg-primary rounded" />
                       </div>
                       <h3 className="text-xl font-semibold">{service.title}</h3>
                       <p className="text-muted-foreground">{service.shortDescription}</p>
                       <Link href={`/services/${service.slug}`}>
-                        <Button variant="ghost" className="p-0 h-auto text-energy-600 hover:text-energy-700">
+                        <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80">
                           Learn More{' '}
                           <motion.span
                             whileHover={{ x: 3 }}
@@ -264,7 +263,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection direction="left">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+                <h2 className="text-3xl md:text-4xl font-bold text-primary">
                   {content.about.title}
                 </h2>
                 <p className="text-xl text-muted-foreground">
@@ -286,9 +285,9 @@ export default function HomePage() {
                             animate={{ scale: 1 }}
                             transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
                           >
-                            <Award className="w-5 h-5 text-energy-600" weight="duotone" />
+                            <Award className="w-5 h-5 text-primary" weight="duotone" />
                           </motion.div>
-                          <span className="text-xs font-semibold uppercase tracking-wide text-energy-600">
+                          <span className="text-xs font-semibold uppercase tracking-wide text-primary">
                             {label}
                           </span>
                         </div>
@@ -309,8 +308,8 @@ export default function HomePage() {
                       whileHover={{ scale: 1.05 }}
                       className="flex items-center space-x-2 px-3 py-2 rounded-full"
                     >
-                      <CheckCircle className="w-4 h-4 text-energy-600" weight="fill" />
-                      <span className="text-sm font-medium text-energy-900 dark:text-white">{service}</span>
+                      <CheckCircle className="w-4 h-4 text-primary" weight="fill" />
+                      <span className="text-sm font-medium text-foreground">{service}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -319,10 +318,10 @@ export default function HomePage() {
 
             <AnimatedSection direction="right">
               <div className="relative">
-                <div className="w-full h-96 bg-linear-to-br from-energy-500/20 to-oil-500/20 rounded-2xl border border-energy-200/50 dark:border-energy-800/50 flex items-center justify-center">
+                <div className="w-full h-96 bg-accent rounded-2xl border border-border flex items-center justify-center">
                   <div className="text-center space-y-4">
                     <motion.div
-                      className="w-20 h-20 bg-energy-600 rounded-full flex items-center justify-center mx-auto"
+                      className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto"
                       animate={{ rotate: [0, 5, -5, 0] }}
                       transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                     >
@@ -343,14 +342,14 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Ready to Transform Your Operations?
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Let&apos;s discuss how our digital solutions can optimize your energy operations and drive better results.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="energy-gradient text-white hover:opacity-90 touch-target">
+                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 touch-target">
                   <Link href="/contact" className="inline-flex items-center justify-center">
                     Get Started Today
                     <motion.span

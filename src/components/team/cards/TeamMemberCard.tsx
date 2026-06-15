@@ -62,11 +62,11 @@ export function TeamMemberCard({ member, index, loading = false }: TeamMemberCar
 
   return (
     <AnimatedSection delay={index * 0.1}>
-      <Card className="card-hover h-full">
+      <Card className="h-full">
         <CardContent className="p-6 text-center space-y-4">
           <div className="relative flex items-center justify-center">
             {showInitials ? (
-              <div className="w-32 h-32 bg-linear-to-br from-energy-500 to-energy-700 rounded-full mx-auto flex items-center justify-center text-white text-2xl font-bold">
+              <div className="w-32 h-32 bg-primary rounded-full mx-auto flex items-center justify-center text-white text-2xl font-bold">
                 {initials}
               </div>
             ) : (
@@ -83,7 +83,7 @@ export function TeamMemberCard({ member, index, loading = false }: TeamMemberCar
 
             {member.isLeadership && (
               <motion.div
-                className="absolute -top-2 -right-2 w-8 h-8 bg-oil-500 rounded-full flex items-center justify-center"
+                className="absolute -top-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center"
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               >
@@ -94,7 +94,7 @@ export function TeamMemberCard({ member, index, loading = false }: TeamMemberCar
           
           <div className="space-y-2">
             <h3 className="text-xl font-semibold">{member.name}</h3>
-            <p className="text-energy-600 font-medium">{member.role}</p>
+            <p className="text-primary font-medium">{member.role}</p>
             <p className="text-sm text-muted-foreground">{member.bio}</p>
           </div>
 
@@ -103,7 +103,7 @@ export function TeamMemberCard({ member, index, loading = false }: TeamMemberCar
               <h4 className="font-medium text-sm">Expertise</h4>
               <div className="flex flex-wrap gap-2 justify-center">
                 {member.expertise.slice(0, member.isLeadership ? 3 : 2).map((skill, skillIndex) => (
-                  <span key={skillIndex} className="px-2 py-1 bg-energy-50 dark:bg-energy-950 text-energy-700 dark:text-energy-300 text-xs rounded-full">
+                  <span key={skillIndex} className="px-2 py-1 bg-accent dark:bg-accent text-accent-foreground text-xs rounded-full">
                     {skill}
                   </span>
                 ))}
@@ -115,7 +115,7 @@ export function TeamMemberCard({ member, index, loading = false }: TeamMemberCar
             {member.email && (
               <motion.a
                 href={`mailto:${member.email}`}
-                className="text-muted-foreground hover:text-energy-600 transition-colors"
+                className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label={`Email ${member.name}`}
                 whileHover={{ scale: 1.2, y: -2 }}
                 whileTap={{ scale: 0.9 }}
@@ -128,7 +128,7 @@ export function TeamMemberCard({ member, index, loading = false }: TeamMemberCar
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-energy-600 transition-colors"
+                className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label={`LinkedIn profile of ${member.name}`}
                 whileHover={{ scale: 1.2, y: -2 }}
                 whileTap={{ scale: 0.9 }}

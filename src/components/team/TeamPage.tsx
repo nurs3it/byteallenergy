@@ -25,8 +25,7 @@ const coreTeam = teamMembers.filter(member => !member.isLeadership);
 
 export default function TeamPage() {
   const handleViewPositions = () => {
-    // Placeholder: replace with actual navigation or modal trigger when ready
-    window.open('mailto:career@byteallenergy.com', '_blank');
+    window.location.href = '/careers';
   };
 
   const handleSendResume = () => {

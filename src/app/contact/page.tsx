@@ -1,10 +1,162 @@
 "use client"
 
-import { MapPin, Envelope as Mail, LinkedinLogo as Linkedin, Globe, Clock, Buildings as Building2, Users } from 'phosphor-react'
+import { useState } from 'react'
+import { MapPin, Envelope as Mail, LinkedinLogo as Linkedin, Globe, Clock, Buildings as Building2, Users, PaperPlaneTilt, SpinnerGap, Check } from 'phosphor-react'
 import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 import { AnimatedSection } from '@/components/animations/AnimatedSection'
 import { companyData } from '@/lib/data/company'
 import { motion } from 'framer-motion'
+import { PageBanner } from '@/components/layout/PageBanner'
+import { submitInquiry } from '@/lib/api/services/inquiries'
+import { toast } from 'sonner'
+
+function ContactForm() {
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+  })
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus('submitting')
+
+    try {
+      await submitInquiry({
+        ...form,
+        phone: form.phone || undefined,
+      })
+      setStatus('success')
+      toast.success('Message sent successfully!')
+      setForm({ name: '', email: '', phone: '', subject: '', message: '' })
+    } catch (err) {
+      setStatus('error')
+      toast.error(err instanceof Error ? err.message : 'Failed to send message')
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <Card className="max-w-2xl mx-auto">
+        <CardContent className="p-8">
+          <div className="text-center space-y-4">
+            <div className="w-16 h-16 bg-accent rounded-sm flex items-center justify-center mx-auto">
+              <Check className="w-8 h-8 text-primary" weight="bold" />
+            </div>
+            <h3 className="text-xl font-semibold">Message Sent</h3>
+            <p className="text-muted-foreground">
+              Thank you for reaching out! We will review your message and get back to you shortly.
+            </p>
+            <Button
+              variant="outline"
+              onClick={() => setStatus('idle')}
+            >
+              Send Another Message
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  return (
+    <Card className="max-w-2xl mx-auto">
+      <CardContent className="p-8">
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="text-sm font-medium mb-1.5 block">Name *</label>
+              <input
+                type="text"
+                required
+                minLength={2}
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                className="w-full px-3 py-2.5 text-sm border border-border rounded-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium mb-1.5 block">Email *</label>
+              <input
+                type="email"
+                required
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                className="w-full px-3 py-2.5 text-sm border border-border rounded-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary"
+                placeholder="your@email.com"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="text-sm font-medium mb-1.5 block">Phone</label>
+              <input
+                type="tel"
+                value={form.phone}
+                onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                className="w-full px-3 py-2.5 text-sm border border-border rounded-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary"
+                placeholder="+7 777 123 4567"
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium mb-1.5 block">Subject *</label>
+              <input
+                type="text"
+                required
+                minLength={2}
+                value={form.subject}
+                onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                className="w-full px-3 py-2.5 text-sm border border-border rounded-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary"
+                placeholder="How can we help?"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="text-sm font-medium mb-1.5 block">Message *</label>
+            <textarea
+              required
+              minLength={10}
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              rows={5}
+              className="w-full px-3 py-2.5 text-sm border border-border rounded-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary resize-none"
+              placeholder="Tell us about your project or question..."
+            />
+          </div>
+
+          {status === 'error' && (
+            <p className="text-sm text-red-500">Something went wrong. Please try again.</p>
+          )}
+
+          <Button
+            type="submit"
+            disabled={status === 'submitting'}
+            className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+          >
+            {status === 'submitting' ? (
+              <>
+                <SpinnerGap className="w-4 h-4 mr-2 animate-spin" />
+                Sending...
+              </>
+            ) : (
+              <>
+                <PaperPlaneTilt className="w-4 h-4 mr-2" weight="duotone" />
+                Send Message
+              </>
+            )}
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  )
+}
 
 export default function ContactPage() {
   const contactMethods = [
@@ -59,44 +211,18 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen pt-8">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-energy-950 via-energy-900 to-oil-900 text-white relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <AnimatedSection>
-            <div className="text-center space-y-6 max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                className="inline-flex items-center justify-center w-20 h-20 bg-energy-600/20 rounded-full mb-6"
-              >
-                <MapPin className="w-10 h-10 text-energy-400" />
-              </motion.div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white">
-                Get In Touch
-              </h1>
-              <p className="text-xl md:text-2xl text-energy-100/90">
-                Let&apos;s discuss how we can help transform your energy operations
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageBanner
+        title="Get In Touch"
+        subtitle="Let's discuss how we can help transform your energy operations"
+        icon={<MapPin className="w-8 h-8 text-white/80" />}
+      />
 
       {/* Contact Methods */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Ways to Reach Us
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -116,16 +242,16 @@ export default function ContactPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Card className="card-hover h-full text-center group">
+                  <Card className="h-full text-center group">
                     <CardContent className="p-8">
                       <motion.div
-                        className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${method.gradient} rounded-2xl mb-4 group-hover:scale-110 transition-transform`}
+                        className={`inline-flex items-center justify-center w-16 h-16 bg-primary rounded-sm mb-4 group-hover:scale-110 transition-transform`}
                       >
                         <method.icon className="w-8 h-8 text-white" />
                       </motion.div>
                       <h3 className="text-xl font-semibold mb-2">{method.title}</h3>
                       <p className="text-sm text-muted-foreground mb-4">{method.description}</p>
-                      <p className="text-energy-600 font-medium group-hover:text-energy-700 transition-colors">
+                      <p className="text-primary font-medium group-hover:text-primary/80 transition-colors">
                         {method.value}
                       </p>
                     </CardContent>
@@ -142,7 +268,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Our Locations
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -154,10 +280,10 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {offices.map((office, index) => (
               <AnimatedSection key={office.city} delay={index * 0.1}>
-                <Card className="card-hover h-full">
+                <Card className="h-full">
                   <CardContent className="p-8">
                     <div className="flex items-start space-x-4 mb-6">
-                      <div className="w-14 h-14 bg-gradient-to-br from-energy-500 to-energy-700 rounded-xl flex items-center justify-center">
+                      <div className="w-14 h-14 bg-primary rounded-sm flex items-center justify-center">
                         <office.icon className="w-7 h-7 text-white" />
                       </div>
                       <div className="flex-1">
@@ -171,14 +297,14 @@ export default function ContactPage() {
                     
                     <div className="space-y-3">
                       <div className="flex items-start space-x-3">
-                        <MapPin className="w-5 h-5 text-energy-600 mt-0.5 shrink-0" />
+                        <MapPin className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                         <div>
                           <p className="font-medium">{office.city}, {office.country}</p>
                           <p className="text-sm text-muted-foreground">{office.address}</p>
                         </div>
                       </div>
                       <div className="flex items-center space-x-3">
-                        <Clock className="w-5 h-5 text-energy-600 shrink-0" />
+                        <Clock className="w-5 h-5 text-primary shrink-0" />
                         <p className="text-sm text-muted-foreground">{office.timezone}</p>
                       </div>
                     </div>
@@ -190,12 +316,32 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Contact Form */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <AnimatedSection>
+            <div className="text-center space-y-4 mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
+                Send Us a Message
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Have a question or want to discuss a project? Fill out the form below and we will get back to you.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <ContactForm />
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Company Info */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Company Information
               </h2>
               <p className="text-xl text-muted-foreground">
@@ -208,8 +354,8 @@ export default function ContactPage() {
             <AnimatedSection delay={0.1}>
               <Card>
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Building2 className="w-6 h-6 text-energy-600" />
+                  <div className="w-12 h-12 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto mb-4">
+                    <Building2 className="w-6 h-6 text-primary" />
                   </div>
                   <p className="text-sm text-muted-foreground mb-1">Legal Name</p>
                   <p className="font-semibold">{companyData.legalName}</p>
@@ -220,8 +366,8 @@ export default function ContactPage() {
             <AnimatedSection delay={0.2}>
               <Card>
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Users className="w-6 h-6 text-energy-600" />
+                  <div className="w-12 h-12 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-6 h-6 text-primary" />
                   </div>
                   <p className="text-sm text-muted-foreground mb-1">Company Type</p>
                   <p className="font-semibold">{companyData.type}</p>
@@ -232,8 +378,8 @@ export default function ContactPage() {
             <AnimatedSection delay={0.3}>
               <Card>
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Clock className="w-6 h-6 text-energy-600" />
+                  <div className="w-12 h-12 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto mb-4">
+                    <Clock className="w-6 h-6 text-primary" />
                   </div>
                   <p className="text-sm text-muted-foreground mb-1">Established</p>
                   <p className="font-semibold">2017</p>
@@ -244,8 +390,8 @@ export default function ContactPage() {
             <AnimatedSection delay={0.4}>
               <Card>
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Globe className="w-6 h-6 text-energy-600" />
+                  <div className="w-12 h-12 bg-accent dark:bg-accent rounded-sm flex items-center justify-center mx-auto mb-4">
+                    <Globe className="w-6 h-6 text-primary" />
                   </div>
                   <p className="text-sm text-muted-foreground mb-1">Industry</p>
                   <p className="font-semibold text-sm">Oil & Gas Digitalization</p>

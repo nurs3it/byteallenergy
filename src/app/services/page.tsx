@@ -8,6 +8,7 @@ import { AnimatedSection } from '@/components/animations/AnimatedSection'
 
 import { services } from '@/lib/data/services'
 import { content } from '@/lib/data/company'
+import { PageBanner } from '@/components/layout/PageBanner'
 import Link from 'next/link'
 
 const serviceIcons = {
@@ -28,21 +29,10 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen pt-8">
-      {/* Hero Section */}
-      <section className="py-20 bg-linear-to-br from-energy-950 via-energy-900 to-oil-900 text-white">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center space-y-6 max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold text-white">
-                {content.services.title}
-              </h1>
-              <p className="text-xl md:text-2xl text-energy-100/90">
-                {content.services.subtitle}
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageBanner
+        title={content.services.title}
+        subtitle={content.services.subtitle}
+      />
 
       {/* Featured Service - Integrated Production Modelling */}
       {featuredService && (
@@ -50,7 +40,7 @@ export default function ServicesPage() {
           <div className="container mx-auto px-4">
             <AnimatedSection>
               <div className="text-center space-y-4 mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+                <h2 className="text-3xl md:text-4xl font-bold text-primary">
                   {featuredService.title}
                 </h2>
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -62,8 +52,8 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
               <AnimatedSection direction="left">
                 <div className="space-y-6">
-                  <div className="w-16 h-16 bg-energy-100 dark:bg-energy-900 rounded-2xl flex items-center justify-center">
-                    <ShareNetwork className="w-8 h-8 text-energy-600" />
+                  <div className="w-16 h-16 bg-accent dark:bg-accent rounded-sm flex items-center justify-center">
+                    <ShareNetwork className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-2xl font-bold">Key Features</h3>
                   <ul className="space-y-4">
@@ -76,13 +66,13 @@ export default function ServicesPage() {
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         className="flex items-start space-x-3"
                       >
-                        <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                         <span className="text-muted-foreground">{feature}</span>
                       </motion.li>
                     ))}
                   </ul>
-                  <Button asChild className="energy-gradient text-white hover:opacity-90 touch-target">
-                    <Link href="/contact">
+                  <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 touch-target">
+                    <Link href="/team">
                       Talk to Our Team
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Link>
@@ -92,9 +82,9 @@ export default function ServicesPage() {
 
               <AnimatedSection direction="right">
                 <div className="relative">
-                <div className="w-full h-96 bg-linear-to-br from-energy-500/20 to-oil-500/20 rounded-2xl border border-energy-200/50 dark:border-energy-800/50 flex items-center justify-center">
+                <div className="w-full h-96 bg-accent rounded-2xl border border-border flex items-center justify-center">
                     <div className="text-center space-y-4">
-                      <div className="w-24 h-24 bg-energy-600 rounded-full flex items-center justify-center mx-auto">
+                      <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center mx-auto">
                         <ShareNetwork className="w-12 h-12 text-white" />
                       </div>
                       <h3 className="text-2xl font-bold">Integrated Production Modelling</h3>
@@ -113,7 +103,7 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 All Our Services
               </h2>
               <p className="text-xl text-foreground/80 max-w-3xl mx-auto">
@@ -128,12 +118,12 @@ export default function ServicesPage() {
               
               return (
                 <AnimatedSection key={service.id} delay={index * 0.1}>
-                  <Card className="card-hover h-full group">
+                  <Card className="h-full group">
                     <CardHeader className="pb-4">
-                      <div className="w-12 h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="w-6 h-6 text-energy-600" />
+                      <div className="w-12 h-12 bg-accent dark:bg-accent rounded-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="w-6 h-6 text-primary" />
                       </div>
-                      <CardTitle className="text-xl group-hover:text-energy-600 transition-colors">
+                      <CardTitle className="text-xl group-hover:text-primary transition-colors">
                         {service.title}
                       </CardTitle>
                     </CardHeader>
@@ -143,7 +133,7 @@ export default function ServicesPage() {
                       </p>
                       <div className="pt-4">
                         <Link href={`/services/${service.slug}`}>
-                          <Button variant="ghost" className="p-0 h-auto text-energy-600 hover:text-energy-700 group">
+                          <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80 group">
                             Learn More 
                             <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                           </Button>
@@ -163,7 +153,7 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Our Process
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -197,7 +187,7 @@ export default function ServicesPage() {
             ].map((step, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
                 <div className="text-center space-y-4">
-                  <div className="w-16 h-16 bg-energy-600 text-white rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+                  <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto text-xl font-bold">
                     {step.step}
                   </div>
                   <h3 className="text-xl font-semibold">{step.title}</h3>

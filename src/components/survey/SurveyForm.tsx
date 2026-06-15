@@ -200,7 +200,7 @@ export function SurveyForm({ config, onSuccess }: SurveyFormProps) {
             </div>
             <div className="h-2 bg-muted rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-gradient-to-r from-energy-500 to-energy-600"
+                className="h-full bg-primary"
                 initial={{ width: 0 }}
                 animate={{ width: `${completionRate}%` }}
                 transition={{ duration: 0.3 }}
@@ -281,7 +281,7 @@ export function SurveyForm({ config, onSuccess }: SurveyFormProps) {
               <button
                 type="submit"
                 disabled={isSubmitting || completionRate < 100}
-                className="px-8 py-3 bg-gradient-to-r from-energy-600 to-energy-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                className="px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-sm shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
               >
                 {isSubmitting ? 'Submitting...' : (config.submitButtonText || 'Submit')}
               </button>

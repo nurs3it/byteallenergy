@@ -21,6 +21,7 @@ import {
   UsersFour as Users2,
 } from 'phosphor-react'
 import Link from 'next/link'
+import { PageBanner } from '@/components/layout/PageBanner'
 
 const serviceIcons = {
   ShareNetwork,
@@ -40,21 +41,10 @@ interface ServicePageContentProps {
 export function ServicePageContent({ service, relatedServices }: ServicePageContentProps) {
   return (
     <div className="min-h-screen pt-8">
-      {/* Hero Section */}
-      <section className="py-20 bg-linear-to-br from-energy-950 via-energy-900 to-oil-900 text-white">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center space-y-6 max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold text-white">
-                {service.title}
-              </h1>
-              <p className="text-xl md:text-2xl text-energy-100/90">
-                {service.shortDescription}
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageBanner
+        title={service.title}
+        subtitle={service.shortDescription}
+      />
 
       {/* Service Details */}
       <section className="py-20">
@@ -81,7 +71,7 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         className="flex items-start space-x-3"
                       >
-                        <CheckCircle className="w-5 h-5 text-energy-600 mt-0.5 shrink-0" weight="fill" />
+                        <CheckCircle className="w-5 h-5 text-primary mt-0.5 shrink-0" weight="fill" />
                         <span className="text-muted-foreground">{feature}</span>
                       </motion.li>
                     ))}
@@ -99,7 +89,7 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
                         animate={{ rotate: [0, 5, -5, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                       >
-                        <Award className="w-5 h-5 text-energy-600" weight="duotone" />
+                        <Award className="w-5 h-5 text-primary" weight="duotone" />
                       </motion.div>
                       <span>Why Partner With ByteAll?</span>
                     </CardTitle>
@@ -116,19 +106,19 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
                         animate={{ rotate: [0, 360] }}
                         transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                       >
-                        <Clock className="w-5 h-5 text-energy-600" weight="duotone" />
+                        <Clock className="w-5 h-5 text-primary" weight="duotone" />
                       </motion.div>
                       <span className="text-sm">Accelerated delivery with measurable field impact</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <motion.div whileHover={{ scale: 1.1 }}>
-                        <Users2 className="w-5 h-5 text-energy-600" weight="duotone" />
+                        <Users2 className="w-5 h-5 text-primary" weight="duotone" />
                       </motion.div>
                       <span className="text-sm">Embedded enablement, training, and change management</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <motion.div whileHover={{ scale: 1.1, y: -2 }}>
-                        <Award className="w-5 h-5 text-energy-600" weight="duotone" />
+                        <Award className="w-5 h-5 text-primary" weight="duotone" />
                       </motion.div>
                       <span className="text-sm">Solutions tuned to your workflows, systems, and stakeholders</span>
                     </div>
@@ -144,12 +134,16 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
                       Ready to transform your operations with our {service.title.toLowerCase()}?
                     </p>
                     <div className="space-y-2">
-                      <Button className="w-full energy-gradient text-white">
-                        Schedule a Consultation
-                        <ArrowRight className="ml-2 w-4 h-4" />
+                      <Button asChild className="w-full bg-primary text-primary-foreground">
+                        <Link href="/contact">
+                          Schedule a Consultation
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </Link>
                       </Button>
-                      <Button variant="outline" className="w-full">
-                        Download Brochure
+                      <Button asChild variant="outline" className="w-full">
+                        <a href={`mailto:info@byteallenergy.com?subject=Brochure Request — ${service.title}`}>
+                          Request Brochure
+                        </a>
                       </Button>
                     </div>
                   </CardContent>
@@ -165,7 +159,7 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center space-y-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Implementation Process
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -199,7 +193,7 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
             ].map((step, index) => (
               <AnimatedSection key={step.step} delay={index * 0.1}>
                 <div className="text-center space-y-4">
-                  <div className="w-16 h-16 bg-energy-600 text-white rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+                  <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto text-xl font-bold">
                     {step.step}
                   </div>
                   <h3 className="text-xl font-semibold">{step.title}</h3>
@@ -217,7 +211,7 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
           <div className="container mx-auto px-4">
             <AnimatedSection>
               <div className="text-center space-y-4 mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold gradient-text">
+                <h2 className="text-3xl md:text-4xl font-bold text-primary">
                   Related Services
                 </h2>
                 <p className="text-xl text-muted-foreground">
@@ -232,12 +226,12 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
 
                 return (
                   <AnimatedSection key={relatedService.id} delay={index * 0.1}>
-                    <Card className="card-hover h-full group">
+                    <Card className="h-full group">
                       <CardHeader className="pb-4">
-                        <div className="w-12 h-12 bg-energy-100 dark:bg-energy-900 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <RelatedIconComponent className="w-6 h-6 text-energy-600" />
+                        <div className="w-12 h-12 bg-accent dark:bg-accent rounded-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <RelatedIconComponent className="w-6 h-6 text-primary" />
                         </div>
-                        <CardTitle className="text-xl group-hover:text-energy-600 transition-colors">
+                        <CardTitle className="text-xl group-hover:text-primary transition-colors">
                           {relatedService.title}
                         </CardTitle>
                       </CardHeader>
@@ -247,7 +241,7 @@ export function ServicePageContent({ service, relatedServices }: ServicePageCont
                         </p>
                         <div className="pt-4">
                           <Link href={`/services/${relatedService.slug}`}>
-                            <Button variant="ghost" className="p-0 h-auto text-energy-600 hover:text-energy-700 group">
+                            <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80 group">
                               Learn More
                               <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </Button>

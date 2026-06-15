@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60" width="120" height="60">
+  <rect x="5" y="5" width="110" height="50" rx="4" fill="none" stroke="#005A9E" stroke-width="2"/>
+  <text x="60" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#005A9E">KPO</text>
+  <text x="60" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#333">Karachaganak Petroleum</text>
+</svg>
