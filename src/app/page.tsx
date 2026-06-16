@@ -99,7 +99,6 @@ export default function HomePage() {
                 playsInline
                 className="w-full h-full object-cover"
                 preload={isMobile ? "none" : "metadata"}
-                crossOrigin="anonymous"
                 poster={isMobile ? "/video-poster.jpg" : undefined}
                 onError={(e) => {
                   console.log('Video failed to load:', e);
