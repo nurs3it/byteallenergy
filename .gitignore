@@ -42,3 +42,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local tooling skill (not part of the site)
+.claude/skills/
+excalidraw.log
