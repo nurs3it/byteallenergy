@@ -30,10 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export async function generateStaticParams() {
   try {
     const { data } = await fetchPosts(1, 50)
-    return data.map((p) => ({ slug: p.slug }))
+    if (data.length > 0) return data.map((p) => ({ slug: p.slug }))
   } catch {
-    return []
+    // API unreachable at build time — fall through to placeholder.
   }
+  // `output: export` rejects an empty param set ("missing generateStaticParams").
+  // Emit one throwaway slug so the static build always succeeds; the page calls
+  // notFound() for it, so it renders as a 404. Real slugs are served via SSR/ISR.
+  return [{ slug: '__placeholder__' }]
 }
 
 function estimateReadTime(content: string): number {
